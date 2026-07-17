@@ -1,0 +1,24 @@
+{
+  "_comment": "Contadores de redes. Actualizar manualmente o via Cloudflare Worker con cron. El campo updated_at indica ultima sincronizacion.",
+  "updated_at": "2026-07-16T00:00:00Z",
+  "instagram": {
+    "handle": "javimxoficial",
+    "followers": 0,
+    "url": "https://www.instagram.com/javimxoficial/"
+  },
+  "youtube": {
+    "handle": "javimxoficial",
+    "subscribers": 0,
+    "url": "https://www.youtube.com/@javimxoficial"
+  },
+  "tiktok": {
+    "handle": "javiitok",
+    "followers": 0,
+    "url": "https://www.tiktok.com/@javiitok"
+  },
+  "facebook": {
+    "handle": "digitalstudiojavi",
+    "followers": 0,
+    "url": "https://facebook.com/digitalstudiojavi"
+  }
+}
