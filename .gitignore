@@ -14,3 +14,6 @@ node_modules/
 .cache/
 dist/
 .tmp*
+
+# Claude Code local config
+.claude/

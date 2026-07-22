@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@javimxoficial · Javi · Creador · Cloud Engineer</title>
-    <meta name="description" content="Javi (javimxoficial) - Creador de contenido tech, Cloud Engineer y Full Stack Developer. Videos, tutoriales, colaboraciones con marcas y proyectos reales de desarrollo.">
-    <meta name="keywords" content="javimxoficial, javi digital, Javi Oficial, Javier Vidal, creador de contenido, tech influencer, Cloud Engineer, DevOps, contenido tech en español">
+    <title>@javimxoficial · Javi · Creador · Cloud Engineer & Founder</title>
+    <meta name="description" content="Javi (@javimxoficial) — creador de contenido tech, Cloud Engineer y founder. Únete al movimiento: desarrollo, IA y emprendimiento en español. Proyectos reales, servicios y colaboraciones.">
+    <meta name="keywords" content="javimxoficial, Javi, Javier Vidal, creador de contenido tech, Cloud Engineer, DevOps, Full Stack, IA, emprendimiento, AegisAI, Veoplaca">
     <meta name="author" content="Javier Vidal Miguel">
-    <meta name="theme-color" content="#0a0612">
+    <meta name="theme-color" content="#06060f">
     <meta name="color-scheme" content="dark">
 
     <meta property="og:type" content="profile">
     <meta property="og:title" content="@javimxoficial · Javi · Creador & Cloud Engineer">
-    <meta property="og:description" content="Contenido tech, tutoriales, colaboraciones y detrás de escenas del día a día de un Cloud Engineer.">
+    <meta property="og:description" content="Únete al movimiento tech en español. Desarrollo, IA y emprendimiento — contenido real y proyectos reales.">
     <meta property="og:image" content="/img/hero.png">
     <meta property="og:locale" content="es_ES">
     <meta property="profile:username" content="javimxoficial">
@@ -21,15 +21,16 @@
     <meta name="twitter:creator" content="@javimxoficial">
     <meta name="twitter:site" content="@javimxoficial">
 
-    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2280%22%20font-size%3D%2280%22%20text-anchor%3D%22middle%22%3E%F0%9F%A4%93%3C%2Ftext%3E%3C%2Fsvg%3E">
+    <link rel="icon" type="image/png" href="./img/logo.png">
+    <link rel="apple-touch-icon" href="./img/logo.png">
     <link rel="canonical" href="https://javimxoficial.pages.dev/">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="./css/styles.css">
-    <style>html,body{background:#0a0612;}</style>
+    <style>html,body{background:#06060f;}</style>
 
     <script type="application/ld+json">
     {
@@ -39,8 +40,8 @@
       "alternateName": ["Javi", "javimxoficial", "Javi Digital", "Javi Oficial"],
       "url": "https://javimxoficial.pages.dev/",
       "image": "https://javimxoficial.pages.dev/img/hero.png",
-      "jobTitle": "Content Creator · Cloud Engineer · Full Stack Developer",
-      "description": "Creador de contenido tech en español. Cloud Engineer, DevOps y Full Stack Developer. Contenido sobre desarrollo, IA, cloud, emprendimiento.",
+      "jobTitle": "Content Creator · Cloud Engineer · Full Stack Developer · Founder",
+      "description": "Creador de contenido tech en español. Cloud Engineer, DevOps y Full Stack Developer. Contenido sobre desarrollo, IA, cloud y emprendimiento.",
       "sameAs": [
         "https://www.instagram.com/javimxoficial/",
         "https://www.youtube.com/@javimxoficial",
@@ -53,267 +54,342 @@
 </head>
 <body>
 
-    <!-- ANIMATED BACKGROUND -->
-    <div class="bg-glow" aria-hidden="true">
+    <!-- AMBIENT BACKGROUND -->
+    <div class="bg-fx" aria-hidden="true">
         <span class="bg-orb bg-orb--1"></span>
         <span class="bg-orb bg-orb--2"></span>
         <span class="bg-orb bg-orb--3"></span>
     </div>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="cursor-spotlight" id="cursorSpotlight" aria-hidden="true"></div>
 
     <!-- NAVBAR -->
     <nav id="navbar">
         <div class="nav-content">
-            <a href="#inicio" class="nav-logo">
-                <span class="nav-logo__at">@</span><span class="nav-logo__name">javimxoficial</span>
+            <a href="#top" class="nav-logo" aria-label="Javi — inicio">
+                <img src="./img/logo-transparent.png" alt="Javi" class="nav-logo__img">
             </a>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#sobre-mi">Sobre mí</a></li>
-                <li><a href="#contenido">Contenido</a></li>
-                <li><a href="#colabora">Colabora</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#conecta">Conecta</a></li>
+                <li><a href="#servicios">Servicios</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
-            <a href="#colabora" class="nav-cta">
+            <a href="#contacto" class="btn btn--primary btn--sm nav-cta">
                 <i class="fas fa-handshake"></i> Colabora
             </a>
-            <button class="nav-toggle" id="navToggle" aria-label="Menu">
-                <span></span><span></span><span></span>
-            </button>
+            <button class="nav-toggle" id="navToggle" aria-label="Menú"><span></span><span></span><span></span></button>
         </div>
     </nav>
 
-    <!-- HERO -->
-    <section id="inicio" class="hero">
-        <div class="hero-content">
-            <div class="hero-media">
-                <div class="hero-media__frame">
-                    <div class="hero-media__glow"></div>
-                    <img class="hero-media__img" id="heroImg" src="./img/hero.png" alt="Javi · @javimxoficial" onerror="this.style.display='none';this.parentElement.classList.add('is-placeholder')">
-                    <div class="hero-media__placeholder">
-                        <span class="hero-media__at">@</span>
-                        <span class="hero-media__initial">J</span>
-                    </div>
-                </div>
-                <div class="hero-media__badge">
-                    <span class="hero-media__dot"></span> Nuevo contenido cada semana
-                </div>
+    <!-- ============ HERO — Únete al movimiento ============ -->
+    <header id="top" class="hero">
+        <div class="hero__inner reveal">
+            <span class="kicker">Creado para crear</span>
+
+            <h1 class="hero__logo">
+                <img src="./img/logo-transparent.png" alt="Javi · @javimxoficial" class="hero__logo-img" width="1447" height="878">
+            </h1>
+
+            <p class="hero__lead">Únete a la tribu de <strong>creadores y emprendedores tech</strong>.</p>
+            <h2 class="hero__headline">Únete al <span class="text-red">movimiento</span></h2>
+            <p class="hero__tagline">Aprende · Construye · Emprende</p>
+
+            <div class="hero__ctas">
+                <a href="https://www.instagram.com/javimxoficial/" target="_blank" rel="noopener" class="btn btn--primary btn--lg magnetic">
+                    <span class="btn__shine"></span>
+                    <i class="fas fa-bolt"></i> Unirme al movimiento
+                    <i class="fas fa-arrow-right btn__arrow"></i>
+                </a>
+                <a href="https://www.youtube.com/@javimxoficial" target="_blank" rel="noopener" class="btn btn--ghost btn--lg magnetic">
+                    <i class="fab fa-youtube"></i> Ver contenido
+                </a>
             </div>
 
-            <div class="hero-text">
-                <span class="hero-eyebrow">
-                    <i class="fas fa-fire"></i> Creador · Cloud Engineer · Full Stack
-                </span>
-                <h1 class="hero-title">
-                    Hola, soy <span class="hero-title__gradient">Javi</span>
-                </h1>
-                <p class="hero-tagline">
-                    Contenido real de <strong>desarrollo, IA y emprendimiento</strong> desde el día a día de un Cloud Engineer.
-                    <br>Bienvenido a mi mundo digital.
-                </p>
-
-                <div class="hero-ctas">
-                    <a href="https://www.instagram.com/javimxoficial/" target="_blank" rel="noopener" class="hero-cta hero-cta--primary">
-                        <i class="fab fa-instagram"></i> Seguir en Instagram
-                    </a>
-                    <a href="https://www.youtube.com/@javimxoficial" target="_blank" rel="noopener" class="hero-cta hero-cta--secondary">
-                        <i class="fab fa-youtube"></i> YouTube
-                    </a>
-                </div>
-
-                <div class="hero-social">
-                    <a href="https://www.instagram.com/javimxoficial/" target="_blank" aria-label="Instagram" class="hero-social__link"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.youtube.com/@javimxoficial" target="_blank" aria-label="YouTube" class="hero-social__link"><i class="fab fa-youtube"></i></a>
-                    <a href="https://www.tiktok.com/@javiitok" target="_blank" aria-label="TikTok" class="hero-social__link"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://facebook.com/digitalstudiojavi" target="_blank" aria-label="Facebook" class="hero-social__link"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://javividalm.pages.dev/" target="_blank" aria-label="Portafolio Tech" class="hero-social__link" title="Portafolio Tech"><i class="fas fa-code"></i></a>
-                </div>
+            <div class="hero__socials">
+                <a href="https://www.instagram.com/javimxoficial/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@javimxoficial" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.tiktok.com/@javiitok" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://facebook.com/digitalstudiojavi" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
             </div>
         </div>
-    </section>
 
-    <!-- STATS SOCIAL -->
-    <section id="stats" class="stats">
-        <h2 class="section-eyebrow">Comunidad</h2>
-        <div class="stats-grid">
-            <a href="https://www.instagram.com/javimxoficial/" target="_blank" class="stat-card stat-card--ig">
-                <div class="stat-card__icon"><i class="fab fa-instagram"></i></div>
-                <div class="stat-card__value" data-count="0">—</div>
-                <div class="stat-card__label">Instagram</div>
-                <div class="stat-card__handle">@javimxoficial</div>
-            </a>
-            <a href="https://www.youtube.com/@javimxoficial" target="_blank" class="stat-card stat-card--yt">
-                <div class="stat-card__icon"><i class="fab fa-youtube"></i></div>
-                <div class="stat-card__value" data-count="0">—</div>
-                <div class="stat-card__label">YouTube</div>
-                <div class="stat-card__handle">@javimxoficial</div>
-            </a>
-            <a href="https://www.tiktok.com/@javiitok" target="_blank" class="stat-card stat-card--tt">
-                <div class="stat-card__icon"><i class="fab fa-tiktok"></i></div>
-                <div class="stat-card__value" data-count="0">—</div>
-                <div class="stat-card__label">TikTok</div>
-                <div class="stat-card__handle">@javiitok</div>
-            </a>
-            <a href="https://facebook.com/digitalstudiojavi" target="_blank" class="stat-card stat-card--fb">
-                <div class="stat-card__icon"><i class="fab fa-facebook-f"></i></div>
-                <div class="stat-card__value" data-count="0">—</div>
-                <div class="stat-card__label">Facebook</div>
-                <div class="stat-card__handle">Digital Studio Javi</div>
-            </a>
-        </div>
-        <p class="stats-note">Contadores desde <code>/data/social-counts.json</code> · actualizable manual o vía Cloudflare Worker con cron diario.</p>
-    </section>
+        <a href="#sobre-mi" class="hero__scroll" aria-label="Bajar">
+            <span>SCROLL</span>
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </header>
 
-    <!-- SOBRE MI -->
+    <!-- ============ SOBRE MÍ — bio + polaroid ============ -->
     <section id="sobre-mi" class="about">
-        <div class="about-content">
-            <span class="section-eyebrow">Sobre mí</span>
-            <h2 class="section-title">Detrás del @</h2>
-            <div class="about-grid">
-                <div class="about-card">
-                    <div class="about-card__icon">🎬</div>
-                    <h3>Creador de contenido</h3>
-                    <p>Comparto lo que aprendo día a día como <strong>Cloud Engineer y Full Stack Developer</strong>. Tutoriales, proyectos, viajes, y el detrás de escenas de emprender en tech.</p>
-                </div>
-                <div class="about-card">
-                    <div class="about-card__icon">🚀</div>
-                    <h3>Emprendedor tech</h3>
-                    <p>Construyo <strong>plataformas web, agentes de IA y herramientas SaaS</strong>. Actualmente detrás de proyectos como Veoplaca, AegisAI y otros que iré compartiendo.</p>
-                </div>
-                <div class="about-card">
-                    <div class="about-card__icon">🌎</div>
-                    <h3>100% remoto, LATAM y global</h3>
-                    <p>Comunidad hispanohablante activa. Colaboro con creadores, marcas y clientes en todo el mundo. Español e inglés indistintamente.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTENIDO / FEATURED (Instagram posts destacados) -->
-    <section id="contenido" class="content">
-        <span class="section-eyebrow">Últimos posts</span>
-        <h2 class="section-title">Contenido destacado</h2>
-        <p class="content-lead">Selección de mis publicaciones favoritas desde <a href="https://www.instagram.com/javimxoficial/" target="_blank" rel="noopener">@javimxoficial</a></p>
-
-        <!--
-            COMO AGREGAR TUS POSTS DE INSTAGRAM:
-            1. En Instagram, en cada post que quieras destacar, click en los 3 puntos → "Insertar" → copia el <blockquote class="instagram-media">
-            2. Reemplaza los 3 bloques de abajo con tu codigo real (uno por post)
-            3. El script embed.js de Instagram procesa cada blockquote y lo convierte en un embed responsive
-            4. Recomendado: elige 3 posts que muestren variedad (tutorial, viral, personal)
-        -->
-        <div class="content-grid" id="igGrid">
-            <!-- PLACEHOLDER 1 -->
-            <a href="https://www.instagram.com/javimxoficial/" target="_blank" class="content-item content-item--placeholder">
-                <div class="content-item__thumb">
-                    <div class="content-item__play"><i class="fab fa-instagram"></i></div>
-                </div>
-                <div class="content-item__meta">
-                    <span class="content-item__tag">Instagram</span>
-                    <h3 class="content-item__title">Reemplaza con tu embed de post 1</h3>
-                </div>
-            </a>
-            <!-- PLACEHOLDER 2 -->
-            <a href="https://www.instagram.com/javimxoficial/" target="_blank" class="content-item content-item--placeholder">
-                <div class="content-item__thumb">
-                    <div class="content-item__play"><i class="fab fa-instagram"></i></div>
-                </div>
-                <div class="content-item__meta">
-                    <span class="content-item__tag">Instagram</span>
-                    <h3 class="content-item__title">Reemplaza con tu embed de post 2</h3>
-                </div>
-            </a>
-            <!-- PLACEHOLDER 3 -->
-            <a href="https://www.instagram.com/javimxoficial/" target="_blank" class="content-item content-item--placeholder">
-                <div class="content-item__thumb">
-                    <div class="content-item__play"><i class="fab fa-instagram"></i></div>
-                </div>
-                <div class="content-item__meta">
-                    <span class="content-item__tag">Instagram</span>
-                    <h3 class="content-item__title">Reemplaza con tu embed de post 3</h3>
-                </div>
-            </a>
+        <div class="about__media reveal">
+            <figure class="polaroid">
+                <img src="./img/hero.png" alt="Javi trabajando — @javimxoficial" onerror="this.closest('.polaroid').classList.add('is-empty')">
+                <span class="polaroid__fallback">J</span>
+                <figcaption>@javimxoficial</figcaption>
+            </figure>
+            <span class="about__badge"><i class="fas fa-bolt"></i> Cloud Engineer &amp; Founder</span>
         </div>
 
-        <div class="content-cta">
-            <a href="https://www.instagram.com/javimxoficial/" target="_blank" rel="noopener" class="content-cta-btn">
-                <i class="fab fa-instagram"></i> Ver todo mi contenido en Instagram
-            </a>
-        </div>
+        <div class="about__body reveal">
+            <span class="kicker">Sobre mí</span>
+            <h2 class="about__name">JAVI</h2>
+            <p class="about__role">DEV PURASANGRE</p>
+            <p class="about__text">
+                Soy Javi — Cloud Engineer, Full Stack Developer y creador de contenido tech. Uso mi
+                día a día real construyendo software para contar historias sobre <strong>desarrollo, IA y
+                emprendimiento</strong>. Nada disfrazado, nada de agencia: cámara, laptop y mucho café.
+            </p>
+            <p class="about__text">
+                Detrás del @ hay proyectos reales — <strong>AegisAI</strong>, <strong>Veoplaca</strong> y más —
+                y una comunidad hispanohablante que aprende y construye conmigo. Si tú también quieres crear
+                algo que importe, estás en el lugar correcto.
+            </p>
 
-        <!-- Script oficial de Instagram para procesar los embeds si los agregas.
-             Se comenta hasta que agregues embeds reales para no cargar peso innecesariamente. -->
-        <!-- <script async src="https://www.instagram.com/embed.js"></script> -->
-    </section>
+            <ul class="about__pills">
+                <li>Cloud Engineer</li>
+                <li>DevOps</li>
+                <li>Full Stack</li>
+                <li>IA</li>
+                <li>Creador</li>
+                <li>Founder</li>
+            </ul>
 
-    <!-- COLABORA -->
-    <section id="colabora" class="collab">
-        <div class="collab-content">
-            <span class="section-eyebrow">Para marcas y agencias</span>
-            <h2 class="section-title">Colabora conmigo</h2>
-            <p class="collab-lead">Alcance real, audiencia hispanohablante tech y creadora, contenido honesto. Ofrezco sponsored posts, integraciones, reviews de producto y consultoría de contenido.</p>
-            <div class="collab-grid">
-                <div class="collab-card">
-                    <div class="collab-card__num">01</div>
-                    <h3>Sponsored posts</h3>
-                    <p>Integración natural de tu marca en mi contenido de Instagram, YouTube o TikTok.</p>
-                </div>
-                <div class="collab-card">
-                    <div class="collab-card__num">02</div>
-                    <h3>Reviews honestas</h3>
-                    <p>Review real de tu producto/servicio. Cero disfraz, feedback constructivo y detallado.</p>
-                </div>
-                <div class="collab-card">
-                    <div class="collab-card__num">03</div>
-                    <h3>Talento tech</h3>
-                    <p>Consultoría técnica + creación de contenido para tu marca tech, SaaS o startup.</p>
-                </div>
-            </div>
-            <div class="collab-cta">
-                <a href="mailto:javividalm11@gmail.com?subject=Colaboraci%C3%B3n%20con%20%40javimxoficial" class="btn-collab">
-                    <i class="fas fa-envelope"></i> Escríbeme
+            <div class="about__ctas">
+                <a href="#proyectos" class="btn btn--primary magnetic">
+                    <span class="btn__shine"></span>
+                    Ver mis proyectos <i class="fas fa-arrow-right btn__arrow"></i>
                 </a>
-                <a href="https://wa.me/522871254233?text=Hola%20Javi%2C%20me%20interesa%20colaborar%20con%20%40javimxoficial" target="_blank" rel="noopener" class="btn-collab btn-collab--alt">
-                    <i class="fab fa-whatsapp"></i> WhatsApp
+                <a href="https://javividalm.pages.dev/" target="_blank" rel="noopener" class="btn btn--ghost magnetic">
+                    <i class="fas fa-code"></i> Portafolio tech
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- CONTACTO -->
+    <!-- ============ PROYECTOS — con la firma Javi ============ -->
+    <!--
+        NOTA: reemplaza los href de cada proyecto por las URLs reales.
+        AegisAI usa el dominio de tu correo (aegisai.co). Veoplaca apunta por ahora
+        a tu portafolio; cámbialo cuando tenga sitio propio.
+    -->
+    <section id="proyectos" class="ventures">
+        <div class="section-head reveal">
+            <span class="kicker">Proyectos</span>
+            <h2 class="section-title">Con la firma <span class="text-red">Javi</span></h2>
+            <p class="section-sub">No solo hablo de tech — lo construyo. Estas son las empresas y proyectos reales detrás del @.</p>
+        </div>
+
+        <div class="ventures__grid">
+            <a href="https://aegisai.co" target="_blank" rel="noopener" class="v-card reveal" data-spotlight>
+                <div class="v-card__top">
+                    <span class="v-card__icon"><i class="fas fa-shield-halved"></i></span>
+                    <span class="v-card__index">01</span>
+                </div>
+                <h3 class="v-card__name">AegisAI</h3>
+                <span class="v-card__cat">IA · SaaS · Automatización</span>
+                <p class="v-card__desc">Agentes de IA y automatización inteligente para negocios. Sistemas que trabajan solos, atienden clientes y escalan sin fricción.</p>
+                <span class="v-card__more">Más información <i class="fas fa-arrow-right"></i></span>
+            </a>
+
+            <a href="https://javividalm.pages.dev/" target="_blank" rel="noopener" class="v-card reveal" data-spotlight>
+                <div class="v-card__top">
+                    <span class="v-card__icon"><i class="fas fa-car"></i></span>
+                    <span class="v-card__index">02</span>
+                </div>
+                <h3 class="v-card__name">Veoplaca</h3>
+                <span class="v-card__cat">Visión por computadora</span>
+                <p class="v-card__desc">Reconocimiento de placas vehiculares con IA en tiempo real. Visión por computadora aplicada a seguridad y control de accesos.</p>
+                <span class="v-card__more">Más información <i class="fas fa-arrow-right"></i></span>
+            </a>
+
+            <a href="https://facebook.com/digitalstudiojavi" target="_blank" rel="noopener" class="v-card reveal" data-spotlight>
+                <div class="v-card__top">
+                    <span class="v-card__icon"><i class="fas fa-wand-magic-sparkles"></i></span>
+                    <span class="v-card__index">03</span>
+                </div>
+                <h3 class="v-card__name">Digital Studio Javi</h3>
+                <span class="v-card__cat">Estudio digital</span>
+                <p class="v-card__desc">Presencia web + automatización con IA para negocios locales: clínicas, barberías y estéticas que quieren vender solas.</p>
+                <span class="v-card__more">Más información <i class="fas fa-arrow-right"></i></span>
+            </a>
+
+            <a href="https://wa.me/522871254233?text=Hola%20Javi%2C%20quiero%20construir%20un%20proyecto%20contigo" target="_blank" rel="noopener" class="v-card v-card--cta reveal" data-spotlight>
+                <div class="v-card__top">
+                    <span class="v-card__icon"><i class="fas fa-rocket"></i></span>
+                    <span class="v-card__index">04</span>
+                </div>
+                <h3 class="v-card__name">Tu próximo proyecto</h3>
+                <span class="v-card__cat">Colaboración</span>
+                <p class="v-card__desc">¿Tienes una idea que quieres convertir en producto? Construyamos algo real juntos — de la idea al deploy.</p>
+                <span class="v-card__more">Hablemos <i class="fas fa-arrow-right"></i></span>
+            </a>
+        </div>
+    </section>
+
+    <!-- ============ CONECTA — social + comunidad ============ -->
+    <section id="conecta" class="connect">
+        <div class="section-head reveal">
+            <span class="kicker">Comunidad</span>
+            <h2 class="section-title">Conecta con <span class="text-red">Javi</span></h2>
+            <p class="section-sub">Miles de personas ya son parte del movimiento. Sígueme donde más te guste el contenido.</p>
+        </div>
+
+        <div class="connect__grid">
+            <a href="https://www.instagram.com/javimxoficial/" target="_blank" rel="noopener" class="s-card s-card--ig reveal" data-spotlight>
+                <i class="fab fa-instagram"></i>
+                <span class="s-card__count" data-key="instagram">—</span>
+                <span class="s-card__name">Instagram</span>
+                <span class="s-card__handle">@javimxoficial</span>
+            </a>
+            <a href="https://www.youtube.com/@javimxoficial" target="_blank" rel="noopener" class="s-card s-card--yt reveal" data-spotlight>
+                <i class="fab fa-youtube"></i>
+                <span class="s-card__count" data-key="youtube">—</span>
+                <span class="s-card__name">YouTube</span>
+                <span class="s-card__handle">@javimxoficial</span>
+            </a>
+            <a href="https://www.tiktok.com/@javiitok" target="_blank" rel="noopener" class="s-card s-card--tt reveal" data-spotlight>
+                <i class="fab fa-tiktok"></i>
+                <span class="s-card__count" data-key="tiktok">—</span>
+                <span class="s-card__name">TikTok</span>
+                <span class="s-card__handle">@javiitok</span>
+            </a>
+            <a href="https://facebook.com/digitalstudiojavi" target="_blank" rel="noopener" class="s-card s-card--fb reveal" data-spotlight>
+                <i class="fab fa-facebook-f"></i>
+                <span class="s-card__count" data-key="facebook">—</span>
+                <span class="s-card__name">Facebook</span>
+                <span class="s-card__handle">Digital Studio Javi</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- ============ SERVICIOS — trabaja conmigo ============ -->
+    <section id="servicios" class="services">
+        <div class="section-head reveal">
+            <span class="kicker">Servicios</span>
+            <h2 class="section-title">Trabaja <span class="text-red">conmigo</span></h2>
+            <p class="section-sub">Presencia digital + automatización con IA para negocios que quieren vender solos mientras atienden a sus clientes.</p>
+        </div>
+
+        <div class="services__grid">
+            <article class="p-card reveal" data-spotlight>
+                <header class="p-card__head">
+                    <span class="p-card__tier">Básico</span>
+                    <span class="p-card__index">01</span>
+                </header>
+                <h3 class="p-card__name">Presencia Digital</h3>
+                <p class="p-card__desc">Para el negocio que aún no aparece en Google. La entrada al mundo digital.</p>
+                <div class="p-card__price"><span class="p-card__from">Desde</span> <span class="p-card__amount">$4,900</span> <span class="p-card__cur">MXN</span></div>
+                <span class="p-card__monthly">+ $590/mes de mantenimiento</span>
+                <ul class="p-card__features">
+                    <li><i class="fas fa-check"></i> Landing page profesional (1 página)</li>
+                    <li><i class="fas fa-check"></i> Ficha Google My Business optimizada</li>
+                    <li><i class="fas fa-check"></i> Botón directo a WhatsApp</li>
+                    <li><i class="fas fa-check"></i> Dominio <code>.com</code> primer año</li>
+                    <li><i class="fas fa-check"></i> Hosting + SSL incluido</li>
+                    <li><i class="fas fa-check"></i> Entrega en 5–7 días</li>
+                </ul>
+                <a href="https://wa.me/522871254233?text=Hola%20Javi%2C%20me%20interesa%20el%20paquete%20B%C3%A1sico%20de%20presencia%20digital" target="_blank" rel="noopener" class="btn btn--ghost btn--block">Contratar Básico <i class="fas fa-arrow-right btn__arrow"></i></a>
+            </article>
+
+            <article class="p-card p-card--featured reveal" data-spotlight>
+                <div class="p-card__badge">Más elegido</div>
+                <header class="p-card__head">
+                    <span class="p-card__tier">Pro</span>
+                    <span class="p-card__index">02</span>
+                </header>
+                <h3 class="p-card__name">Automatización Inteligente</h3>
+                <p class="p-card__desc">Deja de perder clientes por no contestar rápido. Sistema completo con IA.</p>
+                <div class="p-card__price"><span class="p-card__from">Desde</span> <span class="p-card__amount">$12,900</span> <span class="p-card__cur">MXN</span></div>
+                <span class="p-card__monthly">+ $1,490/mes de mantenimiento</span>
+                <ul class="p-card__features">
+                    <li><i class="fas fa-check"></i> <strong>Todo lo del Básico</strong>, más:</li>
+                    <li><i class="fas fa-check"></i> Sistema de reservas online 24/7</li>
+                    <li><i class="fas fa-check"></i> Bot WhatsApp con IA (agenda solo)</li>
+                    <li><i class="fas fa-check"></i> Recordatorios automáticos de citas</li>
+                    <li><i class="fas fa-check"></i> Reactivación de clientes inactivos</li>
+                    <li><i class="fas fa-check"></i> SEO local (aparece en Maps)</li>
+                    <li><i class="fas fa-check"></i> Reporte mensual con métricas</li>
+                </ul>
+                <a href="https://wa.me/522871254233?text=Hola%20Javi%2C%20me%20interesa%20el%20paquete%20Pro%20con%20automatizaci%C3%B3n%20de%20WhatsApp" target="_blank" rel="noopener" class="btn btn--primary btn--block"><span class="btn__shine"></span>Contratar Pro <i class="fas fa-arrow-right btn__arrow"></i></a>
+            </article>
+
+            <article class="p-card reveal" data-spotlight>
+                <header class="p-card__head">
+                    <span class="p-card__tier">Premium</span>
+                    <span class="p-card__index">03</span>
+                </header>
+                <h3 class="p-card__name">Ecosistema Completo</h3>
+                <p class="p-card__desc">Para clínicas o salones que quieren escalar. CRM, redes gestionadas y soporte prioritario.</p>
+                <div class="p-card__price"><span class="p-card__from">Desde</span> <span class="p-card__amount">$29,900</span> <span class="p-card__cur">MXN</span></div>
+                <span class="p-card__monthly">+ $3,490/mes de mantenimiento</span>
+                <ul class="p-card__features">
+                    <li><i class="fas fa-check"></i> <strong>Todo lo del Pro</strong>, más:</li>
+                    <li><i class="fas fa-check"></i> Bot IA con memoria por cliente</li>
+                    <li><i class="fas fa-check"></i> CRM: historial + cumpleaños + follow-ups</li>
+                    <li><i class="fas fa-check"></i> Campañas WhatsApp Broadcast</li>
+                    <li><i class="fas fa-check"></i> 12 posts en redes/mes (con IA)</li>
+                    <li><i class="fas fa-check"></i> Reservas con pago online integrado</li>
+                    <li><i class="fas fa-check"></i> Soporte prioritario &lt; 2h</li>
+                </ul>
+                <a href="https://wa.me/522871254233?text=Hola%20Javi%2C%20me%20interesa%20el%20paquete%20Premium%20con%20ecosistema%20completo" target="_blank" rel="noopener" class="btn btn--ghost btn--block">Contratar Premium <i class="fas fa-arrow-right btn__arrow"></i></a>
+            </article>
+        </div>
+
+        <div class="services__diag reveal">
+            <div>
+                <span class="kicker kicker--gold">¿No sabes cuál es para ti?</span>
+                <h3 class="services__diag-title">Diagnóstico gratis en 15 min.</h3>
+                <p>Te muestro qué está perdiendo tu negocio hoy y qué paquete te recupera la inversión más rápido. Sin compromiso.</p>
+            </div>
+            <a href="https://wa.me/522871254233?text=Hola%20Javi%2C%20me%20interesa%20un%20diagn%C3%B3stico%20gratis%20para%20mi%20negocio" target="_blank" rel="noopener" class="btn btn--primary magnetic"><span class="btn__shine"></span><i class="fab fa-whatsapp"></i> Pedir diagnóstico</a>
+        </div>
+    </section>
+
+    <!-- ============ CONTACTO ============ -->
     <section id="contacto" class="contact">
-        <span class="section-eyebrow">Contacto</span>
-        <h2 class="section-title">Estemos en contacto</h2>
-        <div class="contact-grid">
-            <a href="mailto:javividalm11@gmail.com" class="contact-item">
-                <i class="fas fa-envelope"></i>
-                <span>javividalm11@gmail.com</span>
-            </a>
-            <a href="https://wa.me/522871254233" target="_blank" rel="noopener" class="contact-item">
-                <i class="fab fa-whatsapp"></i>
-                <span>+52 287 125 4233</span>
-            </a>
-            <a href="https://javividalm.pages.dev/" target="_blank" rel="noopener" class="contact-item">
-                <i class="fas fa-code"></i>
-                <span>Portafolio tech</span>
+        <div class="contact__inner reveal">
+            <span class="kicker">Contacto</span>
+            <h2 class="contact__title">¿Listo para <span class="text-red">crear</span> algo?</h2>
+            <p class="contact__sub">Colaboración con marcas, un proyecto tech o simplemente saludar — te leo.</p>
+
+            <div class="contact__methods">
+                <a href="mailto:javividalm11@gmail.com" class="contact__method">
+                    <i class="fas fa-envelope"></i>
+                    <span class="contact__method-label">Email</span>
+                    <span class="contact__method-value">javividalm11@gmail.com</span>
+                </a>
+                <a href="https://wa.me/522871254233" target="_blank" rel="noopener" class="contact__method">
+                    <i class="fab fa-whatsapp"></i>
+                    <span class="contact__method-label">WhatsApp</span>
+                    <span class="contact__method-value">+52 287 125 4233</span>
+                </a>
+                <a href="https://javividalm.pages.dev/" target="_blank" rel="noopener" class="contact__method">
+                    <i class="fas fa-code"></i>
+                    <span class="contact__method-label">Portafolio</span>
+                    <span class="contact__method-value">javividalm.pages.dev</span>
+                </a>
+            </div>
+
+            <a href="mailto:javividalm11@gmail.com?subject=Colaboraci%C3%B3n%20con%20%40javimxoficial" class="btn btn--primary btn--lg magnetic">
+                <span class="btn__shine"></span>
+                <i class="fas fa-paper-plane"></i> Contactar a Javi
             </a>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-brand">
-                <span class="footer-at">@</span><span class="footer-name">javimxoficial</span>
-            </div>
-            <div class="footer-social">
-                <a href="https://www.instagram.com/javimxoficial/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.youtube.com/@javimxoficial" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                <a href="https://www.tiktok.com/@javiitok" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-                <a href="https://facebook.com/digitalstudiojavi" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://javividalm.pages.dev/" target="_blank" aria-label="Portafolio Tech"><i class="fas fa-code"></i></a>
-            </div>
-            <small>&copy; <span id="year"></span> Javi · @javimxoficial · Todos los derechos reservados</small>
+    <footer class="footer">
+        <a href="#top" class="footer__logo"><img src="./img/logo-transparent.png" alt="Javi"></a>
+        <div class="footer__social">
+            <a href="https://www.instagram.com/javimxoficial/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/@javimxoficial" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.tiktok.com/@javiitok" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="https://facebook.com/digitalstudiojavi" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://javividalm.pages.dev/" target="_blank" rel="noopener" aria-label="Portafolio"><i class="fas fa-code"></i></a>
         </div>
+        <small>&copy; <span id="year"></span> Javi · @javimxoficial · Todos los derechos reservados</small>
     </footer>
 
     <script src="./js/script.js" defer></script>
