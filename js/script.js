@@ -17,6 +17,198 @@ function initCursorSpotlight() {
     })();
 }
 
+// ---- CIRCUIT BACKGROUND (Tron data-bus particles) ----
+function initCircuit() {
+    const canvas = document.getElementById('circuit');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const VIOLET = '166, 77, 255';   // #A64DFF
+    let W, H, DPR, traces = [], pulses = [], grid = null, raf = 0;
+
+    const rnd = (a, b) => a + Math.random() * (b - a);
+    const pick = a => a[(Math.random() * a.length) | 0];
+    function build() {
+        traces = [];
+        const g = 40;                              // grid step
+        const cols = Math.ceil(W / g), rows = Math.ceil(H / g);
+        const count = Math.min(26, Math.max(10, Math.floor((W * H) / 52000)));
+        const edge = Math.max(3, Math.floor(cols * 0.2));
+        for (let i = 0; i < count; i++) {
+            // start hugging left or right edge, flow inward (center stays clear)
+            const leftSide = Math.random() < 0.5;
+            const hx = leftSide ? 1 : -1;
+            let x = (leftSide ? ((rnd(0, edge)) | 0) : (cols - ((rnd(0, edge)) | 0))) * g;
+            let y = ((Math.random() * rows) | 0) * g;
+            const pts = [[x, y]];
+            const segs = (rnd(5, 11)) | 0;
+            let horiz = true;
+            for (let s = 0; s < segs; s++) {
+                // long horizontal run, then short 45° diagonal jog — repeat
+                const len = (horiz ? (rnd(3, 9) | 0) : (rnd(1, 3) | 0)) * g;
+                const vy = horiz ? 0 : (Math.random() < 0.5 ? 1 : -1);
+                x += hx * len; y += vy * len;
+                pts.push([x, y]);
+                horiz = !horiz;
+            }
+            let total = 0; const segLen = [];
+            for (let p = 1; p < pts.length; p++) {
+                const l = Math.hypot(pts[p][0] - pts[p - 1][0], pts[p][1] - pts[p - 1][1]);
+                segLen.push(l); total += l;
+            }
+            if (total < g * 2) continue;
+            traces.push({ pts, segLen, total, color: VIOLET });
+        }
+    }
+
+    function pointAt(tr, d) {
+        for (let p = 0; p < tr.segLen.length; p++) {
+            if (d <= tr.segLen[p]) {
+                const a = tr.pts[p], b = tr.pts[p + 1];
+                const t = tr.segLen[p] ? d / tr.segLen[p] : 0;
+                return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t];
+            }
+            d -= tr.segLen[p];
+        }
+        const last = tr.pts[tr.pts.length - 1];
+        return [last[0], last[1]];
+    }
+
+    function bakeGrid() {
+        grid = document.createElement('canvas');
+        grid.width = W * DPR; grid.height = H * DPR;
+        const o = grid.getContext('2d');
+        o.scale(DPR, DPR); o.lineCap = 'round'; o.lineJoin = 'round';
+        const path = tr => {
+            o.beginPath(); o.moveTo(tr.pts[0][0], tr.pts[0][1]);
+            for (let p = 1; p < tr.pts.length; p++) o.lineTo(tr.pts[p][0], tr.pts[p][1]);
+        };
+        traces.forEach(tr => {
+            // outer neon glow
+            o.shadowColor = `rgba(${tr.color},1)`; o.shadowBlur = 14;
+            o.lineWidth = 2.6; o.strokeStyle = `rgba(${tr.color},0.30)`; path(tr); o.stroke();
+            // bright core
+            o.shadowBlur = 6; o.lineWidth = 1.1; o.strokeStyle = `rgba(${tr.color},0.55)`; path(tr); o.stroke();
+            o.shadowBlur = 0;
+            // end pads
+            [tr.pts[0], tr.pts[tr.pts.length - 1]].forEach(pt => {
+                o.beginPath(); o.arc(pt[0], pt[1], 3, 0, 6.283);
+                o.fillStyle = `rgba(${tr.color},0.85)`; o.fill();
+                o.beginPath(); o.arc(pt[0], pt[1], 5.5, 0, 6.283);
+                o.strokeStyle = `rgba(${tr.color},0.3)`; o.lineWidth = 1; o.stroke();
+            });
+        });
+    }
+
+    function spawn() {
+        const tr = pick(traces);
+        if (!tr) return;
+        pulses.push({ tr, d: 0, speed: rnd(1.1, 2.6), tail: rnd(26, 60), color: tr.color });
+    }
+
+    function resize() {
+        DPR = Math.min(window.devicePixelRatio || 1, 2);
+        W = window.innerWidth; H = window.innerHeight;
+        canvas.width = W * DPR; canvas.height = H * DPR;
+        canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+        build(); bakeGrid(); pulses = [];
+    }
+
+    function frame() {
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        if (grid) ctx.drawImage(grid, 0, 0);
+        ctx.save();
+        ctx.scale(DPR, DPR);
+        ctx.globalCompositeOperation = 'lighter';
+        const max = Math.min(40, Math.floor(traces.length * 0.9));
+        if (pulses.length < max && Math.random() < 0.5) spawn();
+        for (let i = pulses.length - 1; i >= 0; i--) {
+            const pl = pulses[i];
+            pl.d += pl.speed;
+            if (pl.d - pl.tail > pl.tr.total) { pulses.splice(i, 1); continue; }
+            const steps = 9;
+            for (let s = 1; s <= steps; s++) {
+                const d = pl.d - (pl.tail * s / steps);
+                if (d < 0) break;
+                const [x, y] = pointAt(pl.tr, d);
+                const k = 1 - s / steps;
+                ctx.beginPath();
+                ctx.fillStyle = `rgba(${pl.color},${k * 0.95})`;
+                ctx.arc(x, y, 2.2 * k + 0.7, 0, 6.283); ctx.fill();
+            }
+            if (pl.d <= pl.tr.total) {
+                const [hx, hy] = pointAt(pl.tr, pl.d);
+                const gr = ctx.createRadialGradient(hx, hy, 0, hx, hy, 12);
+                gr.addColorStop(0, 'rgba(255,255,255,1)');
+                gr.addColorStop(0.3, `rgba(${pl.color},0.9)`);
+                gr.addColorStop(1, `rgba(${pl.color},0)`);
+                ctx.fillStyle = gr; ctx.beginPath(); ctx.arc(hx, hy, 12, 0, 6.283); ctx.fill();
+            }
+        }
+        ctx.restore();
+        raf = requestAnimationFrame(frame);
+    }
+
+    resize();
+    let rt;
+    addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(resize, 200); }, { passive: true });
+    if (reduce) {
+        // static circuit only
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        if (grid) ctx.drawImage(grid, 0, 0);
+    } else {
+        cancelAnimationFrame(raf);
+        frame();
+    }
+}
+
+// ---- PROJECTS CAROUSEL (horizontal slideshow) ----
+function initCarousel() {
+    const root = document.getElementById('projCarousel');
+    const track = document.getElementById('projTrack');
+    const dotsWrap = document.getElementById('projDots');
+    if (!root || !track) return;
+    const slides = [...track.children];
+    if (slides.length < 2) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const dots = slides.map((_, i) => {
+        const b = document.createElement('button');
+        b.setAttribute('aria-label', 'Ir al proyecto ' + (i + 1));
+        b.addEventListener('click', () => { stop(); go(i); });
+        dotsWrap.appendChild(b);
+        return b;
+    });
+
+    const step = () => slides[1].offsetLeft - slides[0].offsetLeft;
+    const index = () => Math.round(track.scrollLeft / (step() || 1));
+    const go = (i) => track.scrollTo({ left: i * step(), behavior: 'smooth' });
+    const sync = () => {
+        const idx = Math.max(0, Math.min(index(), slides.length - 1));
+        dots.forEach((d, i) => d.classList.toggle('is-active', i === idx));
+    };
+
+    let ticking = false;
+    track.addEventListener('scroll', () => {
+        if (!ticking) { requestAnimationFrame(() => { sync(); ticking = false; }); ticking = true; }
+    }, { passive: true });
+
+    document.getElementById('projPrev')?.addEventListener('click', () => { stop(); go(Math.max(0, index() - 1)); });
+    document.getElementById('projNext')?.addEventListener('click', () => { stop(); go(index() + 1 >= slides.length ? 0 : index() + 1); });
+
+    let timer = null;
+    function play() { if (reduce) return; stop(); timer = setInterval(() => { go(index() + 1 >= slides.length ? 0 : index() + 1); }, 5000); }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    root.addEventListener('pointerenter', stop);
+    root.addEventListener('pointerleave', play);
+    root.addEventListener('touchstart', stop, { passive: true });
+
+    sync();
+    play();
+}
+
 // ---- CARD SPOTLIGHT (cursor-tracked glow) ----
 function initSpotlightCards() {
     if (window.matchMedia('(hover: none)').matches) return;
@@ -138,12 +330,29 @@ addEventListener('scroll', () => {
     document.querySelectorAll('.nav-links a').forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
 }, { passive: true });
 
+// ---- CUSTOM PLAN → WhatsApp quote ----
+const customBtn = document.getElementById('customQuote');
+if (customBtn) {
+    customBtn.addEventListener('click', () => {
+        const opts = [...document.querySelectorAll('.p-custom__opts input:checked')].map(i => i.value);
+        const budget = (document.getElementById('customBudget')?.value || '').trim();
+        const extra = (document.getElementById('customExtra')?.value || '').trim();
+        let msg = 'Hola Javi, quiero un plan personalizado a mi medida.';
+        if (opts.length) msg += '\n\nMe interesa incluir:\n• ' + opts.join('\n• ');
+        if (budget) msg += '\n\nMi presupuesto aprox.: ' + budget;
+        if (extra) msg += '\n\nAdemás: ' + extra;
+        window.open('https://wa.me/522871254233?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+    });
+}
+
 // ---- FOOTER YEAR ----
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 // ---- INIT ----
 function initAll() {
+    initCircuit();
+    initCarousel();
     initCursorSpotlight();
     initSpotlightCards();
     initMagnetic();

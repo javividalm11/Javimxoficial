@@ -7,7 +7,7 @@
     <meta name="description" content="Javi (@javimxoficial) — creador de contenido tech, Cloud Engineer y founder. Únete al movimiento: desarrollo, IA y emprendimiento en español. Proyectos reales, servicios y colaboraciones.">
     <meta name="keywords" content="javimxoficial, Javi, Javier Vidal, creador de contenido tech, Cloud Engineer, DevOps, Full Stack, IA, emprendimiento, AegisAI, Veoplaca">
     <meta name="author" content="Javier Vidal Miguel">
-    <meta name="theme-color" content="#06060f">
+    <meta name="theme-color" content="#050308">
     <meta name="color-scheme" content="dark">
 
     <meta property="og:type" content="profile">
@@ -21,8 +21,9 @@
     <meta name="twitter:creator" content="@javimxoficial">
     <meta name="twitter:site" content="@javimxoficial">
 
-    <link rel="icon" type="image/png" href="./img/logo.png">
-    <link rel="apple-touch-icon" href="./img/logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="./img/favicon.png">
+    <link rel="apple-touch-icon" href="./img/favicon.png">
     <link rel="canonical" href="https://javimxoficial.pages.dev/">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,7 +31,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="./css/styles.css">
-    <style>html,body{background:#06060f;}</style>
+    <link rel="stylesheet" href="./css/assistant.css">
+    <style>html{background:#050308;}</style>
 
     <script type="application/ld+json">
     {
@@ -54,14 +56,8 @@
 </head>
 <body>
 
-    <!-- AMBIENT BACKGROUND -->
-    <div class="bg-fx" aria-hidden="true">
-        <span class="bg-orb bg-orb--1"></span>
-        <span class="bg-orb bg-orb--2"></span>
-        <span class="bg-orb bg-orb--3"></span>
-    </div>
+    <!-- BACKGROUND — solid black -->
     <div class="grain" aria-hidden="true"></div>
-    <div class="cursor-spotlight" id="cursorSpotlight" aria-hidden="true"></div>
 
     <!-- NAVBAR -->
     <nav id="navbar">
@@ -92,7 +88,7 @@
                 <img src="./img/logo-transparent.png" alt="Javi · @javimxoficial" class="hero__logo-img" width="1447" height="878">
             </h1>
 
-            <p class="hero__lead">Únete a la tribu de <strong>creadores y emprendedores tech</strong>.</p>
+            <p class="hero__lead">Únete a la comunidad de <strong>creadores y emprendedores tech</strong>.</p>
             <h2 class="hero__headline">Únete al <span class="text-red">movimiento</span></h2>
             <p class="hero__tagline">Aprende · Construye · Emprende</p>
 
@@ -129,28 +125,26 @@
                 <span class="polaroid__fallback">J</span>
                 <figcaption>@javimxoficial</figcaption>
             </figure>
-            <span class="about__badge"><i class="fas fa-bolt"></i> Cloud Engineer &amp; Founder</span>
         </div>
 
         <div class="about__body reveal">
             <span class="kicker">Sobre mí</span>
             <h2 class="about__name">JAVI</h2>
-            <p class="about__role">DEV PURASANGRE</p>
             <p class="about__text">
-                Soy Javi — Cloud Engineer, Full Stack Developer y creador de contenido tech. Uso mi
+                Soy Javi, Full Stack Developer, Cloud Engineer y creador de contenido tech. Uso mi
                 día a día real construyendo software para contar historias sobre <strong>desarrollo, IA y
-                emprendimiento</strong>. Nada disfrazado, nada de agencia: cámara, laptop y mucho café.
+                emprendimiento</strong>. Cámara, laptop y mucho café.🤓
             </p>
             <p class="about__text">
-                Detrás del @ hay proyectos reales — <strong>AegisAI</strong>, <strong>Veoplaca</strong> y más —
+                <strong>Detrás del @ hay proyectos reales</strong> 
                 y una comunidad hispanohablante que aprende y construye conmigo. Si tú también quieres crear
-                algo que importe, estás en el lugar correcto.
+                algo que sume, estás en el lugar correcto.
             </p>
 
             <ul class="about__pills">
-                <li>Cloud Engineer</li>
                 <li>DevOps</li>
                 <li>Full Stack</li>
+                <li>Cloud Engineer</li>
                 <li>IA</li>
                 <li>Creador</li>
                 <li>Founder</li>
@@ -168,63 +162,94 @@
         </div>
     </section>
 
-    <!-- ============ PROYECTOS — con la firma Javi ============ -->
-    <!--
-        NOTA: reemplaza los href de cada proyecto por las URLs reales.
-        AegisAI usa el dominio de tu correo (aegisai.co). Veoplaca apunta por ahora
-        a tu portafolio; cámbialo cuando tenga sitio propio.
-    -->
+    <!-- ROYECTOS -->
+
     <section id="proyectos" class="ventures">
         <div class="section-head reveal">
             <span class="kicker">Proyectos</span>
             <h2 class="section-title">Con la firma <span class="text-red">Javi</span></h2>
-            <p class="section-sub">No solo hablo de tech — lo construyo. Estas son las empresas y proyectos reales detrás del @.</p>
+            <p class="section-sub">No solo hablo de tech, también lo construyo. Revisa los proyectos en los que trabajo y si deseas colaborar conmigo, escribeme!.</p>
         </div>
 
-        <div class="ventures__grid">
-            <a href="https://aegisai.co" target="_blank" rel="noopener" class="v-card reveal" data-spotlight>
-                <div class="v-card__top">
-                    <span class="v-card__icon"><i class="fas fa-shield-halved"></i></span>
-                    <span class="v-card__index">01</span>
-                </div>
-                <h3 class="v-card__name">AegisAI</h3>
-                <span class="v-card__cat">IA · SaaS · Automatización</span>
-                <p class="v-card__desc">Agentes de IA y automatización inteligente para negocios. Sistemas que trabajan solos, atienden clientes y escalan sin fricción.</p>
-                <span class="v-card__more">Más información <i class="fas fa-arrow-right"></i></span>
-            </a>
+        <!-- Carrusel horizontal de proyectos (preview del sitio como fondo) -->
+        <div class="carousel reveal" id="projCarousel">
+            <button class="carousel__nav carousel__nav--prev" id="projPrev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
 
-            <a href="https://javividalm.pages.dev/" target="_blank" rel="noopener" class="v-card reveal" data-spotlight>
-                <div class="v-card__top">
-                    <span class="v-card__icon"><i class="fas fa-car"></i></span>
-                    <span class="v-card__index">02</span>
-                </div>
-                <h3 class="v-card__name">Veoplaca</h3>
-                <span class="v-card__cat">Visión por computadora</span>
-                <p class="v-card__desc">Reconocimiento de placas vehiculares con IA en tiempo real. Visión por computadora aplicada a seguridad y control de accesos.</p>
-                <span class="v-card__more">Más información <i class="fas fa-arrow-right"></i></span>
-            </a>
+            <div class="carousel__track" id="projTrack">
+                <a href="https://clinicacordel.netlify.app/" target="_blank" rel="noopener" class="proj-slide">
+                    <picture>
+                        <source media="(max-width: 900px)" srcset="./img/proj-cordel-m.jpg">
+                        <img class="proj-slide__img" src="./img/proj-cordel.jpg" alt="Clínica Cordel — clínica dental en Puebla" loading="lazy">
+                    </picture>
+                    <div class="proj-slide__shade"></div>
+                    <div class="proj-slide__body">
+                        <span class="proj-slide__index">01</span>
+                        <span class="proj-slide__cat">Clínica dental · Web + IA</span>
+                        <h3 class="proj-slide__name">Clínica Cordel</h3>
+                        <p class="proj-slide__desc">Sitio para clínica dental en Puebla: agenda en 30 s, asistente con IA 24/7 y WhatsApp.</p>
+                        <span class="proj-slide__link">Visitar sitio <i class="fas fa-arrow-up-right-from-square"></i></span>
+                    </div>
+                </a>
 
-            <a href="https://facebook.com/digitalstudiojavi" target="_blank" rel="noopener" class="v-card reveal" data-spotlight>
-                <div class="v-card__top">
-                    <span class="v-card__icon"><i class="fas fa-wand-magic-sparkles"></i></span>
-                    <span class="v-card__index">03</span>
-                </div>
-                <h3 class="v-card__name">Digital Studio Javi</h3>
-                <span class="v-card__cat">Estudio digital</span>
-                <p class="v-card__desc">Presencia web + automatización con IA para negocios locales: clínicas, barberías y estéticas que quieren vender solas.</p>
-                <span class="v-card__more">Más información <i class="fas fa-arrow-right"></i></span>
-            </a>
+                <a href="https://pacas-tanya.netlify.app/" target="_blank" rel="noopener" class="proj-slide">
+                    <picture>
+                        <source media="(max-width: 900px)" srcset="./img/proj-pacas-m.jpg">
+                        <img class="proj-slide__img" src="./img/proj-pacas.jpg" alt="Pacas Tannya — tienda de ropa americana" loading="lazy">
+                    </picture>
+                    <div class="proj-slide__shade"></div>
+                    <div class="proj-slide__body">
+                        <span class="proj-slide__index">02</span>
+                        <span class="proj-slide__cat">E-commerce · Ropa</span>
+                        <h3 class="proj-slide__name">Pacas Tannya</h3>
+                        <p class="proj-slide__desc">Tienda de ropa americana premium por paca, con catálogo y envíos a todo México.</p>
+                        <span class="proj-slide__link">Visitar sitio <i class="fas fa-arrow-up-right-from-square"></i></span>
+                    </div>
+                </a>
 
-            <a href="https://wa.me/522871254233?text=Hola%20Javi%2C%20quiero%20construir%20un%20proyecto%20contigo" target="_blank" rel="noopener" class="v-card v-card--cta reveal" data-spotlight>
-                <div class="v-card__top">
-                    <span class="v-card__icon"><i class="fas fa-rocket"></i></span>
-                    <span class="v-card__index">04</span>
-                </div>
-                <h3 class="v-card__name">Tu próximo proyecto</h3>
-                <span class="v-card__cat">Colaboración</span>
-                <p class="v-card__desc">¿Tienes una idea que quieres convertir en producto? Construyamos algo real juntos — de la idea al deploy.</p>
-                <span class="v-card__more">Hablemos <i class="fas fa-arrow-right"></i></span>
-            </a>
+                <a href="https://veoplaca.com/" target="_blank" rel="noopener" class="proj-slide">
+                    <picture>
+                        <source media="(max-width: 900px)" srcset="./img/proj-veoplaca-m.jpg">
+                        <img class="proj-slide__img" src="./img/proj-veoplaca.jpg" alt="Veoplaca — revisión de vehículos por placa" loading="lazy">
+                    </picture>
+                    <div class="proj-slide__shade"></div>
+                    <div class="proj-slide__body">
+                        <span class="proj-slide__index">03</span>
+                        <span class="proj-slide__cat">IA · Visión por computadora</span>
+                        <h3 class="proj-slide__name">Veoplaca</h3>
+                        <p class="proj-slide__desc">Revisa el historial de un vehículo por su placa: rápido, gratis y sin complicaciones.</p>
+                        <span class="proj-slide__link">Visitar sitio <i class="fas fa-arrow-up-right-from-square"></i></span>
+                    </div>
+                </a>
+
+                <a href="https://thesilencers.netlify.app/" target="_blank" rel="noopener" class="proj-slide">
+                    <picture>
+                        <source media="(max-width: 900px)" srcset="./img/proj-silencers-m.jpg">
+                        <img class="proj-slide__img" src="./img/proj-silencers.jpg" alt="The Silencers — hub gamer hispanohablante" loading="lazy">
+                    </picture>
+                    <div class="proj-slide__shade"></div>
+                    <div class="proj-slide__body">
+                        <span class="proj-slide__index">04</span>
+                        <span class="proj-slide__cat">Comunidad · Gaming</span>
+                        <h3 class="proj-slide__name">The Silencers</h3>
+                        <p class="proj-slide__desc">El hub gamer hispanohablante: guías, mods, plugins y servidores en un solo lugar.</p>
+                        <span class="proj-slide__link">Visitar sitio <i class="fas fa-arrow-up-right-from-square"></i></span>
+                    </div>
+                </a>
+
+                <a href="https://wa.me/522871254233?text=Hola%20Javi%2C%20quiero%20construir%20un%20proyecto%20contigo" target="_blank" rel="noopener" class="proj-slide proj-slide--cta">
+                    <div class="proj-slide__shade"></div>
+                    <div class="proj-slide__body">
+                        <span class="proj-slide__index">05</span>
+                        <span class="proj-slide__cat">Colaboración</span>
+                        <h3 class="proj-slide__name">Tu próximo proyecto</h3>
+                        <p class="proj-slide__desc">¿Tienes una idea que quieres convertir en producto? Construyamos algo real juntos — de la idea al deploy.</p>
+                        <span class="proj-slide__link">Hablemos <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+            </div>
+
+            <button class="carousel__nav carousel__nav--next" id="projNext" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+            <div class="carousel__dots" id="projDots" aria-hidden="true"></div>
         </div>
     </section>
 
@@ -276,18 +301,41 @@
             <article class="p-card reveal" data-spotlight>
                 <header class="p-card__head">
                     <span class="p-card__tier">Básico</span>
-                    <span class="p-card__index">01</span>
+                    <span class="p-card__save"><span class="p-card__save-pct">-57%</span><span class="p-card__save-amt">Ahorras<br>$200</span></span>
                 </header>
                 <h3 class="p-card__name">Presencia Digital</h3>
                 <p class="p-card__desc">Para el negocio que aún no aparece en Google. La entrada al mundo digital.</p>
-                <div class="p-card__price"><span class="p-card__from">Desde</span> <span class="p-card__amount">$4,900</span> <span class="p-card__cur">MXN</span></div>
-                <span class="p-card__monthly">+ $590/mes de mantenimiento</span>
+                <div class="p-card__modes">
+                    <div class="p-mode p-mode--full">
+                        <div>
+                            <span class="p-mode__label"><i class="fas fa-circle-check"></i> Todo incluido</span>
+                            <span class="p-mode__tag">hosting + dominio + SSL</span>
+                        </div>
+                        <div class="p-mode__nums">
+                            <span class="p-mode__was"><span class="p-mode__was-label">antes</span><s>$350</s></span>
+                            <span class="p-mode__price">$150<em>USD</em></span>
+                            <span class="p-mode__once">pago único</span>
+                            <span class="p-mode__maint"><span class="p-mode__was-label">antes</span><s>$100</s> + $50 USD/mes</span>
+                        </div>
+                    </div>
+                    <div class="p-mode">
+                        <div>
+                            <span class="p-mode__label"><i class="fas fa-box"></i> Sin hosting/dominio</span>
+                            <span class="p-mode__tag">tú lo manejas</span>
+                        </div>
+                        <div class="p-mode__nums">
+                            <span class="p-mode__price">$100<em>USD</em></span>
+                            <span class="p-mode__once">pago único</span>
+                            <span class="p-mode__maint">+ $40 USD/mes</span>
+                        </div>
+                    </div>
+                </div>
                 <ul class="p-card__features">
                     <li><i class="fas fa-check"></i> Landing page profesional (1 página)</li>
                     <li><i class="fas fa-check"></i> Ficha Google My Business optimizada</li>
                     <li><i class="fas fa-check"></i> Botón directo a WhatsApp</li>
-                    <li><i class="fas fa-check"></i> Dominio <code>.com</code> primer año</li>
-                    <li><i class="fas fa-check"></i> Hosting + SSL incluido</li>
+                    <li><i class="fas fa-check"></i> Certificado SSL (candadito de seguridad)</li>
+                    <li><i class="fas fa-check"></i> Diseño mobile-first</li>
                     <li><i class="fas fa-check"></i> Entrega en 5–7 días</li>
                 </ul>
                 <a href="https://wa.me/522871254233?text=Hola%20Javi%2C%20me%20interesa%20el%20paquete%20B%C3%A1sico%20de%20presencia%20digital" target="_blank" rel="noopener" class="btn btn--ghost btn--block">Contratar Básico <i class="fas fa-arrow-right btn__arrow"></i></a>
@@ -297,20 +345,44 @@
                 <div class="p-card__badge">Más elegido</div>
                 <header class="p-card__head">
                     <span class="p-card__tier">Pro</span>
-                    <span class="p-card__index">02</span>
+                    <span class="p-card__save"><span class="p-card__save-pct">-77%</span><span class="p-card__save-amt">Ahorras<br>$1,150</span></span>
                 </header>
                 <h3 class="p-card__name">Automatización Inteligente</h3>
                 <p class="p-card__desc">Deja de perder clientes por no contestar rápido. Sistema completo con IA.</p>
-                <div class="p-card__price"><span class="p-card__from">Desde</span> <span class="p-card__amount">$12,900</span> <span class="p-card__cur">MXN</span></div>
-                <span class="p-card__monthly">+ $1,490/mes de mantenimiento</span>
+                <div class="p-card__modes">
+                    <div class="p-mode p-mode--full">
+                        <div>
+                            <span class="p-mode__label"><i class="fas fa-circle-check"></i> Todo incluido</span>
+                            <span class="p-mode__tag">hosting + dominio + APIs IA</span>
+                        </div>
+                        <div class="p-mode__nums">
+                            <span class="p-mode__was"><span class="p-mode__was-label">antes</span><s>$1,500</s></span>
+                            <span class="p-mode__price">$350<em>USD</em></span>
+                            <span class="p-mode__once">pago único</span>
+                            <span class="p-mode__maint"><span class="p-mode__was-label">antes</span><s>$400</s> + $100 USD/mes</span>
+                        </div>
+                    </div>
+                    <div class="p-mode">
+                        <div>
+                            <span class="p-mode__label"><i class="fas fa-box"></i> Sin hosting/dominio/APIs</span>
+                            <span class="p-mode__tag">tú los pagas aparte</span>
+                        </div>
+                        <div class="p-mode__nums">
+                            <span class="p-mode__price">$300<em>USD</em></span>
+                            <span class="p-mode__once">pago único</span>
+                            <span class="p-mode__maint">+ $80 USD/mes</span>
+                        </div>
+                    </div>
+                </div>
                 <ul class="p-card__features">
                     <li><i class="fas fa-check"></i> <strong>Todo lo del Básico</strong>, más:</li>
-                    <li><i class="fas fa-check"></i> Sistema de reservas online 24/7</li>
-                    <li><i class="fas fa-check"></i> Bot WhatsApp con IA (agenda solo)</li>
-                    <li><i class="fas fa-check"></i> Recordatorios automáticos de citas</li>
-                    <li><i class="fas fa-check"></i> Reactivación de clientes inactivos</li>
-                    <li><i class="fas fa-check"></i> SEO local (aparece en Maps)</li>
-                    <li><i class="fas fa-check"></i> Reporte mensual con métricas</li>
+                    <li><i class="fas fa-check"></i> Reservas online con calendario en vivo</li>
+                    <li><i class="fas fa-check"></i> Bot de WhatsApp con IA (agenda solo)</li>
+                    <li><i class="fas fa-check"></i> Recordatorios automáticos 24h antes</li>
+                    <li><i class="fas fa-check"></i> Reactivación de clientes inactivos (45 días)</li>
+                    <li><i class="fas fa-check"></i> Landing multi-sección con galería</li>
+                    <li><i class="fas fa-check"></i> SEO local (aparecer en Google Maps)</li>
+                    <li><i class="fas fa-check"></i> Reporte mensual PDF con métricas</li>
                 </ul>
                 <a href="https://wa.me/522871254233?text=Hola%20Javi%2C%20me%20interesa%20el%20paquete%20Pro%20con%20automatizaci%C3%B3n%20de%20WhatsApp" target="_blank" rel="noopener" class="btn btn--primary btn--block"><span class="btn__shine"></span>Contratar Pro <i class="fas fa-arrow-right btn__arrow"></i></a>
             </article>
@@ -318,23 +390,79 @@
             <article class="p-card reveal" data-spotlight>
                 <header class="p-card__head">
                     <span class="p-card__tier">Premium</span>
-                    <span class="p-card__index">03</span>
+                    <span class="p-card__save"><span class="p-card__save-pct">-77%</span><span class="p-card__save-amt">Ahorras<br>$2,300</span></span>
                 </header>
-                <h3 class="p-card__name">Ecosistema Completo</h3>
-                <p class="p-card__desc">Para clínicas o salones que quieren escalar. CRM, redes gestionadas y soporte prioritario.</p>
-                <div class="p-card__price"><span class="p-card__from">Desde</span> <span class="p-card__amount">$29,900</span> <span class="p-card__cur">MXN</span></div>
-                <span class="p-card__monthly">+ $3,490/mes de mantenimiento</span>
+                <h3 class="p-card__name">Ecosistema Digital Completo</h3>
+                <p class="p-card__desc">Diseñado para negocios que deseen subir de nivel y escalar: CRM, redes y soporte prioritario.</p>
+                <div class="p-card__modes">
+                    <div class="p-mode p-mode--full">
+                        <div>
+                            <span class="p-mode__label"><i class="fas fa-circle-check"></i> Todo incluido</span>
+                            <span class="p-mode__tag">hosting premium + dominio + APIs + pagos</span>
+                        </div>
+                        <div class="p-mode__nums">
+                            <span class="p-mode__was"><span class="p-mode__was-label">antes</span><s>$3,000</s></span>
+                            <span class="p-mode__price">$700<em>USD</em></span>
+                            <span class="p-mode__once">pago único</span>
+                            <span class="p-mode__maint"><span class="p-mode__was-label">antes</span><s>$850</s> + $250 USD/mes</span>
+                        </div>
+                    </div>
+                    <div class="p-mode">
+                        <div>
+                            <span class="p-mode__label"><i class="fas fa-box"></i> Sin hosting/dominio/APIs</span>
+                            <span class="p-mode__tag">tú los pagas aparte</span>
+                        </div>
+                        <div class="p-mode__nums">
+                            <span class="p-mode__price">$500<em>USD</em></span>
+                            <span class="p-mode__once">pago único</span>
+                            <span class="p-mode__maint">+ $200 USD/mes</span>
+                        </div>
+                    </div>
+                </div>
                 <ul class="p-card__features">
                     <li><i class="fas fa-check"></i> <strong>Todo lo del Pro</strong>, más:</li>
-                    <li><i class="fas fa-check"></i> Bot IA con memoria por cliente</li>
-                    <li><i class="fas fa-check"></i> CRM: historial + cumpleaños + follow-ups</li>
-                    <li><i class="fas fa-check"></i> Campañas WhatsApp Broadcast</li>
-                    <li><i class="fas fa-check"></i> 12 posts en redes/mes (con IA)</li>
-                    <li><i class="fas fa-check"></i> Reservas con pago online integrado</li>
-                    <li><i class="fas fa-check"></i> Soporte prioritario &lt; 2h</li>
+                    <li><i class="fas fa-check"></i> Bot IA con memoria por cliente (historial, tratamientos)</li>
+                    <li><i class="fas fa-check"></i> CRM completo (historial, follow-ups)</li>
+                    <li><i class="fas fa-check"></i> Campañas WhatsApp Broadcast masivas</li>
+                    <li><i class="fas fa-check"></i> 12 posts en redes/mes (generados con IA)</li>
+                    <li><i class="fas fa-check"></i> Blog SEO &amp; GEO</li>
+                    <li><i class="fas fa-check"></i> Reservas con pago online (Stripe/OpenPay)</li>
+                    <li><i class="fas fa-check"></i> Soporte prioritario &lt; 2h respuesta</li>
+                    <li><i class="fas fa-check"></i> Revisión trimestral estratégica</li>
                 </ul>
-                <a href="https://wa.me/522871254233?text=Hola%20Javi%2C%20me%20interesa%20el%20paquete%20Premium%20con%20ecosistema%20completo" target="_blank" rel="noopener" class="btn btn--ghost btn--block">Contratar Premium <i class="fas fa-arrow-right btn__arrow"></i></a>
+                <a href="https://wa.me/522871254233?text=Hola%20Javi%2C%20me%20interesa%20el%20paquete%20Premium%20ecosistema%20digital%20completo" target="_blank" rel="noopener" class="btn btn--ghost btn--block">Contratar Premium <i class="fas fa-arrow-right btn__arrow"></i></a>
             </article>
+        </div>
+
+        <!-- Plan personalizado — el cliente arma lo que incluye, según su presupuesto -->
+        <div class="p-custom reveal" data-spotlight>
+            <div class="p-custom__intro">
+                <span class="p-custom__tier">A medida · 04</span>
+                <h3 class="p-custom__title">Plan <span class="text-red">Personalizado</span></h3>
+                <p>¿Ninguno encaja del todo? Arma tu propio paquete: marca lo que necesitas, agrégale lo que quieras y lo diseñamos <strong>a la medida de tu negocio</strong>.</p>
+                <span class="p-custom__price">Todo según tu <em>presupuesto</em></span>
+            </div>
+
+            <div class="p-custom__builder">
+                <span class="p-custom__label">Elige lo que quieres incluir:</span>
+                <div class="p-custom__opts">
+                    <label class="opt"><input type="checkbox" value="Landing / sitio web"><span>Landing / sitio web</span></label>
+                    <label class="opt"><input type="checkbox" value="Tienda online (e-commerce)"><span>Tienda online</span></label>
+                    <label class="opt"><input type="checkbox" value="Bot de WhatsApp con IA"><span>Bot de WhatsApp con IA</span></label>
+                    <label class="opt"><input type="checkbox" value="Sistema de reservas"><span>Sistema de reservas</span></label>
+                    <label class="opt"><input type="checkbox" value="CRM de clientes"><span>CRM de clientes</span></label>
+                    <label class="opt"><input type="checkbox" value="SEO local / Google Maps"><span>SEO local / Maps</span></label>
+                    <label class="opt"><input type="checkbox" value="Automatizaciones con IA"><span>Automatizaciones IA</span></label>
+                    <label class="opt"><input type="checkbox" value="Integración de pagos"><span>Integración de pagos</span></label>
+                    <label class="opt"><input type="checkbox" value="App / software a medida"><span>App / software a medida</span></label>
+                    <label class="opt"><input type="checkbox" value="Gestión de redes sociales"><span>Gestión de redes</span></label>
+                    <label class="opt"><input type="checkbox" value="Diseño de marca / logo"><span>Diseño de marca</span></label>
+                    <label class="opt"><input type="checkbox" value="Blog SEO & GEO"><span>Blog SEO &amp; GEO</span></label>
+                </div>
+                <input type="text" id="customBudget" class="p-custom__budget" placeholder="Tu presupuesto aprox. (ej. $2,000 MXN o $150 USD)">
+                <textarea id="customExtra" class="p-custom__extra" placeholder="¿Algo más? Cuéntame qué necesitas para tu negocio..."></textarea>
+                <button type="button" id="customQuote" class="btn btn--primary btn--block"><span class="btn__shine"></span><i class="fab fa-whatsapp"></i> Solicitar cotización a mi medida</button>
+            </div>
         </div>
 
         <div class="services__diag reveal">
@@ -352,7 +480,7 @@
         <div class="contact__inner reveal">
             <span class="kicker">Contacto</span>
             <h2 class="contact__title">¿Listo para <span class="text-red">crear</span> algo?</h2>
-            <p class="contact__sub">Colaboración con marcas, un proyecto tech o simplemente saludar — te leo.</p>
+            <p class="contact__sub">Estoy disponible para colaboración con marcas, un proyecto tech o simplemente resolver problemas.</p>
 
             <div class="contact__methods">
                 <a href="mailto:javividalm11@gmail.com" class="contact__method">
@@ -393,5 +521,6 @@
     </footer>
 
     <script src="./js/script.js" defer></script>
+    <script src="./js/assistant.js" defer></script>
 </body>
 </html>
