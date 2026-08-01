@@ -79,8 +79,6 @@ export async function onRequestPost(context) {
         if (!res.ok) {
             const errText = await res.text();
             console.error('[api/chat] Gemini error', res.status, errText.slice(0, 300));
-            const debug = new URL(request.url).searchParams.get('debug') === '1';
-            if (debug) return json({ message: 'GEMINI ' + res.status + ': ' + errText.slice(0, 500) }, 200);
             return json({ message: 'Tuve un problema para responder ahora mismo. Intenta de nuevo o escríbeme por WhatsApp al +52 287 125 4233.' }, 200);
         }
 
