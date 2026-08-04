@@ -1,8 +1,4 @@
-/* ============================================================
-   @javimxoficial · AI Assistant (chatbot + voice bot)
-   - Text chat + voice (Web Speech API) → calls /api/chat
-   - Self-contained: injects its own DOM. Needs assistant.css.
-   ============================================================ */
+/* @javimxoficial · asistente IA (chatbot + voice bot) */
 (function () {
     'use strict';
     const WA = 'https://wa.me/522871254233?text=' + encodeURIComponent('Hola Javi, vengo de tu web y quiero más información.');
@@ -15,7 +11,7 @@
     let recog = null, callActive = false, listening = false, muted = false, speaking = false;
     let els = {};
 
-    // ---------- DOM ----------
+    // DOM
     function build() {
         const fabs = document.createElement('div');
         fabs.className = 'ai-fabs';
@@ -79,7 +75,7 @@
         els.mute.addEventListener('click', toggleMute);
     }
 
-    // ---------- Panel ----------
+    // Panel
     function openPanel(voice) {
         greet();
         els.panel.classList.add('is-open');
@@ -110,7 +106,7 @@
         });
     }
 
-    // ---------- Messages ----------
+    // Messages
     function addBubble(role, text) {
         const d = document.createElement('div');
         d.className = 'ai-msg ai-msg--' + (role === 'user' ? 'user' : 'bot');
@@ -162,7 +158,7 @@
         }
     }
 
-    // ---------- Voice ----------
+    // Voice
     function setVoice(state, status) {
         els.orb.className = 'ai-orb' + (state ? ' is-' + state : '');
         if (status != null) els.vStatus.textContent = status;

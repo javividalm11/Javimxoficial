@@ -1,9 +1,6 @@
-/* =============================================================
-   @javimxoficial · interactions (red/black premium rebuild)
-   cursor spotlight · card spotlight · magnetic · reveal · counts · nav
-   ============================================================= */
+/* @javimxoficial · interacciones */
 
-// ---- CURSOR SPOTLIGHT (smoothed) ----
+// CURSOR SPOTLIGHT (smoothed)
 function initCursorSpotlight() {
     if (window.matchMedia('(hover: none)').matches) return;
     const spot = document.getElementById('cursorSpotlight');
@@ -17,7 +14,7 @@ function initCursorSpotlight() {
     })();
 }
 
-// ---- CIRCUIT BACKGROUND (Tron data-bus particles) ----
+// CIRCUIT BACKGROUND (Tron data-bus particles)
 function initCircuit() {
     const canvas = document.getElementById('circuit');
     if (!canvas) return;
@@ -35,7 +32,7 @@ function initCircuit() {
         const count = Math.min(26, Math.max(10, Math.floor((W * H) / 52000)));
         const edge = Math.max(3, Math.floor(cols * 0.2));
         for (let i = 0; i < count; i++) {
-            // start hugging left or right edge, flow inward (center stays clear)
+            // empieza en el borde y fluye al centro
             const leftSide = Math.random() < 0.5;
             const hx = leftSide ? 1 : -1;
             let x = (leftSide ? ((rnd(0, edge)) | 0) : (cols - ((rnd(0, edge)) | 0))) * g;
@@ -44,7 +41,7 @@ function initCircuit() {
             const segs = (rnd(5, 11)) | 0;
             let horiz = true;
             for (let s = 0; s < segs; s++) {
-                // long horizontal run, then short 45° diagonal jog — repeat
+                // tramo horizontal + jog diagonal 45°
                 const len = (horiz ? (rnd(3, 9) | 0) : (rnd(1, 3) | 0)) * g;
                 const vy = horiz ? 0 : (Math.random() < 0.5 ? 1 : -1);
                 x += hx * len; y += vy * len;
@@ -164,7 +161,7 @@ function initCircuit() {
     }
 }
 
-// ---- PROJECTS CAROUSEL (horizontal slideshow) ----
+// PROJECTS CAROUSEL (horizontal slideshow)
 function initCarousel() {
     const root = document.getElementById('projCarousel');
     const track = document.getElementById('projTrack');
@@ -209,7 +206,7 @@ function initCarousel() {
     play();
 }
 
-// ---- CARD SPOTLIGHT (cursor-tracked glow) ----
+// CARD SPOTLIGHT (cursor-tracked glow)
 function initSpotlightCards() {
     if (window.matchMedia('(hover: none)').matches) return;
     document.querySelectorAll('[data-spotlight]').forEach(card => {
@@ -221,7 +218,7 @@ function initSpotlightCards() {
     });
 }
 
-// ---- MAGNETIC BUTTONS ----
+// MAGNETIC BUTTONS
 function initMagnetic() {
     if (window.matchMedia('(hover: none)').matches) return;
     const S = 0.25;
@@ -234,7 +231,7 @@ function initMagnetic() {
     });
 }
 
-// ---- SCROLL REVEAL (stagger) ----
+// SCROLL REVEAL (stagger)
 function initScrollReveal() {
     const items = document.querySelectorAll('.reveal');
     if (!items.length) return;
@@ -249,7 +246,7 @@ function initScrollReveal() {
     items.forEach(el => io.observe(el));
 }
 
-// ---- SOCIAL COUNTS (from /data/social-counts.json) ----
+// SOCIAL COUNTS (from /data/social-counts.json)
 let SOCIAL_COUNTS = { instagram: 0, youtube: 0, tiktok: 0, facebook: 0 };
 
 function formatCount(n) {
@@ -304,7 +301,7 @@ if (connectSection) {
 }
 loadCounts().then(() => { countsReady = true; tryCounts(); });
 
-// ---- NAVBAR: mobile toggle + hide-on-scroll ----
+// NAVBAR: mobile toggle + hide-on-scroll
 const navToggle = document.getElementById('navToggle');
 const navLinks = document.getElementById('navLinks');
 if (navToggle && navLinks) {
@@ -322,7 +319,7 @@ function onScroll() {
 }
 addEventListener('scroll', () => { if (!ticking) { requestAnimationFrame(() => { onScroll(); ticking = false; }); ticking = true; } }, { passive: true });
 
-// ---- ACTIVE NAV LINK on scroll ----
+// ACTIVE NAV LINK on scroll
 const sections = document.querySelectorAll('section[id], header[id]');
 addEventListener('scroll', () => {
     let current = '';
@@ -330,7 +327,7 @@ addEventListener('scroll', () => {
     document.querySelectorAll('.nav-links a').forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
 }, { passive: true });
 
-// ---- CUSTOM PLAN → WhatsApp quote ----
+// CUSTOM PLAN → WhatsApp quote
 const customBtn = document.getElementById('customQuote');
 if (customBtn) {
     customBtn.addEventListener('click', () => {
@@ -345,11 +342,11 @@ if (customBtn) {
     });
 }
 
-// ---- FOOTER YEAR ----
+// FOOTER YEAR
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// ---- INIT ----
+// INIT
 function initAll() {
     initCircuit();
     initCarousel();

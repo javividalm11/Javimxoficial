@@ -1,12 +1,4 @@
-/**
- * Cloudflare Pages Function — /api/chat
- * AI brain for the @javimxoficial assistant (chatbot + voice bot).
- * Uses Google Gemini (gemini-2.0-flash). Set GEMINI_API_KEY in the
- * Cloudflare Pages project → Settings → Environment variables.
- *
- * Request  (POST JSON): { message: string, history: [{role:'user'|'assistant', content:string}] }
- * Response (JSON):      { message: string }
- */
+/* /api/chat · cerebro IA (Gemini). Requiere env GEMINI_API_KEY en Cloudflare Pages. */
 
 const SYSTEM_PROMPT = `Eres "Javi IA", el asistente virtual de Javi (@javimxoficial): creador de contenido tech, Cloud Engineer, Full Stack Developer y founder. Hablas en nombre de su marca.
 

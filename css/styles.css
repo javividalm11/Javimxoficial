@@ -1,10 +1,7 @@
-/* ===============================================================
-   @javimxoficial · Personal brand — RED/BLACK PREMIUM
-   Structure inspired by mikemunzvil.com · Dark, bold, HD effects
-   =============================================================== */
+/* @javimxoficial · estilos */
 
 :root {
-    /* Solid black background · violet neon accents */
+    /* fondo + acentos */
     --bg: #050308;
     --bg-2: #0b0b1a;
     --bg-elev: #121226;
@@ -14,7 +11,7 @@
     --border: hsla(255, 60%, 100%, 0.10);
     --border-strong: hsla(255, 60%, 100%, 0.18);
 
-    /* --red* kept as names; values are now Tron violet neon */
+    /* --red* = violeta */
     --red: #9d4bff;         /* primary violet neon (matches logo) */
     --red-bright: #c18cff;  /* bright violet */
     --red-deep: #5a17be;    /* deep violet */
@@ -49,17 +46,17 @@ img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 ::selection { background: var(--red); color: #fff; }
 
-/* ============ AMBIENT BG ============ */
+/* AMBIENT BG */
 .bg-fx { position: fixed; inset: 0; z-index: -2; overflow: hidden; pointer-events: none; }
-/* Tron circuit — animated data-bus particles behind the whole page */
+/* circuito */
 #circuit { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-/* radial dark center — keeps the middle clear for the logo/content (traces frame the edges) */
+/* vignette central */
 .circuit-vignette {
     position: fixed; inset: 0; z-index: 0; pointer-events: none;
     background: radial-gradient(ellipse 60% 64% at 50% 44%, var(--bg) 0%, var(--bg) 14%, rgba(10, 0, 24, 0.9) 32%, rgba(10, 0, 24, 0.45) 50%, transparent 72%);
 }
 
-/* ---- Digital tech grid (Tron floor) — faint, fades toward center ---- */
+/* tech grid */
 .tech-grid {
     position: fixed; inset: 0; z-index: 0; pointer-events: none;
     background-image:
@@ -70,7 +67,7 @@ a { color: inherit; text-decoration: none; }
     mask-image: radial-gradient(ellipse 75% 75% at 50% 45%, transparent 32%, #000 82%);
 }
 
-/* ---- Futuristic HUD frame (corner brackets + scan line) ---- */
+/* HUD */
 .hud { position: fixed; top: 88px; left: 16px; right: 16px; bottom: 16px; z-index: 60; pointer-events: none; overflow: hidden; }
 .hud-c {
     position: absolute; width: 26px; height: 26px;
@@ -92,7 +89,7 @@ a { color: inherit; text-decoration: none; }
 }
 @keyframes hudScan { 0% { transform: translateY(0); } 100% { transform: translateY(calc(100vh - 120px)); } }
 
-/* ---- Scanlines (subtle CRT sci-fi screen) ---- */
+/* scanlines */
 .scanlines {
     position: fixed; inset: 0; z-index: 250; pointer-events: none; opacity: 0.5;
     background: repeating-linear-gradient(0deg, rgba(0,0,0,0) 0, rgba(0,0,0,0) 3px, rgba(0,0,0,0.05) 3px, rgba(0,0,0,0.05) 4px);
@@ -118,11 +115,11 @@ a { color: inherit; text-decoration: none; }
 }
 @media (hover: hover) and (pointer: fine) { body:hover .cursor-spotlight { opacity: 1; } }
 
-/* ============ REVEAL ON SCROLL ============ */
+/* REVEAL ON SCROLL */
 .reveal { opacity: 0; transform: translateY(34px); filter: blur(6px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease), filter 0.9s var(--ease); }
 .reveal.is-visible { opacity: 1; transform: none; filter: none; }
 
-/* ============ SHARED PRIMITIVES ============ */
+/* SHARED PRIMITIVES */
 .kicker {
     display: inline-block; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600;
     letter-spacing: 0.28em; text-transform: uppercase; color: var(--red-bright);
@@ -146,7 +143,7 @@ a { color: inherit; text-decoration: none; }
 
 section, .hero { position: relative; z-index: 1; }
 
-/* ============ BUTTONS ============ */
+/* BUTTONS */
 .btn {
     position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
     padding: 0.95rem 1.6rem; border-radius: 100px; font-family: var(--font-display); font-weight: 700;
@@ -171,7 +168,7 @@ section, .hero { position: relative; z-index: 1; }
 .btn--ghost { background: rgba(255,255,255,0.04); border-color: var(--border-strong); color: #fff; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
 .btn--ghost:hover { transform: translateY(-3px); background: rgba(255,255,255,0.09); border-color: rgba(157, 75, 255,0.5); }
 
-/* ============ NAVBAR ============ */
+/* NAVBAR */
 #navbar {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     background: hsla(250, 45%, 6%, 0.72); backdrop-filter: blur(22px) saturate(1.5); -webkit-backdrop-filter: blur(22px) saturate(1.5);
@@ -194,7 +191,7 @@ section, .hero { position: relative; z-index: 1; }
 .nav-toggle.active span:nth-child(2) { opacity: 0; }
 .nav-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* ============ HERO ============ */
+/* HERO */
 .hero {
     min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
     text-align: center; padding: calc(var(--nav-h) + 3rem) 1.5rem 5rem; position: relative;
@@ -230,12 +227,12 @@ section, .hero { position: relative; z-index: 1; }
 .hero__scroll i { animation: bob 1.8s ease-in-out infinite; }
 @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
 
-/* ============ SECTION FRAME ============ */
+/* SECTION FRAME */
 .about, .ventures, .connect, .services, .contact {
     max-width: var(--max-w); margin: 0 auto; padding: 6.5rem 1.5rem;
 }
 
-/* ============ ABOUT ============ */
+/* ABOUT */
 .about { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 4rem; align-items: center; }
 .about__media { position: relative; display: flex; justify-content: center; }
 .polaroid {
@@ -272,7 +269,7 @@ section, .hero { position: relative; z-index: 1; }
 }
 .about__ctas { display: flex; gap: 0.85rem; flex-wrap: wrap; }
 
-/* ============ VENTURES / PROYECTOS ============ */
+/* VENTURES / PROYECTOS */
 .ventures__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
 .v-card {
     position: relative; display: flex; flex-direction: column; padding: 2.4rem 2.1rem; border-radius: 22px;
@@ -302,7 +299,7 @@ section, .hero { position: relative; z-index: 1; }
 .v-card:hover .v-card__more i { transform: translateX(5px); }
 .v-card--cta { background: linear-gradient(160deg, rgba(157, 75, 255,0.1), rgba(90, 23, 190,0.03)); border-color: rgba(157, 75, 255,0.24); }
 
-/* ============ PROJECTS CAROUSEL (horizontal slideshow) ============ */
+/* CAROUSEL */
 .carousel { position: relative; }
 .carousel__track {
     display: flex; gap: 1.5rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
@@ -346,7 +343,7 @@ section, .hero { position: relative; z-index: 1; }
 .carousel__dots button { width: 8px; height: 8px; padding: 0; border: none; border-radius: 50%; background: rgba(255,255,255,0.25); cursor: pointer; transition: all 0.3s var(--ease); }
 .carousel__dots button.is-active { width: 26px; border-radius: 5px; background: var(--red); }
 
-/* ============ CONNECT / SOCIAL ============ */
+/* CONNECT / SOCIAL */
 .connect__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
 .s-card {
     position: relative; display: flex; flex-direction: column; align-items: center; text-align: center;
@@ -367,7 +364,7 @@ section, .hero { position: relative; z-index: 1; }
 .s-card__name { font-weight: 600; font-size: 0.95rem; margin-top: 0.5rem; }
 .s-card__handle { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-mute); margin-top: 0.15rem; }
 
-/* ============ SERVICES / PRICING ============ */
+/* SERVICES / PRICING */
 .services__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; align-items: stretch; }
 .p-card {
     position: relative; display: flex; flex-direction: column; padding: 2.4rem 2rem; border-radius: 22px; overflow: visible; isolation: isolate;
@@ -383,7 +380,7 @@ section, .hero { position: relative; z-index: 1; }
 .p-card__head { display: flex; align-items: flex-start; justify-content: flex-start; min-height: 40px; margin-bottom: 1rem; }
 .p-card__tier { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red-bright); }
 .p-card__index { font-family: var(--font-serif); font-style: italic; font-size: 2rem; color: hsla(0,0%,100%,0.16); }
-/* Discount badge (corner) + struck normal prices */
+/* descuento */
 .p-card--featured .p-card__head { margin-top: 1.5rem; }
 .p-card__save {
     position: absolute; top: -26px; right: -16px; z-index: 4; width: 82px; height: 82px; border-radius: 50%;
@@ -438,7 +435,7 @@ section, .hero { position: relative; z-index: 1; }
 .p-card__features li strong { color: #fff; }
 .p-card__features li code { font-family: var(--font-mono); font-size: 0.82rem; color: var(--gold); background: rgba(41, 224, 239,0.1); padding: 0.05em 0.35em; border-radius: 4px; }
 
-/* Plan personalizado — build-your-own (client picks what to include) */
+/* plan personalizado */
 .p-custom {
     position: relative; isolation: isolate; overflow: hidden;
     margin-top: 1.5rem; padding: 2.75rem; border-radius: 22px;
@@ -475,7 +472,7 @@ section, .hero { position: relative; z-index: 1; }
 .services__diag p { color: var(--text-dim); max-width: 520px; }
 .services__diag .btn { position: relative; z-index: 1; flex-shrink: 0; }
 
-/* ============ CONTACT ============ */
+/* CONTACT */
 .contact { text-align: center; }
 .contact__inner { max-width: 780px; margin: 0 auto; text-align: center; }
 .contact__title { font-family: var(--font-display); font-weight: 900; text-transform: uppercase; font-size: clamp(2.4rem, 7vw, 4.5rem); line-height: 0.98; letter-spacing: -0.03em; margin-bottom: 1rem; }
@@ -490,7 +487,7 @@ section, .hero { position: relative; z-index: 1; }
 .contact__method-label { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-mute); }
 .contact__method-value { font-weight: 600; font-size: 0.92rem; word-break: break-word; }
 
-/* ============ FOOTER ============ */
+/* FOOTER */
 .footer { border-top: 1px solid var(--border); padding: 3.5rem 1.5rem 2.75rem; display: flex; flex-direction: column; align-items: center; gap: 1.35rem; position: relative; z-index: 1; }
 .footer__logo img { height: 42px; filter: drop-shadow(0 0 14px rgba(157, 75, 255,0.45)); }
 .footer__social { display: flex; gap: 0.6rem; }
@@ -498,7 +495,7 @@ section, .hero { position: relative; z-index: 1; }
 .footer__social a:hover { background: linear-gradient(135deg, rgba(157, 75, 255,0.3), rgba(90, 23, 190,0.25)); border-color: rgba(157, 75, 255,0.5); color: #fff; transform: translateY(-3px); }
 .footer small { color: var(--text-mute); font-size: 0.76rem; font-family: var(--font-mono); text-align: center; }
 
-/* ============ RESPONSIVE ============ */
+/* RESPONSIVE */
 @media (max-width: 940px) {
     .about { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
     .about__media { order: -1; }
