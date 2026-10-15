@@ -172,9 +172,9 @@ section, .hero { position: relative; z-index: 1; }
 #navbar {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     background: hsla(250, 45%, 6%, 0.72); backdrop-filter: blur(22px) saturate(1.5); -webkit-backdrop-filter: blur(22px) saturate(1.5);
-    border-bottom: 1px solid var(--border); transition: transform 0.4s var(--ease);
+    border-bottom: 1px solid var(--border); transition: transform 0.4s var(--ease), opacity 0.4s var(--ease);
 }
-#navbar.nav-hidden { transform: translateY(-100%); }
+#navbar.nav-hidden { transform: translateY(calc(-100% - var(--nav-offset, 0px) - 48px)); opacity: 0; pointer-events: none; }
 .nav-content { max-width: var(--max-w); margin: 0 auto; padding: 0 1.5rem; height: var(--nav-h); display: flex; align-items: center; gap: 1.5rem; }
 .nav-logo { display: flex; align-items: center; }
 .nav-logo__img { height: 38px; width: auto; filter: drop-shadow(0 0 14px rgba(157, 75, 255,0.5)); transition: transform 0.35s var(--ease); }

@@ -12,8 +12,20 @@ desktop.ini
 # Local build/temp
 node_modules/
 .cache/
+.preview/
 dist/
 .tmp*
 
 # Claude Code local config
 .claude/
+
+# Local API credentials
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
+.env
+.env.*
+!.env.example
+
+# Respaldos locales
+.backups/

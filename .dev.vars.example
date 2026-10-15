@@ -1,0 +1,5 @@
+# Copia este archivo a .dev.vars y agrega tu clave localmente.
+# No compartas la clave ni la incluyas en Git.
+GEMINI_API_KEY=
+# Opcional: usar otro modelo disponible en tu cuenta.
+GEMINI_MODEL=gemini-2.5-flash

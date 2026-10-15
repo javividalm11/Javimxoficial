@@ -1,0 +1,36 @@
+html[data-theme=light]{--bg:#f6f4fc;--bg-2:#f0ecf9;--bg-elev:#fff;--text:#241b3d;--text-dim:#615775;--text-mute:#766c8a;--border:#8873ae30;--border-strong:#8873ae55;background:#f6f4fc!important;color-scheme:light}
+html[data-theme=light] body{background:#f6f4fc;color:#241b3d}
+html[data-theme=light] .page-background{background:radial-gradient(ellipse at 90% 15%,#b285ec33,transparent 46%),radial-gradient(ellipse at 9% 80%,#839ce52b,transparent 43%),#f6f4fc}
+html[data-theme=light] .page-background::before{background:linear-gradient(#f6f4fce8,#f6f4fcf2),url('../img/cosmic-landscape.png') center/cover no-repeat}
+html[data-theme=light] .page-background::after{opacity:.65}
+html[data-theme=light] .cosmic-hero::before{opacity:.2}html[data-theme=light] .cosmic-hero::after{background:linear-gradient(90deg,#f6f4fc80,transparent 57%)}
+html[data-theme=light] #navbar{background:linear-gradient(110deg,#faf8fff2,#f0ebf9ef);border-color:#ad91d65c;box-shadow:0 8px 30px #6a3eaa13}
+html[data-theme=light] .nav-links a{color:#685b80}html[data-theme=light] .nav-links a.active,html[data-theme=light] .nav-links a:hover{color:#5f24a0}
+html[data-theme=light] .cosmic-title,html[data-theme=light] #sobre-mi .about__name,html[data-theme=light] .section-title,html[data-theme=light] .contact-heading h2,html[data-theme=light] .direct-contact__heading h3{color:#241b3d}
+html[data-theme=light] :is(.cosmic-description,.about__expertise,#sobre-mi .about__text,.section-sub,.contact-heading>p,.direct-contact__heading>p,.services__diag p,.p-card__desc,.p-custom p){color:#625773}
+html[data-theme=light] :is(.cosmic-badge,.floating-card,.about-metric,.about__skills li,.project-featured,.project-preview,.project-filter,.community-topic,.community-card,.community-proof,.p-card,.p-custom,.services__diag,.contact-panel,.proposal-field,.direct-method,.project-case){background:linear-gradient(130deg,#ffffffed,#f2edfbe8);border-color:#9773c45c;color:#342448;box-shadow:0 8px 25px #6747970e}
+html[data-theme=light] :is(.floating-card h3,.about-metric strong,.project-preview h3,.project-featured h3,.community-topic strong,.community-card h3,.community-proof strong,.p-card h3,.p-card__price,.p-custom h3,.direct-method strong,.contact-promises strong,.proposal-label){color:#2d2043}
+html[data-theme=light] :is(.floating-card p,.about-metric p,.project-featured__description,.project-preview p,.community-topic small,.community-card p,.community-proof small,.community-count small,.p-card li,.p-card p,.proposal-response,.proposal-field input,.proposal-field select,.proposal-field textarea,.proposal-counter,.proposal-privacy,.direct-method small,.direct-method__label,.contact-promises small,.contact-social p,.contact-footer__brand p,.contact-footer small,.contact-footer__nav a,.about__note,.community-note,.services-note span){color:#645672}
+html[data-theme=light] :is(.project-tags span,.community-tags span,.community-count,.community-proof,.p-card__billing,.p-option,.p-feature,.contact-social__links>a){background:#ebe4f5;border-color:#9773c43b;color:#514063}
+html[data-theme=light] .project-filter.is-active{color:#fff;background:linear-gradient(110deg,#9541ec,#6d28d9)}
+html[data-theme=light] .project-featured::after{background:linear-gradient(90deg,#f6f3fb 2%,#f6f3fbef 26%,#f6f3fb9c 44%,transparent 80%),linear-gradient(0deg,#f6f3fb,transparent 35%)}
+html[data-theme=light] .project-featured__badge{background:#eadbf866;color:#713b9c}
+html[data-theme=light] .btn--ghost{background:#ffffffa6;border-color:#8a6daf55;color:#453054}
+html[data-theme=light] .contact-footer.footer{border-top-color:#9275b433;color:#655573}
+html[data-theme=light] .ai-panel:not(.is-voice){background:linear-gradient(130deg,#fcfaff,#eee6fb);color:#2d2043;border-color:#a78dcf}
+html[data-theme=light] .ai-panel:not(.is-voice) .ai-head{background:#eee7fa;color:#2d2043}html[data-theme=light] .ai-panel:not(.is-voice) :is(.ai-head__title,.ai-head__status){color:#594674}
+html[data-theme=light] .ai-panel:not(.is-voice) :is(.jai-menu-option,.ai-msg--bot,.ai-quick button,.ai-composer,.ai-composer input,.jai-chat-shortcuts button,.jai-chat-projects article){background:#faf7ff;color:#4f3c66;border-color:#9c83c555}
+html[data-theme=light] .ai-panel:not(.is-voice) .jai-chat-projects :is(h3,p){color:#4f3c66}
+html[data-theme=light] .jai-callout{background:linear-gradient(130deg,#faf7fff5,#eae0f8f5)}html[data-theme=light] .jai-callout strong{color:#32204d}html[data-theme=light] .jai-callout>span{color:#75658d}html[data-theme=light] .jai-callout::after{background:#eee4fa}
+html[data-theme=light] .service-float{background:linear-gradient(135deg,#fffffff2,#e9e0f8f0);border-color:#ac85d8;box-shadow:inset 3px 0 0 #a99de7,0 8px 25px #68479f26}
+html[data-theme=light] .service-float strong{color:#342448}html[data-theme=light] .service-float p{color:#6b587b}
+html[data-theme=light] :is(.p-mode__label,.p-mode__price,.p-custom__opts label,.p-custom__budget,.p-custom__extra){color:#443253}
+html[data-theme=light] :is(.cosmic-title .gradient,.showcase-gradient,.community-gradient,.about__name .name-gradient,.contact-heading h2>span){background-image:linear-gradient(110deg,#8c3dcc,#6839b9 60%,#227a96)}
+@media(max-width:960px){html[data-theme=light] .nav-links{background:#f8f4fffa}html[data-theme=light] .nav-toggle span{background:#653993}}
+html[data-theme=light] :is(.p-card__features li strong,.p-custom__price,.p-mode__amount){color:#342448}
+html[data-theme=light] :is(.p-card__tier,.p-custom__tier){color:#803bb9}
+html[data-theme=light] :is(.p-custom__budget,.p-custom__extra){background:#f8f4ff;border-color:#a48ac655}
+html[data-theme=light] .contact-social__links>a:last-child{color:#55466c}
+html[data-theme=light] .project-featured .project-tags span{color:#61417e}
+html[data-theme=light] .project-highlights small{color:#796687}
+html[data-theme=light] .project-preview__category{color:#7444a3;background:#eadff6}

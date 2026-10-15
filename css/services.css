@@ -1,0 +1,6 @@
+/* Handwritten annotation above the services cards. */
+#servicios .services-note{position:absolute;top:28px;right:28px;display:flex;align-items:flex-start;gap:7px;width:218px;color:#b8accd;pointer-events:none}
+.services-note span{display:block;font:italic 13px/1.45 'Segoe Print','Bradley Hand',cursive;transform:rotate(-10deg);text-align:center;white-space:nowrap}
+.services-note svg{width:72px;height:78px;flex:none;margin-top:17px;fill:none;stroke:#ad57ff;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 5px #8530d533)}
+@media(min-width:1500px){#servicios .services-note{right:30px;top:25px}.services-note span{font-size:14px}}
+@media(max-width:800px){#servicios .services-note{position:relative;top:auto;right:auto;margin:-25px 0 23px auto;width:200px}.services-note span{font-size:12px}.services-note svg{width:60px;height:68px;margin-top:12px}}

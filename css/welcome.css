@@ -1,0 +1,56 @@
+.welcome-pending body>:not(#welcomeDialog){visibility:hidden}
+.nav-return{display:inline-flex;align-items:center;gap:6px;padding:0;border:0;background:none;color:var(--text-dim);font:500 11px Inter,system-ui,sans-serif;cursor:pointer;white-space:nowrap;transition:color .2s}
+.nav-return:hover{color:#b467ff}.nav-return:focus-visible{outline:2px solid #a45aff;outline-offset:6px;border-radius:3px}
+html[data-theme=light] .nav-return{color:#0d1222;font-size:10px}html[data-theme=light] .nav-return:hover{color:#7122c5}
+@media(min-width:1500px){html[data-theme=light] .nav-return{font-size:13px}}
+@media(max-width:960px){.nav-return,html[data-theme=light] .nav-return{font-size:14px}}
+html.welcome-open{overflow:hidden}
+.welcome{position:fixed;inset:0;width:100%;height:100svh;max-width:none;max-height:none;margin:0;border:0;padding:28px 18px;background:#050818;color:#f7f5ff;font-family:Inter,system-ui,sans-serif;overflow:auto}
+.welcome[open]{display:grid;place-items:center}.welcome::backdrop{background:#050818}
+.welcome::before{content:'';position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at 8% 70%,#6423c34a,transparent 48%),radial-gradient(ellipse at 95% 30%,#2537a23d,transparent 45%)}
+.welcome-particles{position:fixed;inset:0;width:100%;height:100%;pointer-events:none}
+.welcome-card{position:relative;width:min(100%,460px);padding:28px 26px 24px;border:1px solid #7959d488;border-radius:26px;background:linear-gradient(125deg,#080c22ed,#080b1be8);box-shadow:inset 0 1px 0 #ac82ff13,0 25px 100px #0007;z-index:1;text-align:center}
+.welcome-progress{display:flex;align-items:center;gap:17px;font-size:10px;color:#9e9abd;text-align:left}.welcome-progress>span:last-child{margin-left:auto;letter-spacing:3px;font-size:8px}
+.welcome-brand{position:relative;display:grid;place-items:center;width:132px;height:132px;margin:28px auto 10px;border:1px solid #ab7eff;border-radius:50%;background:radial-gradient(circle,#35236755,#080a1e 67%);box-shadow:0 0 12px #874bff88,inset 0 0 24px #6334bb66,0 0 40px #7142ff33;transition:width .3s,height .3s,margin .3s}.welcome-brand img{width:85%;filter:brightness(1.35) drop-shadow(0 0 5px #ba7bff)}
+.welcome-brand__orbit{position:absolute;inset:-11px -26px;border:1px solid #873efa70;border-radius:50%;transform:rotate(-28deg);box-shadow:0 0 8px #7e39ed44;animation:welcomeOrbit 7s ease-in-out infinite}.welcome-brand::after{content:'';position:absolute;inset:-7px;border:1px dotted #8863ce;border-radius:50%}
+.welcome-brand-name{font-size:13px;letter-spacing:7px;font-weight:650;margin-bottom:24px}.welcome-brand-name span,.welcome-brand-name small{display:block;color:#a7a0c6;font-size:8px;font-weight:400;letter-spacing:3px;margin-top:6px}.welcome-brand-name small{font-size:7px}
+.welcome h1{font:750 28px/1.2 Inter,sans-serif;letter-spacing:-.8px;margin:0 0 10px}.welcome h1>span{background:linear-gradient(100deg,#ba5eff,#794bff);background-clip:text;color:transparent}.welcome-description{font-size:12px;line-height:1.5;color:#b5adc9;margin-bottom:22px}
+.welcome-options{border:0;display:grid;grid-template-columns:1fr 1fr;gap:13px;padding:0;margin:0 0 24px;min-width:0}.welcome-option{position:relative;display:flex;align-items:center;flex-direction:column;gap:10px;padding:20px 12px 14px;min-width:0;border:1px solid #51497377;border-radius:16px;background:#0d11258a;cursor:pointer;transition:border-color .2s,box-shadow .2s,background .2s}.welcome-option:has(input:checked){border-color:#c363ff;box-shadow:inset 0 0 22px #7220b92b,0 0 12px #b551ff52;background:linear-gradient(135deg,#28134580,#101025)}.welcome-option:has(input:focus-visible){outline:2px solid #ead5ff;outline-offset:4px}.welcome-option input{position:absolute;opacity:0;width:1px;height:1px}.welcome-option>strong{font-size:23px;line-height:1.2}.welcome-option>span:not(.welcome-preview):not(.welcome-check){font-size:11px;color:#b1aac8}.welcome-flag{width:39px;height:39px;box-shadow:0 0 15px #0003;border-radius:50%;margin-bottom:1px}.welcome-check{width:22px;height:22px;border-radius:50%;border:1px solid #68648b;margin-top:5px}.welcome-option:has(input:checked) .welcome-check{border-color:#bf80ff;background:linear-gradient(130deg,#bf63ff,#7725f1);box-shadow:0 0 13px #a446ff66}.welcome-option:has(input:checked) .welcome-check::after{content:'✓';font-size:14px;line-height:20px;color:#fff}
+.welcome-primary,.welcome-back{display:flex;justify-content:center;align-items:center;gap:12px;min-height:46px;border-radius:13px;font:600 12px/1.4 Inter,sans-serif;cursor:pointer}.welcome-primary{width:100%;border:1px solid #b387ff9c;color:white;background:linear-gradient(110deg,#8441ff,#6426ec 55%,#491296);box-shadow:inset 0 1px 0 #f5d4ff3d,0 0 22px #7735d844}.welcome-primary>i{margin-left:auto}.welcome-primary{padding:12px 19px}.welcome-primary:hover{filter:brightness(1.15)}.welcome-primary:disabled{opacity:.6;cursor:wait}.welcome-primary:focus-visible,.welcome-back:focus-visible{outline:2px solid #e8cdff;outline-offset:4px}.welcome-back{border:1px solid #63558477;background:transparent;color:#b9afcf;padding:12px 16px}.welcome-actions{display:grid;grid-template-columns:1fr 1.8fr;gap:12px}.welcome-feedback{font-size:11px;color:#d0bee9;line-height:1.5}.welcome-feedback:empty{display:none}.welcome-feedback:not(:empty){margin-top:12px}
+.welcome.is-theme-step .welcome-brand{width:89px;height:89px;margin:22px auto 22px}.welcome.is-theme-step .welcome-brand-name{display:none}.welcome-theme-option{padding:12px 9px 13px;gap:9px}.welcome-theme-option>strong{font-size:13px}.welcome-theme-option>span:not(.welcome-preview):not(.welcome-check){font-size:9px;line-height:1.4}.welcome-preview{display:block;position:relative;width:100%;height:136px;border-radius:9px;padding:12px;overflow:hidden;text-align:left;box-shadow:0 3px 12px #0004}.welcome-preview--dark{background:linear-gradient(90deg,#05081866,#05081833),url('../img/cosmic-landscape.png') center/cover;color:#fff}.welcome-preview--light{background:linear-gradient(90deg,#faf9ffed,#f0edffe0),url('../img/cosmic-landscape.png') center/cover;color:#20193d}.welcome-preview__bar{display:block;font-size:9px;letter-spacing:2px;color:#a579e8;margin-top:-9px}.welcome-preview>img{width:22px;margin-top:2px}.welcome-preview__title{display:block;font:700 12px/1.25 Inter,sans-serif;margin:10px 0 7px}.welcome-preview__cta{display:block;width:42px;height:8px;background:#9a51ff;border-radius:4px}.welcome-preview__cards{display:flex;gap:5px;margin-top:12px}.welcome-preview__cards i{width:30%;height:20px;border:1px solid #9777dc55;border-radius:3px;background:#7658d022}
+.welcome-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+#welcomePreferences{font:inherit;color:inherit;border:0;background:none;cursor:pointer;padding:0}#welcomePreferences:hover{color:#b475ff}
+@keyframes welcomeOrbit{50%{transform:rotate(22deg) scale(1.04)}}
+@media(max-width:420px){.welcome{padding:18px 14px}.welcome-card{padding:23px 19px;border-radius:22px}.welcome h1{font-size:25px}.welcome-progress{gap:10px}.welcome-progress>span:last-child{letter-spacing:2px}.welcome-option{padding:17px 9px 12px}.welcome-preview{height:124px;padding:10px}.welcome-theme-option{padding:9px 6px 12px}.welcome-theme-option>span:not(.welcome-preview):not(.welcome-check){font-size:8px}.welcome-actions{gap:9px}.welcome-primary,.welcome-back{font-size:10px;padding:12px}.welcome-description{font-size:11px}}
+@media(max-height:720px){.welcome-brand{width:95px;height:95px;margin-top:21px}.welcome-brand-name{margin-bottom:18px}.welcome.is-theme-step .welcome-brand{width:72px;height:72px;margin:17px auto}.welcome-option{padding-top:14px}.welcome-options{margin-bottom:19px}}
+@media(prefers-reduced-motion:reduce){.welcome-brand__orbit{animation:none}.welcome *{transition:none!important}}
+.welcome-brand img,.welcome-preview>img{height:auto}
+.welcome-primary{position:relative}
+.welcome-primary>i{position:absolute;right:17px;margin-left:0}
+.welcome::before{background:radial-gradient(ellipse at 12% 25%,#105d6c30,transparent 50%),radial-gradient(ellipse at 90% 80%,#67248230,transparent 48%),#030712;animation:welcomeAuroraGlow 36s ease-in-out infinite alternate}
+.welcome::after{content:none}
+.welcome-card{border-color:#bd8affb3;background:linear-gradient(125deg,#090a1cdb,#080b1be6);box-shadow:inset 0 0 15px #b185ff1a,0 0 5px #c4a0ff66,0 0 40px #6629dc30,0 25px 80px #0008}
+.welcome-logo-particles{position:absolute;inset:-50%;width:200%;height:200%;pointer-events:none;z-index:1}
+.welcome-brand img{position:relative;z-index:2;filter:brightness(0) invert(1) drop-shadow(0 0 8px #b67dff88);animation:welcomeSignatureFloat 6s ease-in-out infinite}
+.welcome-brand{box-shadow:0 0 9px #c49aff,inset 0 0 22px #7738f277,0 0 30px #6e35ff66;background:radial-gradient(circle,#100928c9,#060b24 68%)}
+.welcome-option:has(input:checked){background:radial-gradient(ellipse at 0% 0%,#b747ff24,transparent 60%),radial-gradient(ellipse at 100% 100%,#663bdb44,transparent 55%),#0b0b22b3;box-shadow:inset 0 0 16px #9a42e62b,0 0 5px #cf9bff88,0 0 18px #a041ed55}
+@keyframes welcomeSignatureFloat{50%{transform:translateY(-3px) rotate(-2deg)}}
+@keyframes welcomeAuroraGlow{50%{filter:hue-rotate(55deg)}100%{filter:hue-rotate(130deg)}}
+@media(max-height:720px) and (min-height:600px){.welcome-brand{width:112px;height:112px}.welcome-card{padding-top:24px;padding-bottom:24px}}
+@media(prefers-reduced-motion:reduce){.welcome-brand img,.welcome::before{animation:none}}
+.welcome-brand{border:0;box-shadow:none;background:radial-gradient(circle,#10092855,transparent 70%)}
+.welcome-brand::after{content:none}
+.welcome-option .welcome-check{display:none}
+html[data-theme=light] .welcome{background:#fafbff;color:#29213d;color-scheme:light}
+html[data-theme=light] .welcome::backdrop{background:#fafbff}
+html[data-theme=light] .welcome::before{background:radial-gradient(ellipse at 12% 25%,#a9e7d528,transparent 50%),radial-gradient(ellipse at 90% 80%,#d2b9f42b,transparent 48%),#fafbff}
+html[data-theme=light] .welcome-card{border-color:#bca5db;background:linear-gradient(125deg,#ffffffee,#f8f6ffed);box-shadow:inset 0 0 15px #fff,0 0 0 1px #e6dff3,0 20px 70px #59367a1a}
+html[data-theme=light] .welcome :is(.welcome-description,.welcome-brand-name span,.welcome-brand-name small,.welcome-progress){color:#746784}
+html[data-theme=light] .welcome-brand{background:radial-gradient(circle,#eae1f844,transparent 70%)}
+html[data-theme=light] .welcome-brand img{filter:drop-shadow(0 0 5px #9a66d333)}
+html[data-theme=light] .welcome-option{background:#ffffffe0;border-color:#d4c9e4;color:#332442;box-shadow:0 4px 15px #71409b08}
+html[data-theme=light] .welcome-option>span:not(.welcome-preview):not(.welcome-check){color:#776486}
+html[data-theme=light] .welcome-option:has(input:checked){background:linear-gradient(130deg,#faf7ff,#efe5ff);border-color:#9c55e1;box-shadow:inset 0 0 16px #b27ae412,0 0 0 1px #a163d94d,0 0 18px #a041ed1f}
+html[data-theme=light] .welcome-option:has(input:focus-visible){outline-color:#8446bb}
+html[data-theme=light] .welcome-back{border-color:#c7b6da;background:#fff;color:#6c547d}
+html[data-theme=light] .welcome-feedback{color:#6c547d}

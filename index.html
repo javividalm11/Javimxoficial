@@ -3,12 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@javimxoficial · Javi · Creador · Cloud Engineer & Founder</title>
-    <meta name="description" content="Javi (@javimxoficial) — creador de contenido tech, Cloud Engineer y founder. Únete al movimiento: desarrollo, IA y emprendimiento en español. Proyectos reales, servicios y colaboraciones.">
+    <title>Javi &#183; Desarrollo web, automatizaci&#243;n con IA y Cloud</title>
+    <meta name="description" content="Desarrollo web, e-commerce, automatizaciones con IA, chatbots y soluciones cloud para impulsar tu negocio. Javi, Full Stack Developer y Cloud Engineer.">
     <meta name="keywords" content="javimxoficial, Javi, Javier Vidal, creador de contenido tech, Cloud Engineer, DevOps, Full Stack, IA, emprendimiento, AegisAI, Veoplaca">
     <meta name="author" content="Javier Vidal Miguel">
     <meta name="theme-color" content="#050308">
     <meta name="color-scheme" content="dark">
+    <script>
+      try {
+        const preferences = JSON.parse(localStorage.getItem('javi.preferences.v1') || '{}');
+        document.documentElement.dataset.theme = preferences.theme === 'light' ? 'light' : 'dark';
+        if (!sessionStorage.getItem('javi.welcome.v1')) document.documentElement.classList.add('welcome-pending');
+      } catch { document.documentElement.classList.add('welcome-pending'); }
+    </script>
 
     <meta property="og:type" content="profile">
     <meta property="og:title" content="@javimxoficial · Javi · Creador & Cloud Engineer">
@@ -26,12 +33,26 @@
     <link rel="apple-touch-icon" href="./img/favicon.png">
     <link rel="canonical" href="https://javimxoficial.pages.dev/">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preload" href="./fonts/inter-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="./css/vendor/fontawesome.min.css">
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./css/assistant.css">
+    <link rel="stylesheet" href="./css/redesign.css">
+    <link rel="stylesheet" href="./css/about.css">
+    <link rel="stylesheet" href="./css/projects.css">
+    <link rel="stylesheet" href="./css/community.css">
+    <link rel="stylesheet" href="./css/services.css">
+    <link rel="stylesheet" href="./css/contact.css">
+    <link rel="stylesheet" href="./css/jai-widget.css">
+    <link rel="stylesheet" href="./css/jai-voice.css">
+    <link rel="stylesheet" href="./css/jai-states.css">
+    <link rel="stylesheet" href="./css/jai-chat.css">
+    <link rel="stylesheet" href="./css/page-background.css">
+    <link rel="stylesheet" href="./css/signature.css">
+    <link rel="stylesheet" href="./css/themes.css">
+    <link rel="stylesheet" href="./css/welcome.css">
+    <link rel="stylesheet" href="./css/light-hero.css">
+    <link rel="stylesheet" href="./css/light-page.css">
     <style>html{background:#050308;}</style>
 
     <script type="application/ld+json">
@@ -55,8 +76,36 @@
     </script>
 </head>
 <body>
+    <dialog id="welcomeDialog" class="welcome" aria-labelledby="welcomeTitle" data-i18n-skip>
+      <canvas id="welcomeParticles" class="welcome-particles" aria-hidden="true"></canvas>
+      <div class="welcome-card">
+        <header class="welcome-progress"><span>PORTFOLIO</span></header>
+        <div class="welcome-brand" aria-hidden="true"><canvas id="welcomeLogoParticles" class="welcome-logo-particles"></canvas><img src="./img/logo-transparent.png" alt="" width="1447" height="878"></div>
+        <p class="welcome-brand-name"><span>FULL STACK DEVELOPER</span><small>CLOUD · AI · WEB</small></p>
+        <div id="welcomeLanguageStep">
+          <h1 id="welcomeTitle">Elige tu <span>idioma</span></h1>
+          <p class="welcome-description">Selecciona cómo quieres explorar mi portafolio.</p>
+          <fieldset class="welcome-options"><legend class="welcome-sr">Idioma del portafolio</legend>
+            <label class="welcome-option"><input type="radio" name="welcomeLanguage" value="es" checked><img class="welcome-flag" src="./img/flag-mx.svg" alt="México" width="42" height="42"><strong>ES</strong><span>Español</span><span class="welcome-check" aria-hidden="true"></span></label>
+            <label class="welcome-option"><input type="radio" name="welcomeLanguage" value="en"><img class="welcome-flag" src="./img/flag-us.svg" alt="United States" width="42" height="42"><strong>EN</strong><span>English</span><span class="welcome-check" aria-hidden="true"></span></label>
+          </fieldset>
+          <button type="button" class="welcome-primary" id="welcomeContinue">Continuar <i class="fas fa-arrow-right" aria-hidden="true"></i></button>
+        </div>
+        <div id="welcomeThemeStep" hidden>
+          <h1 id="welcomeThemeTitle">Elige tu <span>apariencia</span></h1>
+          <p class="welcome-description" id="welcomeThemeDescription">¿Cómo prefieres visualizar el sitio?</p>
+          <fieldset class="welcome-options welcome-themes"><legend class="welcome-sr" id="welcomeThemeLegend">Apariencia del portafolio</legend>
+            <label class="welcome-option welcome-theme-option"><input type="radio" name="welcomeTheme" value="light"><span class="welcome-preview welcome-preview--light" aria-hidden="true"><span class="welcome-preview__bar">•••</span><img src="./img/logo-transparent.png" alt="" width="1447" height="878"><span class="welcome-preview__title">WEB + IA<br>+ CLOUD</span><span class="welcome-preview__cta"></span><span class="welcome-preview__cards"><i></i><i></i><i></i></span></span><strong id="welcomeLightLabel">BLANCO</strong><span id="welcomeLightDescription">Interfaz clara y minimalista</span><span class="welcome-check" aria-hidden="true"></span></label>
+            <label class="welcome-option welcome-theme-option"><input type="radio" name="welcomeTheme" value="dark" checked><span class="welcome-preview welcome-preview--dark" aria-hidden="true"><span class="welcome-preview__bar">•••</span><img src="./img/logo-transparent.png" alt="" width="1447" height="878"><span class="welcome-preview__title">WEB + IA<br>+ CLOUD</span><span class="welcome-preview__cta"></span><span class="welcome-preview__cards"><i></i><i></i><i></i></span></span><strong id="welcomeDarkLabel">NEGRO</strong><span id="welcomeDarkDescription">Interfaz oscura y moderna</span><span class="welcome-check" aria-hidden="true"></span></label>
+          </fieldset>
+          <div class="welcome-actions"><button type="button" class="welcome-back" id="welcomeBack"><i class="fas fa-arrow-left" aria-hidden="true"></i> <span>Volver</span></button><button type="button" class="welcome-primary" id="welcomeEnter"><span>Entrar al portafolio</span> <i class="fas fa-arrow-right" aria-hidden="true"></i></button></div>
+        </div>
+        <p id="welcomeFeedback" class="welcome-feedback" role="status"></p>
+      </div>
+    </dialog>
 
-    <!-- BACKGROUND — solid black -->
+    <!-- Shared background across every section. -->
+    <div class="page-background" aria-hidden="true"></div>
     <div class="grain" aria-hidden="true"></div>
 
     <!-- NAVBAR -->
@@ -66,88 +115,93 @@
                 <img src="./img/logo-transparent.png" alt="Javi" class="nav-logo__img">
             </a>
             <ul class="nav-links" id="navLinks">
+                <li><a href="#top" class="active">Inicio</a></li>
                 <li><a href="#sobre-mi">Sobre mí</a></li>
                 <li><a href="#proyectos">Proyectos</a></li>
-                <li><a href="#conecta">Conecta</a></li>
                 <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#conecta">Blog</a></li>
                 <li><a href="#contacto">Contacto</a></li>
+                <li><button type="button" class="nav-return" data-welcome-open><i class="fas fa-arrow-left" aria-hidden="true"></i> <span>Regresar</span></button></li>
             </ul>
             <a href="#contacto" class="btn btn--primary btn--sm nav-cta">
-                <i class="fas fa-handshake"></i> Colabora
+                <i class="fas fa-handshake"></i> Trabajemos juntos <i class="fas fa-arrow-right"></i>
             </a>
             <button class="nav-toggle" id="navToggle" aria-label="Menú"><span></span><span></span><span></span></button>
         </div>
     </nav>
 
-    <!-- HERO -->
-    <header id="top" class="hero">
-        <div class="hero__inner reveal">
-            <span class="kicker">Creado para crear</span>
-
-            <h1 class="hero__logo">
-                <img src="./img/logo-transparent.png" alt="Javi · @javimxoficial" class="hero__logo-img" width="1447" height="878">
-            </h1>
-
-            <p class="hero__lead">Únete a la comunidad de <strong>creadores y emprendedores tech</strong>.</p>
-            <h2 class="hero__headline">Únete al <span class="text-red">movimiento</span></h2>
-            <p class="hero__tagline">Aprende · Construye · Emprende</p>
-
-            <div class="hero__ctas">
-                <a href="https://www.instagram.com/javimxoficial/" target="_blank" rel="noopener" class="btn btn--primary btn--lg magnetic">
-                    <span class="btn__shine"></span>
-                    <i class="fas fa-bolt"></i> Unirme al movimiento
-                    <i class="fas fa-arrow-right btn__arrow"></i>
+    <!-- Hero: particle globe and independently animated service cards. -->
+    <header id="top" class="cosmic-hero">
+        <div class="cosmic-layout">
+            <div class="cosmic-copy">
+                <span class="cosmic-badge">FULL STACK · IA · CLOUD</span>
+                <h1 class="cosmic-title">Construyo webs y<br><span class="gradient">automatizaciones con IA</span><br>que <span class="gradient">impulsan negocios.</span></h1>
+                <p class="cosmic-description">Creo sitios web, e-commerce, chatbots, voicebots y soluciones en la nube con un enfoque en conversión, automatización y crecimiento real para tu negocio.</p>
+                <div class="cosmic-actions">
+                    <a href="#proyectos" class="btn btn--primary"><i class="fas fa-rocket" aria-hidden="true"></i> Ver proyectos <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    <a href="#contacto" class="btn btn--ghost"><i class="fas fa-handshake" aria-hidden="true"></i> Trabajemos juntos</a>
+                </div>
+            </div>
+            <div class="cosmic-stage" aria-label="Globo de partículas con servicios digitales">
+                <canvas id="particleGlobe" aria-hidden="true"></canvas>
+                <span class="solar-fallback" aria-hidden="true"></span>
+                <canvas id="solarGlobe" aria-hidden="true"></canvas>
+                <span class="holo-cube" aria-hidden="true"></span>
+                <span class="holo-code" aria-hidden="true">&lt;/&gt; &nbsp; CLOUD<br>01 ──────</span>
+                <span class="holo-code holo-code--right" aria-hidden="true">AI &nbsp; { }<br>──── ● ──</span>
+                <a class="service-float float-web" href="#servicios" aria-label="Web Development: ver servicios">
+                    <i class="fas fa-code" aria-hidden="true"></i><span class="card-arrow" aria-hidden="true">→</span>
+                    <strong>Web Development</strong><p>Sitios, e-commerce<br>y plataformas a medida.</p>
                 </a>
-                <a href="https://www.youtube.com/@javimxoficial" target="_blank" rel="noopener" class="btn btn--ghost btn--lg magnetic">
-                    <i class="fab fa-youtube"></i> Ver contenido
+                <a class="service-float float-ai" href="#servicios" aria-label="AI Automation: ver servicios">
+                    <i class="fas fa-brain" aria-hidden="true"></i><span class="card-arrow" aria-hidden="true">→</span>
+                    <strong>AI Automation</strong><p>Chatbots, voicebots<br>y agentes con IA.</p>
+                </a>
+                <a class="service-float float-cloud" href="#servicios" aria-label="Cloud y DevOps: ver servicios">
+                    <i class="fas fa-cloud" aria-hidden="true"></i><span class="card-arrow" aria-hidden="true">→</span>
+                    <strong>Cloud &amp; DevOps</strong><p>Infraestructura, deploy<br>y escalabilidad.</p>
+                </a>
+                <a class="service-float float-geo" href="#contacto" aria-label="GEO para IA: consultar">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="card-arrow" aria-hidden="true">→</span>
+                    <strong>GEO para IA</strong><p>Posiciona tu marca<br>en la nueva era de la IA.</p>
                 </a>
             </div>
 
-            <div class="hero__socials">
-                <a href="https://www.instagram.com/javimxoficial/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.youtube.com/@javimxoficial" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                <a href="https://www.tiktok.com/@javiitok" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-                <a href="https://facebook.com/digitalstudiojavi" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            </div>
         </div>
-
-        <a href="#sobre-mi" class="hero__scroll" aria-label="Bajar">
-            <span>SCROLL</span>
-            <i class="fas fa-chevron-down"></i>
-        </a>
     </header>
 
     <!-- SOBRE MÍ -->
+    <div class="signature-journey" id="signatureJourney">
+    <canvas id="javiParticles" class="signature-canvas" aria-hidden="true"></canvas>
+    <canvas id="javiWaves" class="signature-canvas" aria-hidden="true"></canvas>
     <section id="sobre-mi" class="about">
+      <div class="about__inner">
         <div class="about__media reveal">
-            <figure class="polaroid">
-                <img src="./img/hero.png" alt="Javi trabajando — @javimxoficial" onerror="this.closest('.polaroid').classList.add('is-empty')">
-                <span class="polaroid__fallback">J</span>
-                <figcaption>@javimxoficial</figcaption>
+            <span class="about__orbit" aria-hidden="true"></span>
+            <span class="about__orbit about__orbit--second" aria-hidden="true"></span>
+            <figure class="portrait-frame">
+                <img src="./img/hero.png" alt="Javi Vidal Miguel trabajando en su laptop" width="999" height="562" loading="lazy">
+                <figcaption class="portrait-signature"><img src="./img/logo-transparent.png" alt="Firma de Javi" width="1447" height="878" loading="lazy"></figcaption>
             </figure>
         </div>
 
         <div class="about__body reveal">
             <span class="kicker">Sobre mí</span>
-            <h2 class="about__name">JAVI</h2>
+            <span class="about__note" aria-hidden="true">Construyendo<br>un mejor internet.</span>
+            <h2 class="about__name">Javi Vidal <span class="name-gradient">Miguel</span></h2>
+            <p class="about__expertise">Full Stack Developer · Cloud Engineer · AI Automation</p>
             <p class="about__text">
-                Soy Javi, Full Stack Developer, Cloud Engineer y creador de contenido tech. Uso mi
-                día a día real construyendo software para contar historias sobre <strong>desarrollo, IA y
-                emprendimiento</strong>. Cámara, laptop y mucho café.🤓
-            </p>
-            <p class="about__text">
-                <strong>Detrás del @ hay proyectos reales</strong> 
-                y una comunidad hispanohablante que aprende y construye conmigo. Si tú también quieres crear
-                algo que sume, estás en el lugar correcto.
+                Ayudo a personas y negocios a convertir ideas en soluciones digitales reales,
+                combinando <strong>desarrollo web, automatización con IA y soluciones en la nube.</strong>
+                Me enfoco en crear productos útiles, escalables y listos para el mundo real.
             </p>
 
-            <ul class="about__pills">
-                <li>DevOps</li>
-                <li>Full Stack</li>
-                <li>Cloud Engineer</li>
-                <li>IA</li>
-                <li>Creador</li>
-                <li>Founder</li>
+            <p class="about__tech-label">Tecnologías y <span>especialidades</span></p>
+            <ul class="about__skills" aria-label="Tecnologías y especialidades">
+                <li><i class="fas fa-code" aria-hidden="true"></i>Full Stack</li>
+                <li><i class="fas fa-cloud" aria-hidden="true"></i>Cloud &amp; DevOps</li>
+                <li><i class="fas fa-brain" aria-hidden="true"></i>IA Automation</li>
+                <li><i class="fas fa-cart-shopping" aria-hidden="true"></i>E-commerce</li>
             </ul>
 
             <div class="about__ctas">
@@ -160,213 +214,146 @@
                 </a>
             </div>
         </div>
+      </div>
     </section>
+
+    <section class="signature-scene" id="javiJourney" aria-label="Firma de Javi en partículas">
+      <figure class="signature-visual" id="javiIdentity">
+        <img src="./img/logo-transparent.png" alt="Firma de Javi" width="1447" height="878">
+      </figure>
+    </section>
+    </div>
 
     <!-- PROYECTOS -->
-    <section id="proyectos" class="ventures">
-        <div class="section-head reveal">
-            <span class="kicker">Proyectos</span>
-            <h2 class="section-title">Con la firma <span class="text-red">Javi</span></h2>
-            <p class="section-sub">No solo hablo de tech, también lo construyo. Revisa los proyectos en los que trabajo y si deseas colaborar conmigo, escribeme!.</p>
+    <section id="proyectos" class="ventures project-showcase">
+      <div class="showcase-inner">
+        <div class="section-head">
+            <h2 class="section-title">Trabajo real, <span class="showcase-gradient">impacto real</span></h2>
+            <p class="section-sub">Estos son algunos de los productos reales que he construido para marcas y negocios.<br>Desde e-commerce hasta soluciones con IA, cada proyecto combina tecnología, diseño y soluciones para el mundo real.</p>
         </div>
-
-        <!-- Carrusel de proyectos -->
-        <div class="carousel reveal" id="projCarousel">
-            <button class="carousel__nav carousel__nav--prev" id="projPrev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
-
-            <div class="carousel__track" id="projTrack">
-                <a href="https://modarch.com.pe/" target="_blank" rel="noopener" class="proj-slide">
-                    <picture>
-                        <source media="(max-width: 900px)" srcset="./img/proj-modarch-m.jpg">
-                        <img class="proj-slide__img" src="./img/proj-modarch.jpg" alt="ModArch — estudio de arquitectura y diseño de interiores" loading="lazy">
-                    </picture>
-                    <div class="proj-slide__shade"></div>
-                    <div class="proj-slide__body">
-                        <span class="proj-slide__index">01</span>
-                        <span class="proj-slide__cat">Arquitectura · Diseño</span>
-                        <h3 class="proj-slide__name">ModArch</h3>
-                        <p class="proj-slide__desc">Estudio de arquitectura e interiores: del concepto 3D a la entrega llave en mano, con cotizador por m² y asistente con IA.</p>
-                        <span class="proj-slide__link">Visitar sitio <i class="fas fa-arrow-up-right-from-square"></i></span>
-                    </div>
-                </a>
-
-                <a href="https://charmstudio.pages.dev/" target="_blank" rel="noopener" class="proj-slide">
-                    <picture>
-                        <source media="(max-width: 900px)" srcset="./img/proj-charm-m.jpg">
-                        <img class="proj-slide__img" src="./img/proj-charm.jpg" alt="Charms Studio — tienda de merch de anime y fandom" loading="lazy">
-                    </picture>
-                    <div class="proj-slide__shade"></div>
-                    <div class="proj-slide__body">
-                        <span class="proj-slide__index">02</span>
-                        <span class="proj-slide__cat">E-commerce · Merch anime</span>
-                        <h3 class="proj-slide__name">Charms Studio</h3>
-                        <p class="proj-slide__desc">Tienda de llaveros, peluches y merch de anime con búsqueda por fandom, personalización y envíos a todo Ecuador.</p>
-                        <span class="proj-slide__link">Visitar sitio <i class="fas fa-arrow-up-right-from-square"></i></span>
-                    </div>
-                </a>
-
-                <a href="https://applemobile.pages.dev/" target="_blank" rel="noopener" class="proj-slide">
-                    <picture>
-                        <source media="(max-width: 900px)" srcset="./img/proj-apple-m.jpg">
-                        <img class="proj-slide__img" src="./img/proj-apple.jpg" alt="White Apple — venta de iPhones premium" loading="lazy">
-                    </picture>
-                    <div class="proj-slide__shade"></div>
-                    <div class="proj-slide__body">
-                        <span class="proj-slide__index">03</span>
-                        <span class="proj-slide__cat">E-commerce · iPhones</span>
-                        <h3 class="proj-slide__name">White Apple</h3>
-                        <p class="proj-slide__desc">Venta de iPhones premium con servicio técnico, asesoría y soporte postventa en Lima.</p>
-                        <span class="proj-slide__link">Visitar sitio <i class="fas fa-arrow-up-right-from-square"></i></span>
-                    </div>
-                </a>
-
-                <a href="https://radioteam.pages.dev/" target="_blank" rel="noopener" class="proj-slide">
-                    <picture>
-                        <source media="(max-width: 900px)" srcset="./img/proj-radio-m.jpg">
-                        <img class="proj-slide__img" src="./img/proj-radio.jpg" alt="Radio Hobby Team — radiocontrol de alto desempeño" loading="lazy">
-                    </picture>
-                    <div class="proj-slide__shade"></div>
-                    <div class="proj-slide__body">
-                        <span class="proj-slide__index">04</span>
-                        <span class="proj-slide__cat">E-commerce · Radiocontrol</span>
-                        <h3 class="proj-slide__name">Radio Hobby Team</h3>
-                        <p class="proj-slide__desc">Tienda de radiocontrol de alto desempeño: autos, aviones y barcos RC, con asesor para elegir tu modelo.</p>
-                        <span class="proj-slide__link">Visitar sitio <i class="fas fa-arrow-up-right-from-square"></i></span>
-                    </div>
-                </a>
-
-                <a href="https://calzadostilet.pages.dev/" target="_blank" rel="noopener" class="proj-slide">
-                    <picture>
-                        <source media="(max-width: 900px)" srcset="./img/proj-stilet-m.jpg">
-                        <img class="proj-slide__img" src="./img/proj-stilet.jpg" alt="Calzados Stilet — calzado femenino elegante" loading="lazy">
-                    </picture>
-                    <div class="proj-slide__shade"></div>
-                    <div class="proj-slide__body">
-                        <span class="proj-slide__index">05</span>
-                        <span class="proj-slide__cat">E-commerce · Moda</span>
-                        <h3 class="proj-slide__name">Calzados Stilet</h3>
-                        <p class="proj-slide__desc">Tienda de calzado femenino elegante con catálogo de colección y compra online.</p>
-                        <span class="proj-slide__link">Visitar sitio <i class="fas fa-arrow-up-right-from-square"></i></span>
-                    </div>
-                </a>
-
-                <a href="https://clinicacordel.netlify.app/" target="_blank" rel="noopener" class="proj-slide">
-                    <picture>
-                        <source media="(max-width: 900px)" srcset="./img/proj-cordel-m.jpg">
-                        <img class="proj-slide__img" src="./img/proj-cordel.jpg" alt="Clínica Cordel — clínica dental en Puebla" loading="lazy">
-                    </picture>
-                    <div class="proj-slide__shade"></div>
-                    <div class="proj-slide__body">
-                        <span class="proj-slide__index">06</span>
-                        <span class="proj-slide__cat">Clínica dental · Web + IA</span>
-                        <h3 class="proj-slide__name">Clínica Cordel</h3>
-                        <p class="proj-slide__desc">Sitio para clínica dental en Puebla: agenda en 30 s, asistente con IA 24/7 y WhatsApp.</p>
-                        <span class="proj-slide__link">Visitar sitio <i class="fas fa-arrow-up-right-from-square"></i></span>
-                    </div>
-                </a>
-
-                <a href="https://pacas-tanya.netlify.app/" target="_blank" rel="noopener" class="proj-slide">
-                    <picture>
-                        <source media="(max-width: 900px)" srcset="./img/proj-pacas-m.jpg">
-                        <img class="proj-slide__img" src="./img/proj-pacas.jpg" alt="Pacas Tannya — tienda de ropa americana" loading="lazy">
-                    </picture>
-                    <div class="proj-slide__shade"></div>
-                    <div class="proj-slide__body">
-                        <span class="proj-slide__index">07</span>
-                        <span class="proj-slide__cat">E-commerce · Ropa</span>
-                        <h3 class="proj-slide__name">Pacas Tannya</h3>
-                        <p class="proj-slide__desc">Tienda de ropa americana premium por paca, con catálogo y envíos a todo México.</p>
-                        <span class="proj-slide__link">Visitar sitio <i class="fas fa-arrow-up-right-from-square"></i></span>
-                    </div>
-                </a>
-
-                <a href="https://veoplaca.com/" target="_blank" rel="noopener" class="proj-slide">
-                    <picture>
-                        <source media="(max-width: 900px)" srcset="./img/proj-veoplaca-m.jpg">
-                        <img class="proj-slide__img" src="./img/proj-veoplaca.jpg" alt="Veoplaca — revisión de vehículos por placa" loading="lazy">
-                    </picture>
-                    <div class="proj-slide__shade"></div>
-                    <div class="proj-slide__body">
-                        <span class="proj-slide__index">08</span>
-                        <span class="proj-slide__cat">IA · Visión por computadora</span>
-                        <h3 class="proj-slide__name">Veoplaca</h3>
-                        <p class="proj-slide__desc">Revisa el historial de un vehículo por su placa: rápido, gratis y sin complicaciones.</p>
-                        <span class="proj-slide__link">Visitar sitio <i class="fas fa-arrow-up-right-from-square"></i></span>
-                    </div>
-                </a>
-
-                <a href="https://thesilencers.netlify.app/" target="_blank" rel="noopener" class="proj-slide">
-                    <picture>
-                        <source media="(max-width: 900px)" srcset="./img/proj-silencers-m.jpg">
-                        <img class="proj-slide__img" src="./img/proj-silencers.jpg" alt="The Silencers — hub gamer hispanohablante" loading="lazy">
-                    </picture>
-                    <div class="proj-slide__shade"></div>
-                    <div class="proj-slide__body">
-                        <span class="proj-slide__index">09</span>
-                        <span class="proj-slide__cat">Comunidad · Gaming</span>
-                        <h3 class="proj-slide__name">The Silencers</h3>
-                        <p class="proj-slide__desc">El hub gamer hispanohablante: guías, mods, plugins y servidores en un solo lugar.</p>
-                        <span class="proj-slide__link">Visitar sitio <i class="fas fa-arrow-up-right-from-square"></i></span>
-                    </div>
-                </a>
-
-                <a href="https://wa.me/522871254233?text=Hola%20Javi%2C%20quiero%20construir%20un%20proyecto%20contigo" target="_blank" rel="noopener" class="proj-slide proj-slide--cta">
-                    <div class="proj-slide__shade"></div>
-                    <div class="proj-slide__body">
-                        <span class="proj-slide__index">10</span>
-                        <span class="proj-slide__cat">Colaboración</span>
-                        <h3 class="proj-slide__name">Tu próximo proyecto</h3>
-                        <p class="proj-slide__desc">¿Tienes una idea que quieres convertir en producto? Construyamos algo real juntos — de la idea al deploy.</p>
-                        <span class="proj-slide__link">Hablemos <i class="fas fa-arrow-right"></i></span>
-                    </div>
-                </a>
+        <div class="project-toolbar reveal">
+            <div class="project-filters" role="group" aria-label="Filtrar proyectos por categoría">
+                <button type="button" class="project-filter is-active" data-filter="Todos" aria-pressed="true">Todos</button>
+                <button type="button" class="project-filter" data-filter="E-commerce" aria-pressed="false">E-commerce</button>
+                <button type="button" class="project-filter" data-filter="IA" aria-pressed="false">IA</button>
+                <button type="button" class="project-filter" data-filter="Web Apps" aria-pressed="false">Web Apps</button>
+                <button type="button" class="project-filter" data-filter="Cloud" aria-pressed="false">Cloud</button>
+                <button type="button" class="project-filter" data-filter="Automatización" aria-pressed="false">Automatización</button>
             </div>
-
-            <button class="carousel__nav carousel__nav--next" id="projNext" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
-            <div class="carousel__dots" id="projDots" aria-hidden="true"></div>
+            <button type="button" id="projectViewAll" class="btn btn--ghost" aria-expanded="false" aria-controls="projectCatalog">Ver todos los proyectos <i class="fas fa-arrow-right" aria-hidden="true"></i></button>
         </div>
+        <div class="project-layout reveal" id="projectShowcase">
+            <article class="project-featured" id="projectFeatured" aria-label="Proyecto destacado">
+                <div class="project-featured__visual"><img src="./img/proj-modarch.jpg" alt="Sitio de ModArch" loading="lazy" width="1100" height="700"></div>
+                <div class="project-featured__content">
+                    <span class="project-featured__badge"><i class="fas fa-star" aria-hidden="true"></i> Proyecto destacado</span>
+                    <h3>Mod<span class="showcase-gradient">Arch.</span></h3>
+                    <p class="project-featured__description">Estudio de arquitectura e interiores: del concepto 3D a la entrega llave en mano, con cotizador por m² y asistente con IA.</p>
+                    <div class="project-tags"><span>Arquitectura</span><span>Diseño</span></div>
+                    <div class="project-highlights"><div><i class="fas fa-cube" aria-hidden="true"></i><span><strong>Diseño 3D</strong><small>Concepto visual</small></span></div><div><i class="fas fa-calculator" aria-hidden="true"></i><span><strong>Cotizador</strong><small>Por m²</small></span></div><div><i class="fas fa-brain" aria-hidden="true"></i><span><strong>IA</strong><small>Asistente virtual</small></span></div></div>
+                    <div class="project-featured__actions"><button type="button" class="btn btn--primary" data-case="modarch">Ver caso completo <i class="fas fa-arrow-right" aria-hidden="true"></i></button><a class="btn btn--ghost" href="https://modarch.com.pe/" target="_blank" rel="noopener">Visitar sitio <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div>
+                </div>
+            </article>
+            <div class="project-sidebar" id="projectSidebar" aria-label="Más proyectos"></div>
+        </div>
+        <div class="project-pagination" aria-label="Navegación de proyectos destacados">
+            <button type="button" class="project-page-arrow" id="projectPrevious" aria-label="Proyecto anterior"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+            <div class="project-page-dots" id="projectPageDots"></div>
+            <button type="button" class="project-page-arrow" id="projectNext" aria-label="Siguiente proyecto"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+        </div>
+        <p class="project-announcement" id="projectAnnouncement" role="status" aria-live="polite"></p>
+        <div class="project-catalog" id="projectCatalog" hidden aria-label="Todos los proyectos"></div>
+      </div>
+      <dialog class="project-case" id="projectCase" aria-labelledby="projectCaseTitle">
+        <div class="project-case__header"><span class="kicker">Proyecto real</span><button type="button" id="projectCaseClose" class="project-page-arrow" aria-label="Cerrar caso de proyecto"><i class="fas fa-xmark" aria-hidden="true"></i></button></div>
+        <h3 id="projectCaseTitle"></h3>
+        <img id="projectCaseImage" alt="" loading="lazy">
+        <div class="project-case__body"><h4>Descripción del proyecto</h4><p id="projectCaseDescription"></p><h4>Especialidades</h4><div class="project-tags" id="projectCaseTags"></div><a id="projectCaseLink" class="btn btn--primary" target="_blank" rel="noopener">Explorar el proyecto <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div>
+      </dialog>
+      <script type="application/json" id="projectsData">[{"id": "modarch", "name": "ModArch", "url": "https://modarch.com.pe/", "image": "./img/proj-modarch.jpg", "description": "Estudio de arquitectura e interiores: del concepto 3D a la entrega llave en mano, con cotizador por m² y asistente con IA.", "category": "Arquitectura · Diseño", "tags": ["Web Apps", "Cloud", "IA", "Automatización"]}, {"id": "white-apple", "name": "White Apple", "url": "https://applemobile.pages.dev/", "image": "./img/proj-apple.jpg", "description": "Venta de iPhones premium con servicio técnico, asesoría y soporte postventa en Lima.", "category": "E-commerce · iPhones", "tags": ["E-commerce", "Web Apps", "Cloud"]}, {"id": "veoplaca", "name": "Veoplaca", "url": "https://veoplaca.com/", "image": "./img/proj-veoplaca.jpg", "description": "Revisa el historial de un vehículo por su placa: rápido, gratis y sin complicaciones.", "category": "IA · Visión por computadora", "tags": ["Web Apps", "Cloud", "IA"]}, {"id": "clínica-cordel", "name": "Clínica Cordel", "url": "https://clinicacordel.netlify.app/", "image": "./img/proj-cordel.jpg", "description": "Sitio para clínica dental en Puebla: agenda en 30 s, asistente con IA 24/7 y WhatsApp.", "category": "Clínica dental · Web + IA", "tags": ["Web Apps", "Cloud", "IA", "Automatización"]}, {"id": "charms-studio", "name": "Charms Studio", "url": "https://charmstudio.pages.dev/", "image": "./img/proj-charm.jpg", "description": "Tienda de llaveros, peluches y merch de anime con búsqueda por fandom, personalización y envíos a todo Ecuador.", "category": "E-commerce · Merch anime", "tags": ["E-commerce", "Web Apps", "Cloud"]}, {"id": "radio-hobby-team", "name": "Radio Hobby Team", "url": "https://radioteam.pages.dev/", "image": "./img/proj-radio.jpg", "description": "Tienda de radiocontrol de alto desempeño: autos, aviones y barcos RC, con asesor para elegir tu modelo.", "category": "E-commerce · Radiocontrol", "tags": ["E-commerce", "Web Apps", "Cloud"]}, {"id": "calzados-stilet", "name": "Calzados Stilet", "url": "https://calzadostilet.pages.dev/", "image": "./img/proj-stilet.jpg", "description": "Tienda de calzado femenino elegante con catálogo de colección y compra online.", "category": "E-commerce · Moda", "tags": ["E-commerce", "Web Apps", "Cloud"]}, {"id": "pacas-tannya", "name": "Pacas Tannya", "url": "https://pacas-tanya.netlify.app/", "image": "./img/proj-pacas.jpg", "description": "Tienda de ropa americana premium por paca, con catálogo y envíos a todo México.", "category": "E-commerce · Ropa", "tags": ["E-commerce", "Web Apps", "Cloud"]}, {"id": "the-silencers", "name": "The Silencers", "url": "https://thesilencers.netlify.app/", "image": "./img/proj-silencers.jpg", "description": "El hub gamer hispanohablante: guías, mods, plugins y servidores en un solo lugar.", "category": "Comunidad · Gaming", "tags": ["Web Apps", "Cloud"]}]</script>
     </section>
 
-    <!-- CONECTA -->
-    <section id="conecta" class="connect">
-        <div class="section-head reveal">
-            <span class="kicker">Comunidad</span>
-            <h2 class="section-title">Conecta con <span class="text-red">Javi</span></h2>
-            <p class="section-sub">Miles de personas ya son parte del movimiento. Sígueme donde más te guste el contenido.</p>
+    <!-- COMUNIDAD -->
+    <section id="conecta" class="connect community">
+      <span class="community-halo" aria-hidden="true"></span><span class="community-ribbon" aria-hidden="true"></span>
+      <div class="community-inner">
+        <span class="community-note community-note--left" aria-hidden="true">Tecnología<br>Desarrollo<br>IA<br>Comunidad<svg viewBox="0 0 76 62"><path d="M9 2 Q4 40 59 53 M48 45 L60 53 L48 56"/></svg></span>
+        <span class="community-note community-note--right" aria-hidden="true">Aprende<br>Conecta<br>Crece<svg viewBox="0 0 76 62"><path d="M9 2 Q4 40 59 53 M48 45 L60 53 L48 56"/></svg></span>
+        <div class="section-head">
+            <h2 class="section-title">Conecta con <span class="community-gradient">Javi</span></h2>
+            <p class="section-sub">Sigue mi contenido, aprende conmigo y únete a una comunidad enfocada en tecnología, desarrollo e IA.</p>
+        </div>
+        <div class="community-topics" aria-label="Contenido de la comunidad">
+            <div class="community-topic"><i class="fas fa-code" aria-hidden="true"></i><span><strong>Contenido tech</strong><small>Tips y tutoriales</small></span></div>
+            <div class="community-topic"><i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i><span><strong>IA</strong><small>Herramientas y casos reales</small></span></div>
+            <div class="community-topic"><i class="fas fa-desktop" aria-hidden="true"></i><span><strong>Web</strong><small>Desarrollo y proyectos</small></span></div>
+            <div class="community-topic"><i class="fas fa-users" aria-hidden="true"></i><span><strong>Comunidad</strong><small>Aprende y construye conmigo</small></span></div>
+        </div>
+        <div class="community-grid">
+            <article class="community-card community-card--instagram" data-spotlight>
+
+                <div class="community-card__top">
+                    <span class="community-logo community-logo--instagram"><i class="fab fa-instagram" aria-hidden="true"></i></span>
+                    <span class="community-followers"><i class="fas fa-users" aria-hidden="true"></i><span><strong data-key="instagram" data-count-fallback="Únete" data-count-label="seguidores">Únete</strong><small>a la comunidad</small></span></span>
+                </div>
+                <h3>Instagram</h3>
+                <p class="community-handle">@javimxoficial</p>
+                <p class="community-card__description">Mira mi día a día, tips rápidos y contenido detrás de cámaras.</p>
+                <ul class="community-tags" aria-label="Contenido en Instagram"><li>Tips</li><li>Lifestyle</li><li>Detrás de cámaras</li></ul>
+                <a href="https://www.instagram.com/javimxoficial/" target="_blank" rel="noopener" class="btn btn--ghost community-link">Seguir en Instagram <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                <i class="fab fa-instagram community-watermark" aria-hidden="true"></i>
+            </article>
+            <article class="community-card community-card--youtube community-card--featured" data-spotlight>
+                <span class="community-featured-badge"><i class="fas fa-crown" aria-hidden="true"></i> PRINCIPAL</span>
+                <div class="community-card__top">
+                    <span class="community-logo community-logo--youtube"><i class="fab fa-youtube" aria-hidden="true"></i></span>
+                    <span class="community-followers"><i class="fas fa-users" aria-hidden="true"></i><span><strong data-key="youtube" data-count-fallback="Únete" data-count-label="suscriptores">Únete</strong><small>a la comunidad</small></span></span>
+                </div>
+                <h3>YouTube</h3>
+                <p class="community-handle">@javimxoficial</p>
+                <p class="community-card__description">Tutoriales, proyectos completos y contenido en profundidad.</p>
+                <ul class="community-tags" aria-label="Contenido en YouTube"><li>Tutoriales</li><li>Proyectos</li><li>IA</li><li>Web</li></ul>
+                <a href="https://www.youtube.com/@javimxoficial" target="_blank" rel="noopener" class="btn btn--primary community-link">Ver canal de YouTube <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                <i class="fab fa-youtube community-watermark" aria-hidden="true"></i>
+            </article>
+            <article class="community-card community-card--tiktok" data-spotlight>
+
+                <div class="community-card__top">
+                    <span class="community-logo community-logo--tiktok"><i class="fab fa-tiktok" aria-hidden="true"></i></span>
+                    <span class="community-followers"><i class="fas fa-users" aria-hidden="true"></i><span><strong data-key="tiktok" data-count-fallback="Únete" data-count-label="seguidores">Únete</strong><small>a la comunidad</small></span></span>
+                </div>
+                <h3>TikTok</h3>
+                <p class="community-handle">@javiitok</p>
+                <p class="community-card__description">Tips rápidos, clips y herramientas que no toman más de un minuto.</p>
+                <ul class="community-tags" aria-label="Contenido en TikTok"><li>Tips</li><li>IA</li><li>Herramientas</li><li>Shorts</li></ul>
+                <a href="https://www.tiktok.com/@javiitok" target="_blank" rel="noopener" class="btn btn--ghost community-link">Seguir en TikTok <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                <i class="fab fa-tiktok community-watermark" aria-hidden="true"></i>
+            </article>
+            <article class="community-card community-card--facebook" data-spotlight>
+
+                <div class="community-card__top">
+                    <span class="community-logo community-logo--facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></span>
+                    <span class="community-followers"><i class="fas fa-users" aria-hidden="true"></i><span><strong data-key="facebook" data-count-fallback="Únete" data-count-label="seguidores">Únete</strong><small>a la comunidad</small></span></span>
+                </div>
+                <h3>Facebook</h3>
+                <p class="community-handle">Digital Studio Javi</p>
+                <p class="community-card__description">Únete a la comunidad, participa en discusiones y mantente al día.</p>
+                <ul class="community-tags" aria-label="Contenido en Facebook"><li>Comunidad</li><li>Noticias</li><li>Recursos</li></ul>
+                <a href="https://facebook.com/digitalstudiojavi" target="_blank" rel="noopener" class="btn btn--ghost community-link">Unirse en Facebook <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                <i class="fab fa-facebook-f community-watermark" aria-hidden="true"></i>
+            </article>
         </div>
 
-        <div class="connect__grid">
-            <a href="https://www.instagram.com/javimxoficial/" target="_blank" rel="noopener" class="s-card s-card--ig reveal" data-spotlight>
-                <i class="fab fa-instagram"></i>
-                <span class="s-card__count" data-key="instagram">—</span>
-                <span class="s-card__name">Instagram</span>
-                <span class="s-card__handle">@javimxoficial</span>
-            </a>
-            <a href="https://www.youtube.com/@javimxoficial" target="_blank" rel="noopener" class="s-card s-card--yt reveal" data-spotlight>
-                <i class="fab fa-youtube"></i>
-                <span class="s-card__count" data-key="youtube">—</span>
-                <span class="s-card__name">YouTube</span>
-                <span class="s-card__handle">@javimxoficial</span>
-            </a>
-            <a href="https://www.tiktok.com/@javiitok" target="_blank" rel="noopener" class="s-card s-card--tt reveal" data-spotlight>
-                <i class="fab fa-tiktok"></i>
-                <span class="s-card__count" data-key="tiktok">—</span>
-                <span class="s-card__name">TikTok</span>
-                <span class="s-card__handle">@javiitok</span>
-            </a>
-            <a href="https://facebook.com/digitalstudiojavi" target="_blank" rel="noopener" class="s-card s-card--fb reveal" data-spotlight>
-                <i class="fab fa-facebook-f"></i>
-                <span class="s-card__count" data-key="facebook">—</span>
-                <span class="s-card__name">Facebook</span>
-                <span class="s-card__handle">Digital Studio Javi</span>
-            </a>
-        </div>
+      </div>
     </section>
 
     <!-- SERVICIOS -->
     <section id="servicios" class="services">
+        <div class="services-note">
+            <svg viewBox="0 0 80 78" aria-hidden="true"><path d="M73 15 C42 9 15 28 10 66 M5 58 L10 66 L18 60 M66 10 L73 15 L65 18"/></svg>
+            <span>Convierte tu idea<br>en un sistema que<br>trabaja por ti.</span>
+        </div>
         <div class="section-head reveal">
-            <span class="kicker">Servicios</span>
             <h2 class="section-title">Trabaja <span class="text-red">conmigo</span></h2>
             <p class="section-sub">Presencia digital + automatización con IA para negocios que quieren vender solos mientras atienden a sus clientes.</p>
         </div>
@@ -550,51 +537,71 @@
     </section>
 
     <!-- CONTACTO -->
-    <section id="contacto" class="contact">
-        <div class="contact__inner reveal">
-            <span class="kicker">Contacto</span>
-            <h2 class="contact__title">¿Listo para <span class="text-red">crear</span> algo?</h2>
-            <p class="contact__sub">Estoy disponible para colaboración con marcas, un proyecto tech o simplemente resolver problemas.</p>
-
-            <div class="contact__methods">
-                <a href="mailto:javividalm11@gmail.com" class="contact__method">
-                    <i class="fas fa-envelope"></i>
-                    <span class="contact__method-label">Email</span>
-                    <span class="contact__method-value">javividalm11@gmail.com</span>
-                </a>
-                <a href="https://wa.me/522871254233" target="_blank" rel="noopener" class="contact__method">
-                    <i class="fab fa-whatsapp"></i>
-                    <span class="contact__method-label">WhatsApp</span>
-                    <span class="contact__method-value">+52 287 125 4233</span>
-                </a>
-                <a href="https://javividalm.pages.dev/" target="_blank" rel="noopener" class="contact__method">
-                    <i class="fas fa-code"></i>
-                    <span class="contact__method-label">Portafolio</span>
-                    <span class="contact__method-value">javividalm.pages.dev</span>
-                </a>
+    <div class="contact-scene" id="contactScene">
+      <canvas class="contact-particles" id="contactParticles" aria-hidden="true"></canvas>
+      <span class="contact-planet" aria-hidden="true"></span>
+      <section id="contacto" class="contact contact-redesign">
+        <div class="contact-heading">
+          <h2>Hagamos realidad tu <span>próxima idea</span></h2>
+          <p>Estoy disponible para ayudarte a crear sitios web, automatizar procesos con IA,<br>implementar soluciones en la nube y desarrollar productos digitales para negocios<br>en LATAM y el mundo.</p>
+        </div>
+        <div class="contact-layout">
+          <form class="contact-panel proposal-form" id="proposalForm">
+            <div class="proposal-meta"><span class="proposal-available"><span aria-hidden="true"></span>Disponible para nuevos proyectos</span></div>
+            <div class="proposal-fields">
+              <label class="proposal-field"><i class="far fa-user" aria-hidden="true"></i><span><span class="proposal-label">Nombre</span><input name="name" id="proposalName" autocomplete="name" placeholder="¿Cómo te llamas?" minlength="2" maxlength="80" required></span></label>
+              <label class="proposal-field"><i class="far fa-envelope" aria-hidden="true"></i><span><span class="proposal-label">Email</span><input type="email" name="email" id="proposalEmail" autocomplete="email" placeholder="tu@email.com" maxlength="180" required></span></label>
+              <label class="proposal-field"><i class="fas fa-cube" aria-hidden="true"></i><span><span class="proposal-label">Tipo de proyecto</span><select name="project" id="proposalProject" required><option value="" disabled selected>Selecciona una opción</option><option>Sitio web / landing page</option><option>E-commerce</option><option>Automatización con IA</option><option>Chatbot / voicebot</option><option>Cloud &amp; DevOps</option><option>Aplicación a medida</option><option>SEO / GEO para IA</option><option>Otro proyecto</option></select></span></label>
+              <label class="proposal-field"><i class="fas fa-coins" aria-hidden="true"></i><span><span class="proposal-label">Presupuesto</span><select name="budget" id="proposalBudget" required><option value="" disabled selected>Selecciona un rango</option><option>$100–$300 USD</option><option>$300–$650 USD</option><option>$650–$1,500 USD</option><option>Más de $1,500 USD</option><option>Por definir</option></select></span></label>
+              <label class="proposal-field proposal-field--message"><i class="far fa-comment-dots" aria-hidden="true"></i><span><span class="proposal-label">Cuéntame sobre tu proyecto</span><textarea name="message" id="proposalMessage" placeholder="Describe tu idea, objetivos y cualquier detalle importante..." minlength="10" maxlength="500" required aria-describedby="proposalCounter"></textarea><span class="proposal-counter" id="proposalCounter">0/500</span></span></label>
             </div>
-
-            <a href="mailto:javividalm11@gmail.com?subject=Colaboraci%C3%B3n%20con%20%40javimxoficial" class="btn btn--primary btn--lg magnetic">
-                <span class="btn__shine"></span>
-                <i class="fas fa-paper-plane"></i> Contactar a Javi
-            </a>
+            <div class="proposal-actions"><button type="submit" class="btn btn--primary"><i class="far fa-paper-plane" aria-hidden="true"></i> Enviar propuesta <i class="fas fa-chevron-right" aria-hidden="true"></i></button><a href="https://wa.me/522871254233?text=Hola%20Javi%2C%20me%20gustar%C3%ADa%20agendar%20una%20llamada%20para%20hablar%20de%20mi%20proyecto." target="_blank" rel="noopener" class="btn btn--ghost"><i class="far fa-calendar" aria-hidden="true"></i> Agendar llamada <i class="fas fa-chevron-right" aria-hidden="true"></i></a></div>
+            <p class="proposal-privacy"><i class="fas fa-lock" aria-hidden="true"></i> Tu información está segura. Solo la usaré para contactarte sobre tu proyecto.</p>
+            <p id="proposalStatus" class="proposal-status" role="status" aria-live="polite"></p>
+          </form>
+          <div class="contact-panel direct-contact">
+            <div class="direct-contact__heading"><span class="direct-eyebrow">HABLEMOS</span><h3>O contáctame directamente</h3><p>Elige la opción que prefieras. Estoy aquí para resolver tus dudas<br>y explorar cómo podemos trabajar juntos.</p><span class="contact-mini-planet" aria-hidden="true"><span></span></span></div>
+            <div class="direct-contact__methods">
+              <a class="direct-method" href="mailto:javividalm11@gmail.com"><i class="far fa-envelope" aria-hidden="true"></i><span><span class="direct-method__label">Email</span><strong>javividalm11@gmail.com</strong></span><i class="fas fa-arrow-right direct-method__arrow" aria-hidden="true"></i></a>
+              <a class="direct-method direct-method--whatsapp" href="https://wa.me/522871254233" target="_blank" rel="noopener"><i class="fab fa-whatsapp" aria-hidden="true"></i><span><strong>WhatsApp</strong></span><i class="fas fa-arrow-right direct-method__arrow" aria-hidden="true"></i></a>
+              <a class="direct-method" href="https://javividalm.pages.dev/" target="_blank" rel="noopener"><i class="fas fa-link" aria-hidden="true"></i><span><span class="direct-method__label">Portafolio</span><strong>javividalm.pages.dev</strong></span><i class="fas fa-arrow-right direct-method__arrow" aria-hidden="true"></i></a>
+              <div class="direct-method direct-method--location"><i class="fas fa-location-dot" aria-hidden="true"></i><span><span class="direct-method__label">Ubicación</span><strong>LATAM y el mundo</strong></span></div>
+            </div>
+            <div class="contact-promises">
+              <div><i class="fas fa-bolt" aria-hidden="true"></i><strong>Respuesta rápida</strong></div>
+              <div><i class="fas fa-laptop" aria-hidden="true"></i><strong>100% remoto</strong></div>
+              <div><i class="fas fa-globe" aria-hidden="true"></i><strong>LATAM y el mundo</strong></div>
+              <div><i class="fas fa-cube" aria-hidden="true"></i><strong>Web + IA + Cloud</strong></div>
+            </div>
+            <div class="contact-social"><div><p>TAMBIÉN EN REDES</p><div class="contact-social__links">
+              <a href="https://www.instagram.com/javimxoficial/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+              <a href="https://www.youtube.com/@javimxoficial" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+              <a href="https://www.tiktok.com/@javiitok" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
+              <a href="https://facebook.com/digitalstudiojavi" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+              <a href="https://www.linkedin.com/in/javiervidalm/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+              <a href="https://javividalm.pages.dev/" target="_blank" rel="noopener" aria-label="Portafolio profesional"><i class="fas fa-code" aria-hidden="true"></i></a>
+            </div></div><span class="contact-social__note" aria-hidden="true"><svg viewBox="0 0 45 22"><path d="M40 10 Q20 23 4 10 M11 8 L4 10 L10 16"/></svg>Conectemos<br>también por aquí</span></div>
+          </div>
         </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <a href="#top" class="footer__logo"><img src="./img/logo-transparent.png" alt="Javi"></a>
-        <div class="footer__social">
-            <a href="https://www.instagram.com/javimxoficial/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.youtube.com/@javimxoficial" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-            <a href="https://www.tiktok.com/@javiitok" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-            <a href="https://facebook.com/digitalstudiojavi" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://javividalm.pages.dev/" target="_blank" rel="noopener" aria-label="Portafolio"><i class="fas fa-code"></i></a>
-        </div>
-        <small>&copy; <span id="year"></span> Javi · @javimxoficial · Todos los derechos reservados</small>
-    </footer>
+      </section>
+      <footer class="footer contact-footer">
+        <div class="contact-footer__brand"><a href="#top" class="footer__logo" aria-label="Javi: volver al inicio"><img src="./img/logo-transparent.png" alt="Javi" width="1447" height="878" loading="lazy"></a><p>Full Stack Developer · Cloud Engineer · AI Automation<br><span>Construyendo ideas que generan impacto.</span></p></div>
+        <small>© <span id="year"></span> Javi. Todos los derechos reservados.</small>
+        <nav class="contact-footer__nav" aria-label="Navegación del pie de página"><a href="#top">Inicio</a><a href="#sobre-mi">Sobre mí</a><a href="#proyectos">Proyectos</a><a href="#servicios">Servicios</a><a href="#contacto" class="is-current">Contacto <span aria-hidden="true">•</span></a><button type="button" id="welcomePreferences" data-welcome-open><i class="fas fa-arrow-left" aria-hidden="true"></i> <span>Regresar</span></button></nav>
+      </footer>
+    </div>
 
     <script src="./js/script.js" defer></script>
+    <script src="./js/jai-logo.js" defer></script>
+    <script src="./js/jai-voice-sphere.js" defer></script>
     <script src="./js/assistant.js" defer></script>
+    <script src="./js/globe.js" defer></script>
+    <script src="./js/solar-globe.js" defer></script>
+    <script src="./js/identity.js" defer></script>
+    <script src="./js/projects.js" defer></script>
+    <script src="./js/contact.js" defer></script>
+    <script src="./js/i18n.js" defer></script>
+    <script src="./js/welcome-particles.js" defer></script>
+    <script src="./js/welcome.js" defer></script>
 </body>
 </html>

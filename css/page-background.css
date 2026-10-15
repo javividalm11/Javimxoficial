@@ -1,0 +1,12 @@
+/* One ambient layer keeps the grid, stars and nebula continuous on scroll. */
+body{background:#060711;isolation:isolate}
+.page-background{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse at 90% 15%,#6230bd26,transparent 46%),radial-gradient(ellipse at 9% 80%,#424ab022,transparent 43%),#060711}
+.page-background::before{content:'';position:absolute;inset:0;background:linear-gradient(#060711cf,#060711e8),url('../img/cosmic-landscape.png') center/cover no-repeat}
+.page-background::after{content:'';position:absolute;inset:0;background-image:linear-gradient(#7764b510 1px,transparent 1px),linear-gradient(90deg,#7764b510 1px,transparent 1px),radial-gradient(circle at 19% 24%,#baa0ff80 0 1px,transparent 2px),radial-gradient(circle at 81% 83%,#8586ff80 0 1px,transparent 2px);background-size:48px 48px,48px 48px,239px 241px,397px 277px}
+#sobre-mi.about,#proyectos.project-showcase,#conecta.community,#servicios.services,.contact-scene,.cosmic-hero{background:transparent;border-bottom:0}
+#sobre-mi::before,.project-showcase::before,.community::before,.contact-scene::before,.contact-scene::after{content:none}
+.community-halo,.community-ribbon,.contact-planet{display:none}
+.cosmic-hero::before{mask-image:linear-gradient(#000 65%,transparent 100%);-webkit-mask-image:linear-gradient(#000 65%,transparent 100%)}
+.cosmic-hero::after{background:linear-gradient(90deg,#03030b80,transparent 57%)}
+.contact-particles{mask-image:linear-gradient(transparent,#000 14%,#000 85%,transparent);-webkit-mask-image:linear-gradient(transparent,#000 14%,#000 85%,transparent)}
+.contact-footer.footer{background:transparent}

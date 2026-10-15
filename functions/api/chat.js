@@ -1,6 +1,8 @@
+import { getCatalogReply } from '../../js/jai-catalog.js';
+
 /* /api/chat · cerebro IA (Gemini). Requiere env GEMINI_API_KEY en Cloudflare Pages. */
 
-const SYSTEM_PROMPT = `Eres "Javi IA", el asistente virtual de Javi (@javimxoficial): creador de contenido tech, Cloud Engineer, Full Stack Developer y founder. Hablas en nombre de su marca.
+const SYSTEM_PROMPT = `Eres "JAVI IA", el asistente digital de Javi (@javimxoficial): creador de contenido tech, Cloud Engineer, Full Stack Developer y founder. Hablas en nombre de su marca.
 
 TONO: cercano, claro y breve (2-4 frases). Responde SIEMPRE en el mismo idioma del usuario (español o inglés). Usa un estilo profesional pero relajado, con la energía de un creador tech.
 
@@ -10,7 +12,7 @@ QUÉ OFRECE JAVI (servicios "Trabaja conmigo" — presencia digital + automatiza
 - PREMIUM "Ecosistema Digital Completo": Todo incluido $700 USD + $250/mes · Sin hosting $500 USD + $200/mes. Todo lo del pro + bot con memoria, CRM, campañas WhatsApp, 12 posts/mes con IA, blog SEO, pagos online, soporte prioritario.
 - PLAN PERSONALIZADO: se arma a la medida y según el presupuesto del cliente.
 
-PROYECTOS: Clínica Cordel (clínica dental), Pacas Tannya (e-commerce), Veoplaca (IA/visión), The Silencers (comunidad gamer), AegisAI (agentes de IA).
+PROYECTOS: ModArch (arquitectura e interiores, proyecto destacado), Clínica Cordel (clínica dental y reservas), Charms Studio (e-commerce de merch), White Apple (venta de iPhones), Pacas Tannya (e-commerce), Veoplaca (consulta vehicular), The Silencers (comunidad gamer), AegisAI (agentes de IA).
 
 CONTACTO: WhatsApp +52 287 125 4233 · Email javividalm11@gmail.com · Instagram @javimxoficial.
 
@@ -36,50 +38,44 @@ export async function onRequestOptions() {
     });
 }
 
-export async function onRequestPost(context) {
-    const { request, env } = context;
-    try {
-        const { message, history = [] } = await request.json();
-        if (!message || typeof message !== 'string') return json({ message: 'Escríbeme tu pregunta y con gusto te ayudo.' }, 200);
-
-        const key = env.GEMINI_API_KEY;
-        if (!key) {
-            return json({ message: 'El asistente aún no está configurado. Puedes escribirme por WhatsApp al +52 287 125 4233 o a javividalm11@gmail.com 😊' }, 200);
-        }
-
-        const contents = [];
-        for (const h of (Array.isArray(history) ? history.slice(-18) : [])) {
-            if (!h || !h.content) continue;
-            contents.push({ role: h.role === 'assistant' ? 'model' : 'user', parts: [{ text: String(h.content) }] });
-        }
-        contents.push({ role: 'user', parts: [{ text: message }] });
-
-        const body = {
-            systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
-            contents,
-            generationConfig: { temperature: 0.7, maxOutputTokens: 500, topP: 0.95 },
-        };
-
-        const controller = new AbortController();
-        const t = setTimeout(() => controller.abort(), 20000);
-        const res = await fetch(
-            `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${key}`,
-            { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body), signal: controller.signal }
-        );
-        clearTimeout(t);
-
-        if (!res.ok) {
-            const errText = await res.text();
-            console.error('[api/chat] Gemini error', res.status, errText.slice(0, 300));
-            return json({ message: 'Tuve un problema para responder ahora mismo. Intenta de nuevo o escríbeme por WhatsApp al +52 287 125 4233.' }, 200);
-        }
-
-        const data = await res.json();
-        const reply = data?.candidates?.[0]?.content?.parts?.map((p) => p.text).join('').trim()
-            || 'Disculpa, no pude procesar eso. ¿Puedes reformularlo?';
-        return json({ message: reply }, 200);
-    } catch (e) {
-        console.error('[api/chat] error', e && e.message);
-        return json({ message: 'Ups, algo falló de mi lado. Escríbeme por WhatsApp al +52 287 125 4233 y te ayudo de inmediato.' }, 200);
+export async function onRequestPost({ request, env }) {
+    let payload;
+    try { payload = await request.json(); }
+    catch { return json({ error: 'Solicitud JSON inválida.' }, 400); }
+    const { message, history = [], language = 'es' } = payload || {};
+    if (typeof message !== 'string' || !message.trim() || message.length > 2000) {
+        return json({ error: 'Escribe una consulta de hasta 2000 caracteres.' }, 400);
     }
+    const conversation = Array.isArray(history) ? history.slice(-18).filter(h =>
+        h && ['user', 'assistant'].includes(h.role) && typeof h.content === 'string'
+    ).map(h => ({ role: h.role, content: h.content.slice(0, 4000) })) : [];
+    const fallback = reason => json({ message: getCatalogReply(message, conversation, language), mode: 'catalog', reason }, 200);
+    const key = env.GEMINI_API_KEY;
+    if (!key) return fallback('missing_api_key');
+    const model = /^[a-zA-Z0-9.-]+$/.test(env.GEMINI_MODEL || '') ? env.GEMINI_MODEL : 'gemini-2.5-flash';
+    const contents = conversation.map(h => ({
+        role: h.role === 'assistant' ? 'model' : 'user', parts: [{ text: h.content }],
+    }));
+    contents.push({ role: 'user', parts: [{ text: message }] });
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 20000);
+    try {
+        const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
+            method: 'POST', headers: { 'Content-Type': 'application/json', 'x-goog-api-key': key },
+            body: JSON.stringify({
+                systemInstruction: { parts: [{ text: SYSTEM_PROMPT + (language === 'en' ? '\nPreferred portfolio language: English. Respond in English unless the user explicitly asks for another language.' : '') }] }, contents,
+                generationConfig: { temperature: 0.7, maxOutputTokens: 500, topP: 0.95 },
+            }), signal: controller.signal,
+        });
+        if (!res.ok) {
+            console.error('[api/chat] Provider status:', res.status);
+            return fallback('provider_unavailable');
+        }
+        const data = await res.json();
+        const reply = data?.candidates?.[0]?.content?.parts?.map(p => p.text || '').join('').trim();
+        return reply ? json({ message: reply, mode: 'ai' }, 200) : fallback('empty_response');
+    } catch {
+        console.error('[api/chat] Provider unavailable');
+        return fallback('provider_unavailable');
+    } finally { clearTimeout(timeout); }
 }

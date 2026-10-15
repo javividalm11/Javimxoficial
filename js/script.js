@@ -277,7 +277,8 @@ async function loadCounts() {
 function animateCounts() {
     document.querySelectorAll('[data-key]').forEach(el => {
         const target = SOCIAL_COUNTS[el.dataset.key] || 0;
-        if (!target) { el.textContent = '—'; el.style.opacity = '0.4'; return; }
+        if (!target) { el.textContent = el.dataset.countFallback || '—'; el.style.opacity = el.dataset.countFallback ? '' : '0.4'; return; }
+        if (el.dataset.countLabel) el.parentElement.querySelector('small').textContent = el.dataset.countLabel;
         el.style.opacity = '';
         const dur = 1800, start = performance.now();
         (function frame(now) {
@@ -323,7 +324,8 @@ addEventListener('scroll', () => { if (!ticking) { requestAnimationFrame(() => {
 const sections = document.querySelectorAll('section[id], header[id]');
 addEventListener('scroll', () => {
     let current = '';
-    sections.forEach(s => { if (scrollY >= s.offsetTop - 160) current = s.id; });
+    sections.forEach(s => { if (s.getBoundingClientRect().top <= 160) current = s.id; });
+    if (Math.ceil(scrollY + innerHeight) >= document.documentElement.scrollHeight - 2) current = sections[sections.length - 1]?.id || current;
     document.querySelectorAll('.nav-links a').forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
 }, { passive: true });
 
@@ -331,13 +333,14 @@ addEventListener('scroll', () => {
 const customBtn = document.getElementById('customQuote');
 if (customBtn) {
     customBtn.addEventListener('click', () => {
-        const opts = [...document.querySelectorAll('.p-custom__opts input:checked')].map(i => i.value);
+        const english = window.PortfolioI18n?.language === 'en';
+        const opts = [...document.querySelectorAll('.p-custom__opts input:checked')].map(i => window.PortfolioI18n?.t(i.value) || i.value);
         const budget = (document.getElementById('customBudget')?.value || '').trim();
         const extra = (document.getElementById('customExtra')?.value || '').trim();
-        let msg = 'Hola Javi, quiero un plan personalizado a mi medida.';
-        if (opts.length) msg += '\n\nMe interesa incluir:\n• ' + opts.join('\n• ');
-        if (budget) msg += '\n\nMi presupuesto aprox.: ' + budget;
-        if (extra) msg += '\n\nAdemás: ' + extra;
+        let msg = english ? 'Hi Javi, I would like a custom plan for my business.' : 'Hola Javi, quiero un plan personalizado a mi medida.';
+        if (opts.length) msg += (english ? '\n\nI would like to include:\n• ' : '\n\nMe interesa incluir:\n• ') + opts.join('\n• ');
+        if (budget) msg += (english ? '\n\nMy approximate budget: ' : '\n\nMi presupuesto aprox.: ') + budget;
+        if (extra) msg += (english ? '\n\nOther details: ' : '\n\nAdemás: ') + extra;
         window.open('https://wa.me/522871254233?text=' + encodeURIComponent(msg), '_blank', 'noopener');
     });
 }

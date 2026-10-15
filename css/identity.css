@@ -1,0 +1,27 @@
+/* La firma original de Javi, convertida en una escena de partículas. */
+.identity-journey{position:relative;isolation:isolate;background:radial-gradient(ellipse at 79% 22%,#26104880,transparent 40%),#050308;overflow:hidden}
+.identity-journey::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(#a64dff06 1px,transparent 1px),linear-gradient(90deg,#a64dff06 1px,transparent 1px);background-size:70px 70px;mask-image:linear-gradient(#000,transparent 88%)}
+.identity-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.identity-journey .hero{min-height:min(900px,100svh);padding:150px 32px 110px;justify-content:center;text-align:left}
+.identity-journey .hero__inner{max-width:1240px;display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center;text-align:left}
+.hero__copy{position:relative;z-index:2;min-width:0}
+.hero__copy>.kicker{border:1px solid #9d4bff59;border-radius:50px;background:#10091b99;padding:10px 18px 10px 34px;font-size:10px;letter-spacing:.16em;margin-bottom:32px}
+.hero__copy>.kicker::before{left:17px;width:6px;height:6px;border-radius:50%;background:#b97dff;box-shadow:0 0 12px #9d4bff}
+.hero__copy .hero__lead{font-size:17px;line-height:1.8;max-width:475px;margin-bottom:24px}
+.hero__copy .hero__headline{font-size:clamp(46px,5.4vw,78px);line-height:1.04;letter-spacing:-.045em;text-transform:none;margin-bottom:24px}
+.hero__copy .text-red{background-image:linear-gradient(115deg,#d4b1ff,#a25aff 70%,#6ee6f3)}
+.hero__copy .hero__tagline{color:#c9c2d5;font-size:13px;letter-spacing:.17em;margin-bottom:32px}
+.hero__copy .hero__ctas,.hero__copy .hero__socials{justify-content:flex-start}
+.hero__copy .hero__ctas{gap:12px;flex-wrap:wrap;margin-bottom:28px}
+.hero__copy .btn--lg{font-size:13px;padding:16px 22px;min-height:52px}
+.identity-stage{position:relative;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:500px}
+.identity-visual{width:100%;height:350px;position:relative;margin:0;display:flex;align-items:center;justify-content:center}
+.identity-visual .hero__logo-img{width:100%;max-width:540px;animation:none;transition:opacity .6s ease;filter:drop-shadow(0 0 24px #9d4bff66)}
+.identity-journey.is-rendered .identity-visual .hero__logo-img{opacity:0}
+.identity-caption{position:absolute;bottom:0;text-align:center;font-family:var(--font-mono);font-size:10px;letter-spacing:.13em;color:#bca6d9;padding:12px 18px;border:1px solid #a64dff2b;border-radius:50px;background:#0b0515aa}
+.identity-journey .about{z-index:2;border-top:1px solid #a64dff1c;background:linear-gradient(180deg,#05030800,#050308e8);padding-top:95px}
+.identity-journey .hero__scroll{font-size:10px;letter-spacing:.2em}
+@media(min-width:1600px){.identity-journey .hero{min-height:900px}}
+@media(max-width:940px){.identity-journey .hero{min-height:0;padding:115px 28px 80px}.identity-journey .hero__inner{grid-template-columns:1fr;gap:42px;text-align:center}.hero__copy{max-width:660px;margin:auto}.hero__copy .hero__lead{margin-inline:auto}.hero__copy .hero__ctas,.hero__copy .hero__socials{justify-content:center}.hero__copy .hero__headline{font-size:64px}.identity-stage{grid-row:1;min-height:340px;width:min(540px,100%);margin:auto}.identity-visual{height:285px}.identity-caption{bottom:-12px}.hero__copy>.kicker{margin-bottom:20px}.identity-journey .about{padding-top:70px}}
+@media(max-width:600px){.identity-journey .hero{padding:100px 22px 76px}.identity-journey .hero__inner{gap:28px}.identity-stage{min-height:260px}.identity-visual{height:220px}.identity-caption{font-size:8px;bottom:-3px;padding:8px 12px}.hero__copy .hero__headline{font-size:clamp(40px,11vw,60px)}.hero__copy .hero__lead{font-size:14px;margin-bottom:18px}.hero__copy .hero__tagline{font-size:10px;letter-spacing:.11em}.hero__copy .btn--lg{font-size:11px;padding:13px 15px;min-height:48px}.hero__copy>.kicker{font-size:9px}.identity-journey .about{padding-top:60px}}
+@media(prefers-reduced-motion:reduce){.identity-canvas{display:none}.identity-journey.is-rendered .identity-visual .hero__logo-img{opacity:1}.identity-visual .hero__logo-img{transition:none}.identity-journey .reveal{opacity:1;filter:none;transform:none}}

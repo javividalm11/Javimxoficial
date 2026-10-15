@@ -9,11 +9,55 @@ Arquitectura de 2 capas:
 ## Stack
 
 - HTML/CSS/JS vanilla (mismo enfoque que javividalm para máxima performance)
-- Google Fonts: Poppins + Inter
+- Inter variable alojada localmente; Font Awesome alojado localmente
 - Font Awesome 6.4
 - Hosting: Cloudflare Pages (free tier permanente)
 
+## Rediseño del portafolio
+
+La portada reproduce la composición de la referencia con un paisaje cósmico,
+tipografía blanca y degradados violeta/cian. `css/redesign.css` contiene los estilos
+adaptables y `js/globe.js` dibuja un globo de partículas geográficas en Canvas 2D,
+con rotación, conexiones, órbitas luminosas y una base holográfica.
+
+Las cuatro tarjetas flotan de forma independiente y responden al puntero. Las
+animaciones respetan `prefers-reduced-motion`; el Canvas se pausa cuando sale del
+área visible o la pestaña queda oculta. No se requieren dependencias de ejecución
+ni un proceso de build. Se conservan los proyectos, servicios y contacto existentes.
+
+Para previsualizar con el chatbot, usa Node.js 20 o posterior:
+
+```powershell
+npm.cmd run dev
+```
+
+Abre `http://127.0.0.1:4173`. Este servidor ejecuta `/api/chat` además de servir
+los archivos. Sin clave, el chatbot responde con información publicada del
+portafolio y muestra su procedencia; estas respuestas no las genera una IA.
+Live Server también permite este modo de consulta local, pero no ejecuta la API.
+
+Para activar Gemini, copia `.dev.vars.example` a `.dev.vars`, completa
+`GEMINI_API_KEY` con tu clave privada y reinicia el servidor. Puedes elegir el
+modelo con `GEMINI_MODEL`. Las credenciales están excluidas de Git y el servidor
+no sirve los archivos de configuración. En Cloudflare Pages, configura estas
+variables en el entorno del proyecto.
+
+Assets: `img/cosmic-landscape.png` (fondo generado), `fonts/` y `webfonts/` (fuentes
+locales con sus licencias) y `data/land.geojson` ([Natural Earth, dominio público](https://github.com/nvkelso/natural-earth-vector/blob/master/geojson/ne_110m_land.geojson)).
+
 ## Estructura
+
+La bienvenida permite elegir español o inglés y apariencia clara u oscura. Se
+muestra una vez por sesión de pestaña; las preferencias se recuerdan en el
+navegador y pueden cambiarse desde **Preferencias**, en el footer. Las traducciones
+están en `data/translations-en.json` y los temas en `css/themes.css`. La animación
+WebGL de bienvenida se pausa al entrar al sitio y respeta movimiento reducido.
+
+La portada blanca usa su propia composición en `css/light-hero.css`: paisaje
+dorado generado (`img/solar-landscape.webp`) y esfera solar procedural WebGL
+(`js/solar-globe.js`). El prompt del paisaje está en
+`img/solar-landscape.prompt.txt`. La esfera tiene alternativa CSS sin WebGL;
+su animación se pausa fuera de pantalla, en segundo plano y con movimiento reducido.
 
 ```
 JAVIMXOFICIAL/
