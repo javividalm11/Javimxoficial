@@ -1,4 +1,4 @@
-/* Portfolio hero — reference composition, fluid from mobile to ultrawide. */
+/* Hero del portafolio, fluido en todo ancho. */
 @font-face{font-family:Inter;font-style:normal;font-weight:100 900;font-display:swap;src:url('../fonts/inter-latin-variable.woff2') format('woff2')}
 :root{--nav-h:68px;--max-w:1320px;--font-display:Inter,system-ui,sans-serif}
 body{background:#05040c}
@@ -47,6 +47,6 @@ body{background:#05040c}
 @media(max-width:360px){.nav-cta{font-size:9px;padding:8px 10px;gap:5px}.nav-content{gap:8px}.nav-logo__img{width:55px}.cosmic-actions .btn{padding:12px 15px;font-size:11px}}
 @media(max-width:960px){.cosmic-title{line-height:1.08}.cosmic-description{line-height:1.5}.cosmic-actions{gap:10px}.cosmic-actions .btn{font-size:11px;padding:12px 16px;gap:8px}.proof-item small{white-space:normal}.cosmic-proof{row-gap:16px}}
 @media(max-width:960px){.cosmic-stage{max-width:580px}.cosmic-copy{max-width:700px}.cosmic-title{max-width:700px}.cosmic-proof{max-width:570px}.cosmic-description{max-width:570px}.cosmic-hero{min-height:0}}
-/* The metrics share the pedestal's vertical center rather than the copy's baseline. */
+/* Métricas centradas con el pedestal. */
 @media(min-width:961px){.cosmic-copy{padding-bottom:48px}.cosmic-layout>.cosmic-proof{position:absolute;left:0;top:var(--pedestal-y,95%);width:46%;transform:translateY(-50%);margin:0}.cosmic-actions{margin-bottom:0}}
 @media(max-width:960px){.cosmic-proof{order:1}.cosmic-stage{order:2}}

@@ -1,11 +1,23 @@
-/* Animated solar photosphere and orbiting gold particles for the white edition. */
+/* Fotosfera solar con partículas en órbita. */
 (() => {
-  const canvas=document.getElementById('solarGlobe');if(!canvas)return;
-  const stage=canvas.parentElement,root=document.documentElement,welcome=document.getElementById('welcomeDialog');
-  const motion=matchMedia('(prefers-reduced-motion:reduce)');
-  let gl,program,resolution,time,ready=false,failed=false,visible=false,frame=0,last=0,elapsed=0;
-  const vertex='attribute vec2 aPosition;void main(){gl_Position=vec4(aPosition,0.,1.);}';
-  const fragment=`
+  const canvas = document.getElementById('solarGlobe');
+  if (!canvas) return;
+  const stage = canvas.parentElement,
+    root = document.documentElement,
+    welcome = document.getElementById('welcomeDialog');
+  const motion = matchMedia('(prefers-reduced-motion:reduce)');
+  let gl,
+    program,
+    resolution,
+    time,
+    ready = false,
+    failed = false,
+    visible = false,
+    frame = 0,
+    last = 0,
+    elapsed = 0;
+  const vertex = 'attribute vec2 aPosition;void main(){gl_Position=vec4(aPosition,0.,1.);}';
+  const fragment = `
     precision highp float;
     uniform vec2 uResolution;uniform float uTime;
     float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
@@ -59,20 +71,121 @@
       alpha=clamp(alpha,0.,1.);if(r>1.7)alpha=0.;
       gl_FragColor=vec4(color*alpha,alpha);
     }`;
-  function compile(type,source){const shader=gl.createShader(type);gl.shaderSource(shader,source);gl.compileShader(shader);if(!gl.getShaderParameter(shader,gl.COMPILE_STATUS))throw Error('Solar shader unavailable');return shader}
-  function setup(){try{
-    gl=canvas.getContext('webgl',{alpha:true,premultipliedAlpha:true,antialias:false});if(!gl)throw Error('WebGL unavailable');
-    program=gl.createProgram();const v=compile(gl.VERTEX_SHADER,vertex),f=compile(gl.FRAGMENT_SHADER,fragment);gl.attachShader(program,v);gl.attachShader(program,f);gl.linkProgram(program);gl.deleteShader(v);gl.deleteShader(f);if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error('Solar program unavailable');gl.useProgram(program);
-    const buffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buffer);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]),gl.STATIC_DRAW);const position=gl.getAttribLocation(program,'aPosition');gl.enableVertexAttribArray(position);gl.vertexAttribPointer(position,2,gl.FLOAT,false,0,0);
-    resolution=gl.getUniformLocation(program,'uResolution');time=gl.getUniformLocation(program,'uTime');ready=true;resize();stage.classList.add('solar-ready');
-  }catch{failed=true;ready=false;stage.classList.remove('solar-ready')}}
-  function resize(){const dpr=Math.min(devicePixelRatio||1,1.5);canvas.width=Math.max(1,Math.round(stage.clientWidth*dpr));canvas.height=Math.max(1,Math.round(stage.clientHeight*dpr));if(ready){gl.viewport(0,0,canvas.width,canvas.height);if(root.dataset.theme==='light')draw()}}
-  function draw(){if(!ready||gl.isContextLost())return;gl.useProgram(program);gl.uniform2f(resolution,canvas.width,canvas.height);gl.uniform1f(time,elapsed);gl.drawArrays(gl.TRIANGLES,0,6)}
-  function animate(now){frame=0;if(!visible||document.hidden||root.dataset.theme!=='light'||welcome?.open||motion.matches)return;if(!last||now-last>=1000/30){if(last)elapsed+=Math.min((now-last)/1000,.1);last=now;draw()}frame=requestAnimationFrame(animate)}
-  function sync(){cancelAnimationFrame(frame);frame=0;last=0;stage.setAttribute('aria-label',root.dataset.theme==='light'?'Esfera solar animada con servicios digitales':'Globo de partículas con servicios digitales');if(root.dataset.theme!=='light'||welcome?.open)return;if(!ready&&!failed)setup();if(!ready)return;draw();if(visible&&!document.hidden&&!motion.matches)frame=requestAnimationFrame(animate)}
-  new ResizeObserver(resize).observe(stage);new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;sync()},{rootMargin:'80px'}).observe(stage);
-  new MutationObserver(sync).observe(root,{attributes:true,attributeFilter:['data-theme']});if(welcome)new MutationObserver(sync).observe(welcome,{attributes:true,attributeFilter:['open']});
-  document.addEventListener('visibilitychange',sync);motion.addEventListener('change',sync);
-  canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();ready=false;cancelAnimationFrame(frame);frame=0;stage.classList.remove('solar-ready')});canvas.addEventListener('webglcontextrestored',()=>{failed=false;sync()});
+  function compile(type, source) {
+    const shader = gl.createShader(type);
+    gl.shaderSource(shader, source);
+    gl.compileShader(shader);
+    if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) throw Error('Solar shader unavailable');
+    return shader;
+  }
+  function setup() {
+    try {
+      gl = canvas.getContext('webgl', { alpha: true, premultipliedAlpha: true, antialias: false });
+      if (!gl) throw Error('WebGL unavailable');
+      program = gl.createProgram();
+      const v = compile(gl.VERTEX_SHADER, vertex),
+        f = compile(gl.FRAGMENT_SHADER, fragment);
+      gl.attachShader(program, v);
+      gl.attachShader(program, f);
+      gl.linkProgram(program);
+      gl.deleteShader(v);
+      gl.deleteShader(f);
+      if (!gl.getProgramParameter(program, gl.LINK_STATUS))
+        throw Error('Solar program unavailable');
+      gl.useProgram(program);
+      const buffer = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+      gl.bufferData(
+        gl.ARRAY_BUFFER,
+        new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]),
+        gl.STATIC_DRAW
+      );
+      const position = gl.getAttribLocation(program, 'aPosition');
+      gl.enableVertexAttribArray(position);
+      gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);
+      resolution = gl.getUniformLocation(program, 'uResolution');
+      time = gl.getUniformLocation(program, 'uTime');
+      ready = true;
+      resize();
+      stage.classList.add('solar-ready');
+    } catch {
+      failed = true;
+      ready = false;
+      stage.classList.remove('solar-ready');
+    }
+  }
+  function resize() {
+    const dpr = Math.min(devicePixelRatio || 1, 1.5);
+    canvas.width = Math.max(1, Math.round(stage.clientWidth * dpr));
+    canvas.height = Math.max(1, Math.round(stage.clientHeight * dpr));
+    if (ready) {
+      gl.viewport(0, 0, canvas.width, canvas.height);
+      if (root.dataset.theme === 'light') draw();
+    }
+  }
+  function draw() {
+    if (!ready || gl.isContextLost()) return;
+    gl.useProgram(program);
+    gl.uniform2f(resolution, canvas.width, canvas.height);
+    gl.uniform1f(time, elapsed);
+    gl.drawArrays(gl.TRIANGLES, 0, 6);
+  }
+  function animate(now) {
+    frame = 0;
+    if (
+      !visible ||
+      document.hidden ||
+      root.dataset.theme !== 'light' ||
+      welcome?.open ||
+      motion.matches
+    )
+      return;
+    if (!last || now - last >= 1000 / 30) {
+      if (last) elapsed += Math.min((now - last) / 1000, 0.1);
+      last = now;
+      draw();
+    }
+    frame = requestAnimationFrame(animate);
+  }
+  function sync() {
+    cancelAnimationFrame(frame);
+    frame = 0;
+    last = 0;
+    stage.setAttribute(
+      'aria-label',
+      root.dataset.theme === 'light'
+        ? 'Esfera solar animada con servicios digitales'
+        : 'Globo de partículas con servicios digitales'
+    );
+    if (root.dataset.theme !== 'light' || welcome?.open) return;
+    if (!ready && !failed) setup();
+    if (!ready) return;
+    draw();
+    if (visible && !document.hidden && !motion.matches) frame = requestAnimationFrame(animate);
+  }
+  new ResizeObserver(resize).observe(stage);
+  new IntersectionObserver(
+    ([entry]) => {
+      visible = entry.isIntersecting;
+      sync();
+    },
+    { rootMargin: '80px' }
+  ).observe(stage);
+  new MutationObserver(sync).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+  if (welcome)
+    new MutationObserver(sync).observe(welcome, { attributes: true, attributeFilter: ['open'] });
+  document.addEventListener('visibilitychange', sync);
+  motion.addEventListener('change', sync);
+  canvas.addEventListener('webglcontextlost', (event) => {
+    event.preventDefault();
+    ready = false;
+    cancelAnimationFrame(frame);
+    frame = 0;
+    stage.classList.remove('solar-ready');
+  });
+  canvas.addEventListener('webglcontextrestored', () => {
+    failed = false;
+    sync();
+  });
   sync();
 })();

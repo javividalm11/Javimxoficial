@@ -1,4 +1,4 @@
-/* About section. Button styles and behavior remain in the existing stylesheet. */
+/* Sección Sobre mí. */
 #sobre-mi.about{display:block;max-width:none;padding:78px 6%;overflow:hidden;isolation:isolate;background:radial-gradient(ellipse at 7% 18%,#4c258b4a,transparent 34%),radial-gradient(ellipse at 94% 91%,#3e28904a,transparent 30%),linear-gradient(120deg,#0b0b1b,#060a14 60%,#0b0d20);border-bottom:1px solid #5f54892b;text-align:left}
 #sobre-mi::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(#5c52a010 1px,transparent 1px),linear-gradient(90deg,#5c52a010 1px,transparent 1px),radial-gradient(circle at 12% 18%,#a188ff 0 1px,transparent 2px),radial-gradient(circle at 84% 34%,#786eff 0 1px,transparent 2px),radial-gradient(circle at 40% 80%,#6b69ff 0 1px,transparent 2px);background-size:150px 150px,150px 150px,291px 241px,379px 307px,443px 369px;opacity:.7}
 .about__inner{max-width:1440px;margin:auto;display:grid;grid-template-columns:43% 57%;gap:0;align-items:center;position:relative}

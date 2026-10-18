@@ -29,3 +29,8 @@ dist/
 
 # Respaldos locales
 .backups/
+
+# Secretos y entornos locales (nunca versionar)
+*.pem
+*.key
+*.log

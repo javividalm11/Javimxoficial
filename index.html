@@ -9,13 +9,7 @@
     <meta name="author" content="Javier Vidal Miguel">
     <meta name="theme-color" content="#050308">
     <meta name="color-scheme" content="dark">
-    <script>
-      try {
-        const preferences = JSON.parse(localStorage.getItem('javi.preferences.v1') || '{}');
-        document.documentElement.dataset.theme = preferences.theme === 'light' ? 'light' : 'dark';
-        if (!sessionStorage.getItem('javi.welcome.v1')) document.documentElement.classList.add('welcome-pending');
-      } catch { document.documentElement.classList.add('welcome-pending'); }
-    </script>
+    <script src="./js/theme-init.js"></script>
 
     <meta property="og:type" content="profile">
     <meta property="og:title" content="@javimxoficial · Javi · Creador & Cloud Engineer">
@@ -53,7 +47,6 @@
     <link rel="stylesheet" href="./css/welcome.css">
     <link rel="stylesheet" href="./css/light-hero.css">
     <link rel="stylesheet" href="./css/light-page.css">
-    <style>html{background:#050308;}</style>
 
     <script type="application/ld+json">
     {
@@ -130,7 +123,7 @@
         </div>
     </nav>
 
-    <!-- Hero: particle globe and independently animated service cards. -->
+    <!-- Hero: globo y tarjetas -->
     <header id="top" class="cosmic-hero">
         <div class="cosmic-layout">
             <div class="cosmic-copy">
@@ -209,7 +202,7 @@
                     <span class="btn__shine"></span>
                     Ver mis proyectos <i class="fas fa-arrow-right btn__arrow"></i>
                 </a>
-                <a href="https://javividalm.pages.dev/" target="_blank" rel="noopener" class="btn btn--ghost magnetic">
+                <a href="https://javividalm.pages.dev/" target="_blank" rel="noopener noreferrer" class="btn btn--ghost magnetic">
                     <i class="fas fa-code"></i> Portafolio tech
                 </a>
             </div>
@@ -251,7 +244,7 @@
                     <p class="project-featured__description">Estudio de arquitectura e interiores: del concepto 3D a la entrega llave en mano, con cotizador por m² y asistente con IA.</p>
                     <div class="project-tags"><span>Arquitectura</span><span>Diseño</span></div>
                     <div class="project-highlights"><div><i class="fas fa-cube" aria-hidden="true"></i><span><strong>Diseño 3D</strong><small>Concepto visual</small></span></div><div><i class="fas fa-calculator" aria-hidden="true"></i><span><strong>Cotizador</strong><small>Por m²</small></span></div><div><i class="fas fa-brain" aria-hidden="true"></i><span><strong>IA</strong><small>Asistente virtual</small></span></div></div>
-                    <div class="project-featured__actions"><button type="button" class="btn btn--primary" data-case="modarch">Ver caso completo <i class="fas fa-arrow-right" aria-hidden="true"></i></button><a class="btn btn--ghost" href="https://modarch.com.pe/" target="_blank" rel="noopener">Visitar sitio <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div>
+                    <div class="project-featured__actions"><button type="button" class="btn btn--primary" data-case="modarch">Ver caso completo <i class="fas fa-arrow-right" aria-hidden="true"></i></button><a class="btn btn--ghost" href="https://modarch.com.pe/" target="_blank" rel="noopener noreferrer">Visitar sitio <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div>
                 </div>
             </article>
             <div class="project-sidebar" id="projectSidebar" aria-label="Más proyectos"></div>
@@ -268,7 +261,7 @@
         <div class="project-case__header"><span class="kicker">Proyecto real</span><button type="button" id="projectCaseClose" class="project-page-arrow" aria-label="Cerrar caso de proyecto"><i class="fas fa-xmark" aria-hidden="true"></i></button></div>
         <h3 id="projectCaseTitle"></h3>
         <img id="projectCaseImage" alt="" loading="lazy">
-        <div class="project-case__body"><h4>Descripción del proyecto</h4><p id="projectCaseDescription"></p><h4>Especialidades</h4><div class="project-tags" id="projectCaseTags"></div><a id="projectCaseLink" class="btn btn--primary" target="_blank" rel="noopener">Explorar el proyecto <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div>
+        <div class="project-case__body"><h4>Descripción del proyecto</h4><p id="projectCaseDescription"></p><h4>Especialidades</h4><div class="project-tags" id="projectCaseTags"></div><a id="projectCaseLink" class="btn btn--primary" target="_blank" rel="noopener noreferrer">Explorar el proyecto <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div>
       </dialog>
       <script type="application/json" id="projectsData">[{"id": "modarch", "name": "ModArch", "url": "https://modarch.com.pe/", "image": "./img/proj-modarch.jpg", "description": "Estudio de arquitectura e interiores: del concepto 3D a la entrega llave en mano, con cotizador por m² y asistente con IA.", "category": "Arquitectura · Diseño", "tags": ["Web Apps", "Cloud", "IA", "Automatización"]}, {"id": "white-apple", "name": "White Apple", "url": "https://applemobile.pages.dev/", "image": "./img/proj-apple.jpg", "description": "Venta de iPhones premium con servicio técnico, asesoría y soporte postventa en Lima.", "category": "E-commerce · iPhones", "tags": ["E-commerce", "Web Apps", "Cloud"]}, {"id": "veoplaca", "name": "Veoplaca", "url": "https://veoplaca.com/", "image": "./img/proj-veoplaca.jpg", "description": "Revisa el historial de un vehículo por su placa: rápido, gratis y sin complicaciones.", "category": "IA · Visión por computadora", "tags": ["Web Apps", "Cloud", "IA"]}, {"id": "clínica-cordel", "name": "Clínica Cordel", "url": "https://clinicacordel.netlify.app/", "image": "./img/proj-cordel.jpg", "description": "Sitio para clínica dental en Puebla: agenda en 30 s, asistente con IA 24/7 y WhatsApp.", "category": "Clínica dental · Web + IA", "tags": ["Web Apps", "Cloud", "IA", "Automatización"]}, {"id": "charms-studio", "name": "Charms Studio", "url": "https://charmstudio.pages.dev/", "image": "./img/proj-charm.jpg", "description": "Tienda de llaveros, peluches y merch de anime con búsqueda por fandom, personalización y envíos a todo Ecuador.", "category": "E-commerce · Merch anime", "tags": ["E-commerce", "Web Apps", "Cloud"]}, {"id": "radio-hobby-team", "name": "Radio Hobby Team", "url": "https://radioteam.pages.dev/", "image": "./img/proj-radio.jpg", "description": "Tienda de radiocontrol de alto desempeño: autos, aviones y barcos RC, con asesor para elegir tu modelo.", "category": "E-commerce · Radiocontrol", "tags": ["E-commerce", "Web Apps", "Cloud"]}, {"id": "calzados-stilet", "name": "Calzados Stilet", "url": "https://calzadostilet.pages.dev/", "image": "./img/proj-stilet.jpg", "description": "Tienda de calzado femenino elegante con catálogo de colección y compra online.", "category": "E-commerce · Moda", "tags": ["E-commerce", "Web Apps", "Cloud"]}, {"id": "pacas-tannya", "name": "Pacas Tannya", "url": "https://pacas-tanya.netlify.app/", "image": "./img/proj-pacas.jpg", "description": "Tienda de ropa americana premium por paca, con catálogo y envíos a todo México.", "category": "E-commerce · Ropa", "tags": ["E-commerce", "Web Apps", "Cloud"]}, {"id": "the-silencers", "name": "The Silencers", "url": "https://thesilencers.netlify.app/", "image": "./img/proj-silencers.jpg", "description": "El hub gamer hispanohablante: guías, mods, plugins y servidores en un solo lugar.", "category": "Comunidad · Gaming", "tags": ["Web Apps", "Cloud"]}]</script>
     </section>
@@ -300,7 +293,7 @@
                 <p class="community-handle">@javimxoficial</p>
                 <p class="community-card__description">Mira mi día a día, tips rápidos y contenido detrás de cámaras.</p>
                 <ul class="community-tags" aria-label="Contenido en Instagram"><li>Tips</li><li>Lifestyle</li><li>Detrás de cámaras</li></ul>
-                <a href="https://www.instagram.com/javimxoficial/" target="_blank" rel="noopener" class="btn btn--ghost community-link">Seguir en Instagram <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                <a href="https://www.instagram.com/javimxoficial/" target="_blank" rel="noopener noreferrer" class="btn btn--ghost community-link">Seguir en Instagram <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                 <i class="fab fa-instagram community-watermark" aria-hidden="true"></i>
             </article>
             <article class="community-card community-card--youtube community-card--featured" data-spotlight>
@@ -313,7 +306,7 @@
                 <p class="community-handle">@javimxoficial</p>
                 <p class="community-card__description">Tutoriales, proyectos completos y contenido en profundidad.</p>
                 <ul class="community-tags" aria-label="Contenido en YouTube"><li>Tutoriales</li><li>Proyectos</li><li>IA</li><li>Web</li></ul>
-                <a href="https://www.youtube.com/@javimxoficial" target="_blank" rel="noopener" class="btn btn--primary community-link">Ver canal de YouTube <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                <a href="https://www.youtube.com/@javimxoficial" target="_blank" rel="noopener noreferrer" class="btn btn--primary community-link">Ver canal de YouTube <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                 <i class="fab fa-youtube community-watermark" aria-hidden="true"></i>
             </article>
             <article class="community-card community-card--tiktok" data-spotlight>
@@ -326,7 +319,7 @@
                 <p class="community-handle">@javiitok</p>
                 <p class="community-card__description">Tips rápidos, clips y herramientas que no toman más de un minuto.</p>
                 <ul class="community-tags" aria-label="Contenido en TikTok"><li>Tips</li><li>IA</li><li>Herramientas</li><li>Shorts</li></ul>
-                <a href="https://www.tiktok.com/@javiitok" target="_blank" rel="noopener" class="btn btn--ghost community-link">Seguir en TikTok <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                <a href="https://www.tiktok.com/@javiitok" target="_blank" rel="noopener noreferrer" class="btn btn--ghost community-link">Seguir en TikTok <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                 <i class="fab fa-tiktok community-watermark" aria-hidden="true"></i>
             </article>
             <article class="community-card community-card--facebook" data-spotlight>
@@ -339,7 +332,7 @@
                 <p class="community-handle">Digital Studio Javi</p>
                 <p class="community-card__description">Únete a la comunidad, participa en discusiones y mantente al día.</p>
                 <ul class="community-tags" aria-label="Contenido en Facebook"><li>Comunidad</li><li>Noticias</li><li>Recursos</li></ul>
-                <a href="https://facebook.com/digitalstudiojavi" target="_blank" rel="noopener" class="btn btn--ghost community-link">Unirse en Facebook <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                <a href="https://facebook.com/digitalstudiojavi" target="_blank" rel="noopener noreferrer" class="btn btn--ghost community-link">Unirse en Facebook <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                 <i class="fab fa-facebook-f community-watermark" aria-hidden="true"></i>
             </article>
         </div>
@@ -399,7 +392,7 @@
                     <li><i class="fas fa-check"></i> Diseño mobile-first</li>
                     <li><i class="fas fa-check"></i> Entrega en 5–7 días</li>
                 </ul>
-                <a href="https://wa.me/522871254233?text=Hola%20Javi%2C%20me%20interesa%20el%20paquete%20B%C3%A1sico%20de%20presencia%20digital" target="_blank" rel="noopener" class="btn btn--ghost btn--block">Contratar Básico <i class="fas fa-arrow-right btn__arrow"></i></a>
+                <a href="https://wa.me/522871254233?text=Hola%20Javi%2C%20me%20interesa%20el%20paquete%20B%C3%A1sico%20de%20presencia%20digital" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--block">Contratar Básico <i class="fas fa-arrow-right btn__arrow"></i></a>
             </article>
 
             <article class="p-card p-card--featured reveal" data-spotlight>
@@ -445,7 +438,7 @@
                     <li><i class="fas fa-check"></i> SEO local (aparecer en Google Maps)</li>
                     <li><i class="fas fa-check"></i> Reporte mensual PDF con métricas</li>
                 </ul>
-                <a href="https://wa.me/522871254233?text=Hola%20Javi%2C%20me%20interesa%20el%20paquete%20Pro%20con%20automatizaci%C3%B3n%20de%20WhatsApp" target="_blank" rel="noopener" class="btn btn--primary btn--block"><span class="btn__shine"></span>Contratar Pro <i class="fas fa-arrow-right btn__arrow"></i></a>
+                <a href="https://wa.me/522871254233?text=Hola%20Javi%2C%20me%20interesa%20el%20paquete%20Pro%20con%20automatizaci%C3%B3n%20de%20WhatsApp" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--block"><span class="btn__shine"></span>Contratar Pro <i class="fas fa-arrow-right btn__arrow"></i></a>
             </article>
 
             <article class="p-card reveal" data-spotlight>
@@ -491,7 +484,7 @@
                     <li><i class="fas fa-check"></i> Soporte prioritario &lt; 2h respuesta</li>
                     <li><i class="fas fa-check"></i> Revisión trimestral estratégica</li>
                 </ul>
-                <a href="https://wa.me/522871254233?text=Hola%20Javi%2C%20me%20interesa%20el%20paquete%20Premium%20ecosistema%20digital%20completo" target="_blank" rel="noopener" class="btn btn--ghost btn--block">Contratar Premium <i class="fas fa-arrow-right btn__arrow"></i></a>
+                <a href="https://wa.me/522871254233?text=Hola%20Javi%2C%20me%20interesa%20el%20paquete%20Premium%20ecosistema%20digital%20completo" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--block">Contratar Premium <i class="fas fa-arrow-right btn__arrow"></i></a>
             </article>
         </div>
 
@@ -532,7 +525,7 @@
                 <h3 class="services__diag-title">Diagnóstico gratis en 15 min.</h3>
                 <p>Te muestro qué está perdiendo tu negocio hoy y qué paquete te recupera la inversión más rápido. Sin compromiso.</p>
             </div>
-            <a href="https://wa.me/522871254233?text=Hola%20Javi%2C%20me%20interesa%20un%20diagn%C3%B3stico%20gratis%20para%20mi%20negocio" target="_blank" rel="noopener" class="btn btn--primary magnetic"><span class="btn__shine"></span><i class="fab fa-whatsapp"></i> Pedir diagnóstico</a>
+            <a href="https://wa.me/522871254233?text=Hola%20Javi%2C%20me%20interesa%20un%20diagn%C3%B3stico%20gratis%20para%20mi%20negocio" target="_blank" rel="noopener noreferrer" class="btn btn--primary magnetic"><span class="btn__shine"></span><i class="fab fa-whatsapp"></i> Pedir diagnóstico</a>
         </div>
     </section>
 
@@ -555,7 +548,7 @@
               <label class="proposal-field"><i class="fas fa-coins" aria-hidden="true"></i><span><span class="proposal-label">Presupuesto</span><select name="budget" id="proposalBudget" required><option value="" disabled selected>Selecciona un rango</option><option>$100–$300 USD</option><option>$300–$650 USD</option><option>$650–$1,500 USD</option><option>Más de $1,500 USD</option><option>Por definir</option></select></span></label>
               <label class="proposal-field proposal-field--message"><i class="far fa-comment-dots" aria-hidden="true"></i><span><span class="proposal-label">Cuéntame sobre tu proyecto</span><textarea name="message" id="proposalMessage" placeholder="Describe tu idea, objetivos y cualquier detalle importante..." minlength="10" maxlength="500" required aria-describedby="proposalCounter"></textarea><span class="proposal-counter" id="proposalCounter">0/500</span></span></label>
             </div>
-            <div class="proposal-actions"><button type="submit" class="btn btn--primary"><i class="far fa-paper-plane" aria-hidden="true"></i> Enviar propuesta <i class="fas fa-chevron-right" aria-hidden="true"></i></button><a href="https://wa.me/522871254233?text=Hola%20Javi%2C%20me%20gustar%C3%ADa%20agendar%20una%20llamada%20para%20hablar%20de%20mi%20proyecto." target="_blank" rel="noopener" class="btn btn--ghost"><i class="far fa-calendar" aria-hidden="true"></i> Agendar llamada <i class="fas fa-chevron-right" aria-hidden="true"></i></a></div>
+            <div class="proposal-actions"><button type="submit" class="btn btn--primary"><i class="far fa-paper-plane" aria-hidden="true"></i> Enviar propuesta <i class="fas fa-chevron-right" aria-hidden="true"></i></button><a href="https://wa.me/522871254233?text=Hola%20Javi%2C%20me%20gustar%C3%ADa%20agendar%20una%20llamada%20para%20hablar%20de%20mi%20proyecto." target="_blank" rel="noopener noreferrer" class="btn btn--ghost"><i class="far fa-calendar" aria-hidden="true"></i> Agendar llamada <i class="fas fa-chevron-right" aria-hidden="true"></i></a></div>
             <p class="proposal-privacy"><i class="fas fa-lock" aria-hidden="true"></i> Tu información está segura. Solo la usaré para contactarte sobre tu proyecto.</p>
             <p id="proposalStatus" class="proposal-status" role="status" aria-live="polite"></p>
           </form>
@@ -563,8 +556,8 @@
             <div class="direct-contact__heading"><span class="direct-eyebrow">HABLEMOS</span><h3>O contáctame directamente</h3><p>Elige la opción que prefieras. Estoy aquí para resolver tus dudas<br>y explorar cómo podemos trabajar juntos.</p><span class="contact-mini-planet" aria-hidden="true"><span></span></span></div>
             <div class="direct-contact__methods">
               <a class="direct-method" href="mailto:javividalm11@gmail.com"><i class="far fa-envelope" aria-hidden="true"></i><span><span class="direct-method__label">Email</span><strong>javividalm11@gmail.com</strong></span><i class="fas fa-arrow-right direct-method__arrow" aria-hidden="true"></i></a>
-              <a class="direct-method direct-method--whatsapp" href="https://wa.me/522871254233" target="_blank" rel="noopener"><i class="fab fa-whatsapp" aria-hidden="true"></i><span><strong>WhatsApp</strong></span><i class="fas fa-arrow-right direct-method__arrow" aria-hidden="true"></i></a>
-              <a class="direct-method" href="https://javividalm.pages.dev/" target="_blank" rel="noopener"><i class="fas fa-link" aria-hidden="true"></i><span><span class="direct-method__label">Portafolio</span><strong>javividalm.pages.dev</strong></span><i class="fas fa-arrow-right direct-method__arrow" aria-hidden="true"></i></a>
+              <a class="direct-method direct-method--whatsapp" href="https://wa.me/522871254233" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i><span><strong>WhatsApp</strong></span><i class="fas fa-arrow-right direct-method__arrow" aria-hidden="true"></i></a>
+              <a class="direct-method" href="https://javividalm.pages.dev/" target="_blank" rel="noopener noreferrer"><i class="fas fa-link" aria-hidden="true"></i><span><span class="direct-method__label">Portafolio</span><strong>javividalm.pages.dev</strong></span><i class="fas fa-arrow-right direct-method__arrow" aria-hidden="true"></i></a>
               <div class="direct-method direct-method--location"><i class="fas fa-location-dot" aria-hidden="true"></i><span><span class="direct-method__label">Ubicación</span><strong>LATAM y el mundo</strong></span></div>
             </div>
             <div class="contact-promises">
@@ -574,12 +567,12 @@
               <div><i class="fas fa-cube" aria-hidden="true"></i><strong>Web + IA + Cloud</strong></div>
             </div>
             <div class="contact-social"><div><p>TAMBIÉN EN REDES</p><div class="contact-social__links">
-              <a href="https://www.instagram.com/javimxoficial/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-              <a href="https://www.youtube.com/@javimxoficial" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
-              <a href="https://www.tiktok.com/@javiitok" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
-              <a href="https://facebook.com/digitalstudiojavi" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
-              <a href="https://www.linkedin.com/in/javiervidalm/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
-              <a href="https://javividalm.pages.dev/" target="_blank" rel="noopener" aria-label="Portafolio profesional"><i class="fas fa-code" aria-hidden="true"></i></a>
+              <a href="https://www.instagram.com/javimxoficial/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+              <a href="https://www.youtube.com/@javimxoficial" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+              <a href="https://www.tiktok.com/@javiitok" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
+              <a href="https://facebook.com/digitalstudiojavi" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+              <a href="https://www.linkedin.com/in/javiervidalm/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+              <a href="https://javividalm.pages.dev/" target="_blank" rel="noopener noreferrer" aria-label="Portafolio profesional"><i class="fas fa-code" aria-hidden="true"></i></a>
             </div></div><span class="contact-social__note" aria-hidden="true"><svg viewBox="0 0 45 22"><path d="M40 10 Q20 23 4 10 M11 8 L4 10 L10 16"/></svg>Conectemos<br>también por aquí</span></div>
           </div>
         </div>
@@ -591,6 +584,7 @@
       </footer>
     </div>
 
+    <script type="module" src="./js/config-global.js"></script>
     <script src="./js/script.js" defer></script>
     <script src="./js/jai-logo.js" defer></script>
     <script src="./js/jai-voice-sphere.js" defer></script>

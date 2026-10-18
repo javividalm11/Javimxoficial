@@ -1,4 +1,4 @@
-/* One ambient layer keeps the grid, stars and nebula continuous on scroll. */
+/* Fondo ambiental continuo. */
 body{background:#060711;isolation:isolate}
 .page-background{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse at 90% 15%,#6230bd26,transparent 46%),radial-gradient(ellipse at 9% 80%,#424ab022,transparent 43%),#060711}
 .page-background::before{content:'';position:absolute;inset:0;background:linear-gradient(#060711cf,#060711e8),url('../img/cosmic-landscape.png') center/cover no-repeat}

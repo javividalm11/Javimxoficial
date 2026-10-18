@@ -21,7 +21,7 @@
 @media(max-width:360px){.jai-callout{width:166px;height:63px;padding:12px 14px}.jai-callout strong{font-size:16px}.jai-callout>span{font-size:11px}.jai-emblem{width:58px;height:58px}.jai-launcher{gap:17px}.jai-emblem::after{inset:4px}.jai-logo-fallback{font-size:18px}.ai-head{padding:12px}.ai-head__status{font-size:10px}}
 @media(max-height:500px){.ai-voice{gap:10px;padding:10px}.ai-orb{width:62px;height:62px;font-size:25px}.ai-voice__hint{display:none}.ai-voice__ctrls .ai-voice__btn{width:38px;height:38px}.ai-voice__transcript{max-height:30px}.ai-head{padding:8px 14px}.ai-voice{top:102px}}
 @media(prefers-reduced-motion:reduce){.jai-emblem{animation:none}.ai-orb.is-thinking{animation:none}}
-/* Opening view: navigation to the five existing ways to work with Javi. */
+/* Menú inicial del asistente. */
 .ai-panel{width:420px;bottom:135px;max-height:calc(100svh - 153px);border:1px solid #a15fff;border-radius:22px;background:linear-gradient(130deg,#0d142b,#0a1020 50%,#140b2c);box-shadow:inset 0 1px 2px #d6aaff45,0 0 24px #7939dd38,0 20px 60px #0009}
 .ai-panel.is-menu{height:auto}
 .ai-panel .ai-head{flex:none;min-height:85px;padding:17px 18px;gap:13px;background:transparent;border-bottom:0}

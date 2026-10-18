@@ -1,0 +1,6 @@
+node_modules
+.backups
+css
+*.html
+*.json
+*.md

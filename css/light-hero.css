@@ -1,4 +1,4 @@
-/* The white edition has its own sunrise composition. Dark edition stays scoped out. */
+/* Hero de la edición clara. */
 #solarGlobe,.solar-fallback{display:none}
 html[data-theme=light] .cosmic-hero{padding:0;min-height:100svh;background:#fff5df}
 html[data-theme=light] .cosmic-hero::before{background:url('../img/solar-landscape.webp') center/100% 100% no-repeat;opacity:1;mask-image:linear-gradient(#000 97%,transparent);-webkit-mask-image:linear-gradient(#000 97%,transparent)}

@@ -1,4 +1,4 @@
-/* La firma original de Javi, convertida en una escena de partículas. */
+/* Firma en escena de partículas. */
 .identity-journey{position:relative;isolation:isolate;background:radial-gradient(ellipse at 79% 22%,#26104880,transparent 40%),#050308;overflow:hidden}
 .identity-journey::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(#a64dff06 1px,transparent 1px),linear-gradient(90deg,#a64dff06 1px,transparent 1px);background-size:70px 70px;mask-image:linear-gradient(#000,transparent 88%)}
 .identity-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
