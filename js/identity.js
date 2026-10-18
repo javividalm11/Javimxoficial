@@ -58,7 +58,7 @@
       shader(
         gl.VERTEX_SHADER,
         `
-      const float TURNS=5.0;
+      const float HELICES=5.0;
       attribute vec3 aPosition,aColor;attribute float aSeed,aKind;
       uniform vec2 uResolution,uCenter,uPointer;uniform float uSize,uDpr,uTime,uFormation,uSourceHeight,uHelixRadius;
       uniform mediump float uLight;
@@ -79,11 +79,16 @@
         scatter+=vec2(sin(uTime*.32+seed*51.0)*24.0,cos(uTime*.23+seed*37.0)*30.0);
         scatter.y=mod(scatter.y+uTime*12.0,uSourceHeight);
         float strand=step(.5,fract(sin(seed*91.7)*437.58));
-        float angle=seed*TURNS*6.2832+strand*3.1416+uTime*.7;
+        float id=floor(fract(sin(seed*53.1)*917.3)*HELICES);
+        float variant=mod(id,3.0);
+        float spin=mod(id,2.0)<.5?1.0:-1.0;
+        float turns=4.0+variant;
+        float angle=seed*turns*6.2832+strand*3.1416+id*1.9+spin*uTime*(.55+variant*.12);
         float helixDepth=sin(angle)*.5+.5;
-        float radius=uHelixRadius*(1.0-intro*.5);
-        vec2 helix=vec2(uCenter.x+cos(angle)*radius*(.85+helixDepth*.3),
-          uSourceHeight*(.08+.84*seed));
+        float radius=uHelixRadius*(.75+variant*.15)*(1.0-intro*.5);
+        float column=uResolution.x*(.07+id*.215);
+        vec2 helix=vec2(column+cos(angle)*radius*(.85+helixDepth*.3),
+          uSourceHeight*(.05+variant*.05+seed*(.8-variant*.06)));
         vec2 origin=kind>1.5?scatter:helix;
         vec2 pixel=mix(origin,target,intro);
         if(kind>1.5){
@@ -95,7 +100,7 @@
         vAlpha*=mix(mix(.5,1.0,helixDepth),1.0,intro);
         vAlpha*=mix(1.0,.85,uLight);
         if(kind<-.5||kind>.5||seed>.65)vAlpha*=1.0-uLight;
-        gl_PointSize=(kind<.5?2.1+seed*2.3:2.0+seed*2.0)*uDpr*perspective*mix(1.2,1.0,intro);
+        gl_PointSize=(kind<.5?2.1+seed*2.3:2.0+seed*2.0)*uDpr*perspective*mix(1.35,1.0,intro);
         gl_PointSize*=mix(1.0,.85,uLight);
       }`
       )
@@ -162,7 +167,7 @@
     cy = v.top - base.top + v.height / 2;
     sourceHeight = Math.max(1, signature.getBoundingClientRect().top - base.top);
     size = Math.min(v.width * 0.9, v.height * 1.65, 550);
-    helixRadius = Math.min(width * 0.14, sourceHeight * 0.2, 130);
+    helixRadius = Math.min(width * 0.075, sourceHeight * 0.16, 110);
     canvas.width = Math.round(width * dpr);
     canvas.height = Math.round(height * dpr);
     waves.width = Math.round(width * dpr);
@@ -212,32 +217,6 @@
         color.addColorStop(1, isLight ? '#c7953628' : '#29e0ef25');
         ctx.strokeStyle = color;
         ctx.lineWidth = i % 3 ? 0.6 : 1;
-        ctx.stroke();
-      }
-    // Esfera Fibonacci proyectada en 3D.
-    const shell = [];
-    for (let i = 0; i < (isLight ? 0 : 100); i++) {
-      const y = 1 - (2 * (i + 0.5)) / 100,
-        r = Math.sqrt(1 - y * y),
-        a = i * 2.399963 + time * 0.1;
-      const x = Math.cos(a) * r * 0.59,
-        z = Math.sin(a) * r * 0.59;
-      const yy = y * 0.4,
-        scale = 1.7 / (1.7 - z);
-      shell.push({ x: cx + x * size * scale, y: cy + yy * size * scale, z, px: x, py: yy, pz: z });
-    }
-    for (let i = 0; i < shell.length; i++)
-      for (let j = i + 1; j < shell.length; j++) {
-        const a = shell[i],
-          b = shell[j];
-        if (Math.hypot(a.px - b.px, a.py - b.py, a.pz - b.pz) > 0.2) continue;
-        ctx.beginPath();
-        ctx.moveTo(a.x, a.y);
-        ctx.lineTo(b.x, b.y);
-        ctx.strokeStyle = isLight
-          ? 'rgba(129,71,170,' + (0.025 + Math.max(0, a.z) * 0.1) + ')'
-          : 'rgba(173,105,255,' + (0.035 + Math.max(0, a.z) * 0.15) + ')';
-        ctx.lineWidth = 0.5;
         ctx.stroke();
       }
     const floor = cy + size * 0.47;
@@ -342,23 +321,6 @@
           pixels[o + 2] / 255,
           seed,
           clean[y * sample.width + x] ? 0 : -1
-        );
-      }
-      const shellCount = innerWidth <= 600 ? 500 : 1100;
-      for (let i = 0; i < shellCount; i++) {
-        const y = 1 - (2 * (i + 0.5)) / shellCount,
-          r = Math.sqrt(1 - y * y),
-          a = i * 2.399963,
-          seed = random(i + 8);
-        data.push(
-          Math.cos(a) * r * 0.59,
-          y * 0.4,
-          Math.sin(a) * r * 0.59,
-          0.62,
-          0.28 + seed * 0.25,
-          1,
-          seed,
-          1
         );
       }
       for (let i = 0; i < 300; i++)
