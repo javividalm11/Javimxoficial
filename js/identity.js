@@ -31,8 +31,7 @@
     rotationY = 0,
     formation = 0,
     formationTarget = 0,
-    sourceHeight = 1,
-    helixRadius = 80;
+    sourceHeight = 1;
   const random = (n) => {
     const x = Math.sin(n * 127.1 + 31.7) * 43758.5453;
     return x - Math.floor(x);
@@ -58,9 +57,8 @@
       shader(
         gl.VERTEX_SHADER,
         `
-      const float HELICES=5.0;
       attribute vec3 aPosition,aColor;attribute float aSeed,aKind;
-      uniform vec2 uResolution,uCenter,uPointer;uniform float uSize,uDpr,uTime,uFormation,uSourceHeight,uHelixRadius;
+      uniform vec2 uResolution,uCenter,uPointer;uniform float uSize,uDpr,uTime,uFormation,uSourceHeight;
       uniform mediump float uLight;
       varying vec3 vColor;varying float vAlpha;
       void main(){
@@ -74,22 +72,10 @@
         p=vec3(p.x,p.y*cos(pitch)-p.z*sin(pitch),p.y*sin(pitch)+p.z*cos(pitch));
         float perspective=1.7/(1.7-p.z);
         vec2 target=uCenter+p.xy*uSize*perspective;
-        vec2 scatter=vec2(fract(sin(seed*117.2)*43758.54)*uResolution.x,
+        vec2 origin=vec2(fract(sin(seed*117.2)*43758.54)*uResolution.x,
           fract(sin(seed*313.7)*96321.91)*uSourceHeight);
-        scatter+=vec2(sin(uTime*.32+seed*51.0)*24.0,cos(uTime*.23+seed*37.0)*30.0);
-        scatter.y=mod(scatter.y+uTime*12.0,uSourceHeight);
-        float strand=step(.5,fract(sin(seed*91.7)*437.58));
-        float id=floor(fract(sin(seed*53.1)*917.3)*HELICES);
-        float variant=mod(id,3.0);
-        float spin=mod(id,2.0)<.5?1.0:-1.0;
-        float turns=4.0+variant;
-        float angle=seed*turns*6.2832+strand*3.1416+id*1.9+spin*uTime*(.55+variant*.12);
-        float helixDepth=sin(angle)*.5+.5;
-        float radius=uHelixRadius*(.75+variant*.15)*(1.0-intro*.5);
-        float column=uResolution.x*(.07+id*.215);
-        vec2 helix=vec2(column+cos(angle)*radius*(.85+helixDepth*.3),
-          uSourceHeight*(.05+variant*.05+seed*(.8-variant*.06)));
-        vec2 origin=kind>1.5?scatter:helix;
+        origin+=vec2(sin(uTime*.32+seed*51.0)*24.0,cos(uTime*.23+seed*37.0)*30.0);
+        origin.y=mod(origin.y+uTime*12.0,uSourceHeight);
         vec2 pixel=mix(origin,target,intro);
         if(kind>1.5){
           pixel=vec2(origin.x,fract(seed+uTime*.004)*uResolution.y);
@@ -97,10 +83,10 @@
         gl_Position=vec4(pixel/uResolution*vec2(2.0,-2.0)+vec2(-1.0,1.0),0.0,1.0);
         vColor=aColor;
         vAlpha=kind<.5?.9:(kind<1.5?(.15+max(0.0,p.z)*.9):.23);
-        vAlpha*=mix(mix(.5,1.0,helixDepth),1.0,intro);
+        vAlpha*=mix(.28,1.0,intro);
         vAlpha*=mix(1.0,.85,uLight);
         if(kind<-.5||kind>.5||seed>.65)vAlpha*=1.0-uLight;
-        gl_PointSize=(kind<.5?2.1+seed*2.3:2.0+seed*2.0)*uDpr*perspective*mix(1.35,1.0,intro);
+        gl_PointSize=(kind<.5?2.1+seed*2.3:2.0+seed*2.0)*uDpr*perspective*mix(.75,1.0,intro);
         gl_PointSize*=mix(1.0,.85,uLight);
       }`
       )
@@ -146,7 +132,6 @@
       'Time',
       'Formation',
       'SourceHeight',
-      'HelixRadius',
       'Light',
     ].forEach((n) => (uniforms[n] = gl.getUniformLocation(program, 'u' + n)));
     gl.enable(gl.BLEND);
@@ -167,7 +152,6 @@
     cy = v.top - base.top + v.height / 2;
     sourceHeight = Math.max(1, signature.getBoundingClientRect().top - base.top);
     size = Math.min(v.width * 0.9, v.height * 1.65, 550);
-    helixRadius = Math.min(width * 0.075, sourceHeight * 0.16, 110);
     canvas.width = Math.round(width * dpr);
     canvas.height = Math.round(height * dpr);
     waves.width = Math.round(width * dpr);
@@ -250,7 +234,6 @@
       gl.uniform1f(uniforms.Time, time);
       gl.uniform1f(uniforms.Formation, formation);
       gl.uniform1f(uniforms.SourceHeight, sourceHeight);
-      gl.uniform1f(uniforms.HelixRadius, helixRadius);
       gl.uniform1f(uniforms.Light, document.documentElement.dataset.theme === 'light' ? 1 : 0);
       gl.drawArrays(gl.POINTS, 0, count);
       drawWaves();
